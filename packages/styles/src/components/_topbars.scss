@@ -1,0 +1,160 @@
+@use '../base/variables' as *;
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: $gv-white;
+  border: 1px solid #DCE7E4;
+  border-radius: 24px;
+  box-shadow: $gv-soft-shadow;
+  margin-bottom: $spacing-gutter;
+  box-sizing: border-box;
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: $gv-white;
+    border: 1px solid #DCE7E4;
+    border-radius: 16px;
+    padding: 8px 20px;
+    width: 360px;
+    height: 48px;
+    box-sizing: border-box;
+    
+    input {
+      border: none;
+      outline: none;
+      font-size: $font-size-small;
+      color: $gv-gray-dim;
+      width: 100%;
+      background: transparent;
+      &::placeholder {
+        color: $gv-gray-dim;
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: #CDE6D1; // Success color from SVG
+      border-radius: 14px;
+      border: 1px solid #DCE7E4;
+      
+      .status-dot {
+        width: 6px;
+        height: 6px;
+        background: $gv-text;
+        border-radius: 50%;
+      }
+      .status-label {
+        font-size: $font-size-tiny;
+        font-weight: $font-weight-bold;
+        color: $gv-text;
+      }
+    }
+
+    .notification-area {
+      display: flex;
+      gap: 12px;
+      .icon-notif {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #DCE7E4;
+        background: $gv-white;
+        cursor: pointer;
+        &.bell { background-image: none; background-color: $gv-soft-peach; }
+        &.moon { background-image: none; background-color: $gv-soft-lavender; }
+      }
+    }
+
+    .profile-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 16px;
+      background: $gv-background;
+      border: 1px solid #DCE7E4;
+      border-radius: 20px;
+      height: 46px;
+      box-sizing: border-box;
+
+      .profile-avatar {
+        width: 28px;
+        height: 28px;
+        background: $gv-soft-mint;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 800;
+        color: #2D6D67;
+        border: 1px solid #DCE7E4;
+      }
+      
+      .profile-info {
+        display: flex;
+        flex-direction: column;
+        
+        .profile-name { 
+          font-size: $font-size-body; 
+          font-weight: $font-weight-normal; 
+          color: $gv-text;
+          line-height: 1.2;
+        }
+        .profile-role { 
+          font-size: $font-size-tiny; 
+          color: $gv-gray-dim; 
+          line-height: 1;
+        }
+      }
+    }
+  }
+}
+
+// Responsive Utilities
+.mobile-menu-btn {
+  display: none;
+  @media (max-width: $bp-mobile) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 12px;
+    
+    span {
+      width: 22px;
+      height: 2px;
+      background: $gv-text;
+      border-radius: 2px;
+    }
+  }
+}
+
+.desktop-only {
+  @media (max-width: $bp-mobile) {
+    display: none !important;
+  }
+}
+
+.mobile-only {
+  @media (min-width: $bp-mobile) {
+    display: none !important;
+  }
+}

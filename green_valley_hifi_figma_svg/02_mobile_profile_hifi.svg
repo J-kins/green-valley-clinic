@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="932" viewBox="0 0 430 932">
+<style>
+    .title { font-family: Inter, Arial, sans-serif; font-size: 30px; font-weight: 800; fill: #25363B; }
+    .h2 { font-family: Inter, Arial, sans-serif; font-size: 22px; font-weight: 800; fill: #25363B; }
+    .h3 { font-family: Inter, Arial, sans-serif; font-size: 18px; font-weight: 700; fill: #25363B; }
+    .label { font-family: Inter, Arial, sans-serif; font-size: 13px; font-weight: 700; fill: #25363B; }
+    .body { font-family: Inter, Arial, sans-serif; font-size: 14px; font-weight: 500; fill: #25363B; }
+    .small { font-family: Inter, Arial, sans-serif; font-size: 12px; font-weight: 500; fill: #6B7C82; }
+    .tiny { font-family: Inter, Arial, sans-serif; font-size: 11px; font-weight: 500; fill: #6B7C82; }
+    .chip { font-family: Inter, Arial, sans-serif; font-size: 12px; font-weight: 700; fill: #25363B; }
+    .button { font-family: Inter, Arial, sans-serif; font-size: 14px; font-weight: 700; fill: #2D6D67; }
+    .buttonLight { font-family: Inter, Arial, sans-serif; font-size: 14px; font-weight: 700; fill: #25363B; }
+    .whiteBtn { font-family: Inter, Arial, sans-serif; font-size: 14px; font-weight: 700; fill: white; }
+    .num { font-family: Inter, Arial, sans-serif; font-size: 28px; font-weight: 800; fill: #25363B; }
+    .center { dominant-baseline: middle; text-anchor: middle; }
+</style>
+<defs>
+    <linearGradient id="gradPrimary" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DBF0EC"/>
+      <stop offset="100%" stop-color="#82D1C6"/>
+    </linearGradient>
+    <linearGradient id="gradPeach" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FCEFE9"/>
+      <stop offset="100%" stop-color="#F3D5CA"/>
+    </linearGradient>
+    <linearGradient id="gradLav" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F6F3FD"/>
+      <stop offset="100%" stop-color="#DCD3F7"/>
+    </linearGradient>
+    <linearGradient id="gradYellow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF8E5"/>
+      <stop offset="100%" stop-color="#F1DF9F"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#B9CCC7" flood-opacity="0.22"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#B9CCC7" flood-opacity="0.16"/>
+    </filter>
+</defs>
+<title></title><rect x="0" y="0" width="430" height="932" fill="#F7FAFA" rx="0" ry="0"/><rect x="30" y="18" width="370" height="892" fill="#203238" rx="44" ry="44" filter="url(#shadow)"/><rect x="46" y="36" width="338" height="856" fill="#FBFBFA" rx="34" ry="34"/><rect x="162" y="54" width="106" height="16" fill="#18282C" rx="8" ry="8"/><text x="78" y="126" class="h2" text-anchor="start">My Profile</text><text x="78" y="150" class="small" text-anchor="start">Manage personal and clinic information</text><rect x="280" y="102" width="72" height="34" fill="url(#gradPeach)" stroke="#DCE7E4" stroke-width="1" rx="17" ry="17"/><text x="316" y="124" class="chip" text-anchor="middle">Edit</text><rect x="62" y="178" width="306" height="112" fill="white" stroke="#DCE7E4" stroke-width="1" rx="24" ry="24" filter="url(#soft)"/><circle cx="108" cy="234" r="30" fill="url(#gradPrimary)" stroke="#DCE7E4" stroke-width="1"/><text x="108" y="241" class="label" text-anchor="middle">SN</text><text x="148" y="218" class="h3" text-anchor="start">Samuel Nuwagaba</text><text x="148" y="242" class="small" text-anchor="start">GV-PT-00842</text><text x="148" y="265" class="small" text-anchor="start">+256 7XX XXX XXX</text><rect x="280" y="208" width="98" height="28" rx="14" ry="14" fill="#CDE6D1" stroke="#DCE7E4" stroke-width="1"/><text x="329" y="226" class="chip" text-anchor="middle" fill="#25363B">Active</text><rect x="62" y="312" width="306" height="218" fill="white" stroke="#DCE7E4" stroke-width="1" rx="24" ry="24" filter="url(#soft)"/><text x="80" y="342" class="label" text-anchor="start">Personal details</text><text x="84" y="354" class="small" text-anchor="start">Full name</text><text x="218" y="354" class="body" text-anchor="start">Samuel Nuwagaba</text><text x="84" y="388" class="small" text-anchor="start">DOB</text><text x="218" y="388" class="body" text-anchor="start">10 Mar 2002</text><text x="84" y="422" class="small" text-anchor="start">Gender</text><text x="218" y="422" class="body" text-anchor="start">Male</text><text x="84" y="456" class="small" text-anchor="start">Email</text><text x="218" y="456" class="body" text-anchor="start">samuel@example.com</text><text x="84" y="490" class="small" text-anchor="start">Address</text><text x="218" y="490" class="body" text-anchor="start">Mbarara, Uganda</text><rect x="62" y="548" width="306" height="164" fill="white" stroke="#DCE7E4" stroke-width="1" rx="24" ry="24" filter="url(#soft)"/><text x="80" y="578" class="label" text-anchor="start">Clinic details</text><text x="84" y="590" class="small" text-anchor="start">Primary clinic</text><text x="218" y="590" class="body" text-anchor="start">Green Valley Clinic</text><text x="84" y="620" class="small" text-anchor="start">Patient number</text><text x="218" y="620" class="body" text-anchor="start">00842</text><text x="84" y="650" class="small" text-anchor="start">Preferred doctor</text><text x="218" y="650" class="body" text-anchor="start">Dr. Kato</text><text x="84" y="680" class="small" text-anchor="start">Insurance</text><text x="218" y="680" class="body" text-anchor="start">AAR Health</text><rect x="62" y="730" width="306" height="104" fill="white" stroke="#DCE7E4" stroke-width="1" rx="24" ry="24" filter="url(#soft)"/><text x="80" y="760" class="label" text-anchor="start">Billing &amp; preferences</text><rect x="84" y="770" width="120" height="32" fill="#FCEFE9" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="144.0" y="790" class="chip" text-anchor="middle">Payments</text><rect x="218" y="770" width="130" height="32" fill="white" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="283.0" y="790" class="chip" text-anchor="middle">Password</text><text x="84" y="818" class="small" text-anchor="start">Outstanding balance: UGX 0</text></svg>

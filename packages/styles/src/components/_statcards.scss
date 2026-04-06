@@ -1,0 +1,81 @@
+@use '../base/variables' as *;
+
+.stat-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px;
+  border-radius: 24px;
+  border: 1px solid #DCE7E4;
+  box-shadow: $gv-soft-shadow;
+  min-height: 118px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  @media (max-width: $bp-mobile) {
+    padding: 16px 20px;
+    min-height: 100px;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $gv-shadow;
+  }
+
+  .stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: $gv-text;
+      line-height: 1;
+
+      @media (max-width: $bp-mobile) {
+        font-size: 24px;
+      }
+    }
+    .stat-label {
+      font-size: $font-size-body;
+      font-weight: 500;
+      color: $gv-text;
+    }
+  }
+
+  .stat-icon-wrapper {
+    width: 36px;
+    height: 36px;
+    background: $gv-white;
+    border-radius: 50%;
+    border: 1px solid #DCE7E4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .stat-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+    }
+  }
+
+  &.stat-primary { 
+    background: $grad-primary; 
+    .stat-icon { background-color: #82D1C6; }
+  }
+  &.stat-peach { 
+    background: $grad-peach; 
+    .stat-icon { background-color: #F3D5CA; }
+  }
+  &.stat-lavender { 
+    background: $grad-lavender; 
+    .stat-icon { background-color: #DCD3F7; }
+  }
+  &.stat-yellow { 
+    background: $grad-yellow; 
+    .stat-icon { background-color: #F1DF9F; }
+  }
+}

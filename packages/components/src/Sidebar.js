@@ -1,0 +1,69 @@
+import { Component } from '../../core/src/index.js';
+
+/**
+ * Sidebar component with navigational active state.
+ * @module Sidebar
+ */
+export class Sidebar extends Component {
+  render() {
+    const navItems = [
+      { id: 'dashboard', label: 'Dashboard', icon: 'dashboard', active: true },
+      { id: 'appointments', label: 'Appointments', icon: 'calendar' },
+      { id: 'patients', label: 'Patient Records', icon: 'records' },
+      { id: 'doctors', label: 'Doctors', icon: 'doctors' },
+      { id: 'staff', label: 'Staff Management', icon: 'staff', onboarding: true },
+      { id: 'schedule', label: 'Schedule', icon: 'schedule' },
+      { id: 'reports', label: 'Reports', icon: 'reports' }
+    ];
+
+    return `
+      <div class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-logo">
+            <div class="logo-inner"></div>
+          </div>
+          <div class="brand-text">
+            <h3>Green Valley</h3>
+            <p>Clinic management system</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <ul>
+            ${navItems.map(item => `
+              <li class="${item.active ? 'active' : ''} ${item.onboarding ? 'onboarding-item' : ''}" data-id="${item.id}">
+                <span class="sidebar-icon icon-${item.icon}"></span>
+                <span class="sidebar-label">${item.label}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+
+        <div class="sidebar-help">
+          <div class="help-card">
+            <h4>Need help?</h4>
+            <p>System guide and support</p>
+            <button class="btn-help">Open guide</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  onMount() {
+    this.element.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        this.element.querySelectorAll('li').forEach(el => el.classList.remove('active'));
+        li.classList.add('active');
+        
+        // Notify the layout or app of the navigation event
+        const viewId = li.dataset.id;
+        window.dispatchEvent(new CustomEvent('navigate-view', { detail: { viewId } }));
+      });
+    });
+  }
+}
+
+export default Sidebar;

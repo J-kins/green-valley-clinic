@@ -1,0 +1,16 @@
+{
+  "name": "@my-framework/core",
+  "version": "1.0.0",
+  "description": "Core package",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "exports":{
+    ".": "./src/index.js",
+    "./document-head": "./src/DocumentHead.js" 
+  },
+
+  "files": [
+    "src"
+  ]
+
+}

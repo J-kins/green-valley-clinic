@@ -1,0 +1,74 @@
+@use '../base/variables' as *;
+
+.accordion {
+  border: 1px solid #DCE7E4;
+  border-radius: $border-radius-container;
+  overflow: hidden;
+  background-color: $gv-white;
+  max-width: 800px;
+  margin: 32px auto;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #DCE7E4;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.active {
+    .accordion-header {
+      background-color: $gv-background;
+      color: #2D6D67; // Figma primary action color
+    }
+    .accordion-content {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+    .accordion-icon {
+      color: #2D6D67;
+    }
+  }
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  cursor: pointer;
+  background: none;
+  transition: all 0.2s ease;
+
+  h3 {
+    margin: 0;
+    font-size: $font-size-body;
+    font-weight: $font-weight-semibold;
+    color: inherit;
+  }
+
+  &:hover {
+    background-color: $gv-background;
+  }
+}
+
+.accordion-icon {
+  font-size: $font-size-h2;
+  color: $gv-gray-dim;
+  transition: color 0.2s;
+  font-weight: $font-weight-light;
+}
+
+.accordion-content {
+  display: none;
+  padding: 16px 24px;
+  background-color: $gv-white;
+  color: $gv-text;
+  line-height: 1.6;
+  font-size: $font-size-small;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

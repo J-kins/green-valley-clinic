@@ -1,0 +1,7 @@
+{
+  "name": "@my-framework/styles",
+  "version": "1.0.0",
+  "description": "Styles package",
+  "main": "src/index.js",
+  "module": "src/index.js"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@my-framework/cli",
+  "version": "1.0.0",
+  "description": "Cli package",
+  "main": "src/index.js",
+  "module": "src/index.js"
+}

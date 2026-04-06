@@ -1,0 +1,121 @@
+@use '../base/variables' as *;
+
+.sidebar {
+  width: 258px;
+  background-color: $gv-sidebar-bg;
+  border-right: 1px solid #DCE7E4;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 24px;
+  border-radius: 30px; // Matching the container in the SVG
+  box-shadow: $gv-shadow;
+  box-sizing: border-box;
+
+  .sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+    padding: 16px;
+    background: $grad-primary;
+    border-radius: 24px;
+    border: 1px solid #DCE7E4;
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: $gv-white;
+      border-radius: 50%;
+      border: 1px solid #DCE7E4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h3 { 
+      font-size: $font-size-h3; 
+      font-weight: $font-weight-bold; 
+      margin: 0; 
+      color: $gv-text; 
+      line-height: 1.2;
+    }
+    p { 
+      font-size: $font-size-tiny; 
+      margin: 0; 
+      color: $gv-gray-dim; 
+    }
+  }
+
+  .sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      border-radius: $border-radius-element;
+      color: $gv-gray-dim;
+      font-size: $font-size-body;
+      font-weight: $font-weight-normal;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover { 
+        background-color: rgba($gv-white, 0.5); 
+        color: $gv-text; 
+      }
+      &.active {
+        background-color: $gv-white;
+        color: #2D6D67; // Figma primary action color
+        box-shadow: $gv-soft-shadow;
+        font-weight: $font-weight-medium;
+        border: 1px solid #DCE7E4;
+      }
+    }
+  }
+
+  .sidebar-help {
+    margin-top: auto;
+    .help-card {
+      background: $grad-lavender;
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid #DCE7E4;
+
+      h4 { 
+        font-size: $font-size-label; 
+        font-weight: $font-weight-bold; 
+        margin: 0 0 8px; 
+        color: $gv-text;
+      }
+      p { 
+        font-size: $font-size-small; 
+        margin: 0 0 20px; 
+        color: $gv-gray-dim; 
+        line-height: 1.4;
+      }
+      button {
+        width: 100%;
+        padding: 12px;
+        background: $gv-white;
+        border: 1px solid #DCE7E4;
+        border-radius: 16px;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-body;
+        color: $gv-text;
+        cursor: pointer;
+        transition: transform 0.2s;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}

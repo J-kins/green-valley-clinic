@@ -1,0 +1,7 @@
+{
+  "name": "@my-framework/docs",
+  "version": "1.0.0",
+  "description": "Docs package",
+  "main": "src/index.js",
+  "module": "src/index.js"
+}

@@ -1,0 +1,63 @@
+// --- Green Valley High-Fidelity Design Tokens ---
+
+// Brand Colors
+$gv-mint: #82D1C6;
+$gv-soft-mint: #DBF0EC;
+$gv-peach: #F3D5CA;
+$gv-soft-peach: #FCEFE9;
+$gv-lavender: #DCD3F7;
+$gv-soft-lavender: #F6F3FD;
+$gv-butter: #F1DF9F;
+$gv-soft-butter: #FFF8E5;
+$gv-success: #CDE6D1;
+$gv-danger: #F1C8C6;
+$gv-text: #25363B;
+$gv-gray-dim: #6B7C82;
+$gv-background: #F7FAFA;
+$gv-white: #FFFFFF;
+$gv-sidebar-bg: #EEF6F5;
+
+// Gradients
+$grad-primary: linear-gradient(135deg, $gv-soft-mint 0%, $gv-mint 100%);
+$grad-peach: linear-gradient(135deg, $gv-soft-peach 0%, $gv-peach 100%);
+$grad-lavender: linear-gradient(135deg, $gv-soft-lavender 0%, $gv-lavender 100%);
+$grad-yellow: linear-gradient(135deg, $gv-soft-butter 0%, $gv-butter 100%);
+
+// Typography (Inter)
+$font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+$font-size-title: 30px;
+$font-size-h2: 22px;
+$font-size-h3: 18px;
+$font-size-label: 13px;
+$font-size-body: 14px;
+$font-size-small: 12px;
+$font-size-tiny: 11px;
+
+$font-weight-thin: 200;
+$font-weight-light: 300;
+$font-weight-normal: 500;
+$font-weight-medium: 600;
+$font-weight-semibold: 700;
+$font-weight-bold: 800;
+
+// Spacing & Layout
+$spacing-gutter: 24px;
+$border-radius-container: 30px;
+$border-radius-card: 24px;
+$border-radius-element: 16px;
+
+// Shadows & Filters
+$gv-shadow: 0 8px 12px rgba(185, 204, 199, 0.22);
+$gv-soft-shadow: 0 3px 6px rgba(185, 204, 199, 0.16);
+
+// Z-Index
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+
+// Responsive Breakpoints
+$bp-mobile: 768px;
+$bp-tablet: 1024px;
+$bp-desktop-lg: 1440px;

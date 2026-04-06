@@ -1,0 +1,7 @@
+{
+  "name": "@my-framework/components",
+  "version": "1.0.0",
+  "description": "Components package",
+  "main": "src/index.js",
+  "module": "src/index.js"
+}

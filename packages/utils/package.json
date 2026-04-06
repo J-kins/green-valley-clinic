@@ -1,0 +1,7 @@
+{
+  "name": "@my-framework/utils",
+  "version": "1.0.0",
+  "description": "Utils package",
+  "main": "src/index.js",
+  "module": "src/index.js"
+}

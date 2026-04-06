@@ -1,0 +1,7 @@
+{
+  "name": "@my-framework/testing",
+  "version": "1.0.0",
+  "description": "Testing package",
+  "main": "src/index.js",
+  "module": "src/index.js"
+}

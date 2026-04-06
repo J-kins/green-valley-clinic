@@ -1,0 +1,82 @@
+@use '../base/variables' as *;
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(37, 54, 59, 0.4); // $gv-text with opacity
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: $z-modal;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal-container {
+  background-color: $gv-white;
+  width: 90%;
+  max-width: 500px;
+  border-radius: $border-radius-container;
+  box-shadow: $gv-shadow;
+  transform: scale(0.95) translateY(-20px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  border: 1px solid #DCE7E4;
+
+  .modal-overlay.show & {
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #DCE7E4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $gv-background;
+
+  h3 {
+    margin: 0;
+    font-size: $font-size-h3;
+    font-weight: $font-weight-bold;
+    color: $gv-text;
+  }
+
+  .modal-close {
+    background-color: rgba(241, 200, 198, 0.2); // $gv-danger with opacity
+    border: 1px solid #F1C8C6;
+    font-size: 20px;
+    color: #b91c1c;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #F1C8C6;
+      color: $gv-white;
+    }
+  }
+}
+
+.modal-body {
+  padding: 24px;
+  color: $gv-text;
+  line-height: 1.6;
+  font-size: $font-size-body;
+}

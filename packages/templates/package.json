@@ -1,0 +1,7 @@
+{
+  "name": "@my-framework/templates",
+  "version": "1.0.0",
+  "description": "Templates package",
+  "main": "src/index.js",
+  "module": "src/index.js"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "my-vanilla-framework",
+  "main": "index.js",
+  "version": "1.0.0",
+  "description": "A vanilla JS framework",
+  "workspaces": [
+    "packages/*",
+    "clinic",
+    "public"
+  ],
+  "scripts": {
+    "sass": "sass packages/styles/main.scss:dist/main.css",
+    "sass:watch": "sass --watch packages/styles/main.scss:dist/main.css",
+    "serve": "browser-sync start --server --files 'index.html, **/*.js, dist/*.css, clinic/**/*.js, public/**/*.js'",
+    "dev": "npm-run-all --parallel sass:watch serve"
+  },
+  "dependencies": {
+    "@my-framework/core": "^1.0.0"
+  },
+  "devDependencies": {
+    "sass": "^1.72.0",
+    "browser-sync": "^3.0.2",
+    "npm-run-all": "^4.1.5"
+  }
+}

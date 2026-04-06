@@ -1,0 +1,145 @@
+@use '../base/variables' as *;
+
+.dashboard-view-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  animation: fadeIn 0.4s ease-out;
+
+  .view-header {
+    margin-bottom: 8px;
+    .title {
+      font-size: 30px;
+      font-weight: 800;
+      color: $gv-text;
+      margin: 0 0 8px;
+    }
+    .small {
+      font-size: 12px;
+      color: $gv-gray-dim;
+      margin: 0;
+    }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .dashboard-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+    align-items: start;
+
+    @media (max-width: $bp-tablet) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .appointments-card {
+    min-height: 284px;
+    h3 {
+      font-size: $font-size-h3;
+      font-weight: 700;
+      color: $gv-text;
+      margin-bottom: 24px;
+    }
+  }
+
+  .dashboard-table-wrapper {
+    background: #F8FCFB;
+    border: 1px solid #DCE7E4;
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  .dashboard-table-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 1fr 130px;
+    align-items: center;
+    padding: 12px 24px;
+    border-bottom: 1px solid #DCE7E4;
+    transition: background-color 0.2s;
+    min-width: 650px;
+
+    &:last-child { border-bottom: none; }
+    &:hover:not(.header) { background-color: rgba(#82D1C6, 0.05); }
+
+    &.header {
+      background: none;
+      border-bottom: 1px solid #DCE7E4;
+      span { font-weight: 700; color: $gv-text; }
+    }
+    
+    span {
+      font-size: $font-size-small;
+      color: $gv-text;
+    }
+  }
+
+  .sidebar-content-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .quick-actions-card {
+    .label { 
+      font-size: $font-size-label;
+      font-weight: 700; 
+      margin-bottom: 20px; 
+      display: block; 
+      color: $gv-text;
+    }
+    .quick-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        padding: 8px 0;
+        font-size: 13px;
+        color: $gv-gray-dim;
+        cursor: pointer;
+        transition: color 0.2s;
+        &:hover { color: #25363B; text-decoration: underline; }
+      }
+    }
+  }
+
+  .notes-card {
+    .label { 
+      font-size: $font-size-label;
+      font-weight: 700; 
+      margin-bottom: 20px; 
+      display: block;
+      color: $gv-text;
+    }
+    .notes-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        padding: 8px 0;
+        font-size: 12px;
+        color: $gv-gray-dim;
+        position: relative;
+        padding-left: 12px;
+        line-height: 1.4;
+        &::before {
+          content: '•';
+          position: absolute;
+          left: 0;
+          color: $gv-text;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

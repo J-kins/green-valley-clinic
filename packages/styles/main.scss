@@ -1,0 +1,23 @@
+@forward 'src/components/index';
+@forward 'src/base/variables';
+
+@use 'src/base/variables' as *;
+@use 'src/components/index' as components;
+
+// Global styles - Green Valley Hi-Fi Design
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-sans;
+  background-color: $gv-background;
+  color: $gv-text;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+// Global Card & Shadow Utilities
+.gv-shadow { box-shadow: $gv-shadow; }
+.gv-soft-shadow { box-shadow: $gv-soft-shadow; }
+.gv-rounded { border-radius: $border-radius-container; }
+.gv-card-rounded { border-radius: $border-radius-card; }
