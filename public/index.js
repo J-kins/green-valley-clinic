@@ -2,6 +2,8 @@ import MobileLayout from '../packages/components/src/MobileLayout.js';
 import BookAppointment from './views/BookAppointment.js';
 import Pharmacy from './views/Pharmacy.js';
 import MyAppointments from './views/MyAppointments.js';
+import About from './views/About.js';
+import ContactUs from './views/ContactUs.js';
 
 /**
  * Public Patient Portal Entry Point

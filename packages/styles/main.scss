@@ -21,3 +21,52 @@ body {
 .gv-soft-shadow { box-shadow: $gv-soft-shadow; }
 .gv-rounded { border-radius: $border-radius-container; }
 .gv-card-rounded { border-radius: $border-radius-card; }
+
+// Global Typography
+.title {
+  font-size: $font-size-title;
+  font-weight: $font-weight-bold;
+  color: $gv-text;
+  line-height: 1.1;
+}
+
+.h2 {
+  font-size: $font-size-h2;
+  font-weight: $font-weight-bold;
+  color: $gv-text;
+  margin: 0;
+}
+
+.h3 {
+  font-size: $font-size-h3;
+  font-weight: $font-weight-semibold;
+  color: $gv-text;
+}
+
+.body {
+  font-size: $font-size-body;
+  font-weight: $font-weight-normal;
+  color: $gv-text;
+}
+
+.small {
+  font-size: $font-size-small;
+  font-weight: $font-weight-normal;
+  color: $gv-gray-dim;
+}
+
+.tiny {
+  font-size: $font-size-tiny;
+  font-weight: $font-weight-normal;
+  color: $gv-gray-dim;
+}
+
+.label {
+  font-size: $font-size-label;
+  font-weight: $font-weight-semibold;
+  color: $gv-text;
+}
+
+// Text utilities
+.bold { font-weight: $font-weight-bold; }
+.dim { color: $gv-gray-dim; }

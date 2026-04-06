@@ -4,6 +4,7 @@ import Dashboard from './views/Dashboard.js';
 import StaffLogin from './views/StaffLogin.js';
 import PasswordReset from './views/PasswordReset.js';
 import StaffManagement from './views/StaffManagement.js';
+import HelpDesk from './views/HelpDesk.js';
 
 /**
  * Clinic App Entry Point
@@ -64,6 +65,8 @@ window.addEventListener('navigate-view', (e) => {
         new Dashboard().mount(viewMount);
     } else if (viewId === 'staff') {
         new StaffManagement().mount(viewMount);
+    } else if (viewId === 'helpdesk') {
+        new HelpDesk().mount(viewMount);
     } else {
         viewMount.innerHTML = `
             <div class="card mt-32">

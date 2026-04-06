@@ -101,7 +101,10 @@
     gap: 16px;
     margin-top: 16px;
     
-    button { flex: 1; }
+    button { 
+      flex: 1;
+      height: 48px;
+    }
   }
 
   .security-info {

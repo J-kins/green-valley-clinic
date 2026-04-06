@@ -1,10 +1,10 @@
 import { documentHead } from './packages/core/src/index.js';
-import { Header, Accordion, Footer, Modal } from './packages/components/src/index.js';
+import { Header, Footer } from './packages/components/src/index.js';
 
-console.log('🚀 Application starting...');
+console.log('🚀 Main portal loading...');
 
 try {
-  // 1. Configure Page Head
+  // Configure Page Head
   documentHead.setDefaultConfig({
     title: 'Green Valley Clinic | Premium Healthcare',
     description: 'Experience world-class healthcare with a personal touch at Green Valley Clinic.',
@@ -19,101 +19,157 @@ try {
   if (!root) {
     throw new Error('Root element (#root) not found in DOM');
   }
-  console.log('✓ Root element found');
 
-  // 2. Initialize and Mount Header
+  // 1. Mount Header
   const header = new Header({
-    logo: 'Green Valley',
+    logo: 'Green Valley Clinic',
     navItems: [
       { label: 'Home', href: '#' },
-      { label: 'About', href: '#' },
-      { label: 'Services', href: '#' },
-      { label: 'Contact', href: '#' }
+      { label: 'Services', href: '#services' },
+      { label: 'About', href: '#about' },
+      { label: 'Contact', href: '#contact' }
     ]
   });
   header.mount(root);
   console.log('✓ Header mounted');
 
-  // 3. Hero Section
+  // 2. Hero Section
   const hero = document.createElement('section');
   hero.style.padding = '120px 20px';
   hero.style.textAlign = 'center';
-  hero.style.background = 'white';
+  hero.style.background = 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)';
+  hero.style.color = 'white';
   hero.innerHTML = `
-    <h2 style="font-size: 3.5rem; font-weight: 800; color: #1e293b; margin-bottom: 24px; letter-spacing: -0.025em; margin: 0 0 24px 0;">
-      Compassionate Care for a <span style="color: #4f46e5;">Healthier You</span>
-    </h2>
-    <p style="font-size: 1.25rem; color: #64748b; max-width: 600px; margin: 0 auto 48px; line-height: 1.6;">
-      Experience world-class healthcare with a personal touch. Our dedicated team is here to support your wellness journey every step of the way.
+    <h1 style="font-size: 3.5rem; font-weight: 800; margin: 0 0 24px 0; letter-spacing: -0.025em;">
+      Compassionate Care for a Healthier You
+    </h1>
+    <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto 48px; line-height: 1.6; opacity: 0.95;">
+      Experience world-class healthcare with a personal touch. Our dedicated team is here to support your wellness journey.
     </p>
-    <button id="cta-btn" style="padding: 16px 32px; font-size: 1.125rem; font-weight: 600; background: #4f46e5; color: white; border: none; border-radius: 12px; cursor: pointer; transition: all 0.2s; box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);">
-      Book Appointment
-    </button>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="./public/index.html" style="padding: 16px 32px; font-size: 1.125rem; font-weight: 600; background: white; color: #4f46e5; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; transition: all 0.2s;">
+        Patient Portal
+      </a>
+      <a href="./clinic/index.html" style="padding: 16px 32px; font-size: 1.125rem; font-weight: 600; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 12px; cursor: pointer; text-decoration: none; transition: all 0.2s;">
+        Staff Portal
+      </a>
+    </div>
   `;
   root.appendChild(hero);
   console.log('✓ Hero section mounted');
 
-  // 4. FAQ Section with Accordion
-  const faqSection = document.createElement('section');
-  faqSection.style.padding = '80px 20px';
-  const faqTitle = document.createElement('h2');
-  faqTitle.style.textAlign = 'center';
-  faqTitle.style.fontSize = '2.25rem';
-  faqTitle.style.fontWeight = '700';
-  faqTitle.style.color = '#1e293b';
-  faqTitle.style.marginBottom = '48px';
-  faqTitle.textContent = 'Common Questions';
-  faqSection.appendChild(faqTitle);
-  root.appendChild(faqSection);
-
-  const faq = new Accordion({
-    items: [
-      { 
-        title: 'What are your operating hours?', 
-        content: 'We are open Monday to Friday, 8:00 AM to 8:00 PM, and Saturday 9:00 AM to 2:00 PM. We are closed on Sundays and major public holidays.' 
-      },
-      { 
-        title: 'Do you accept international insurance?', 
-        content: 'Yes, we partner with most international insurance providers. Please contact our front desk for a full list of supported networks.' 
-      },
-      { 
-        title: 'How can I access my medical records?', 
-        content: 'You can securely access all your medical records, test results, and prescriptions through our patient portal or by visiting us in person.' 
-      }
-    ]
-  });
-  faq.mount(faqSection);
-  console.log('✓ Accordion mounted');
-
-  // 5. Initialize Modal (Hidden by default)
-  const appointmentModal = new Modal({
-    title: 'Make an Appointment',
-    content: `
-      <div style="display: flex; flex-direction: column; gap: 20px;">
-        <p style="color: #64748b; font-size: 0.9375rem;">Please fill out the form below and our team will get back to you within 24 hours.</p>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <label style="font-size: 0.875rem; font-weight: 500; color: #334155;">Full Name</label>
-          <input type="text" placeholder="John Doe" style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none;">
+  // 3. Features Section
+  const features = document.createElement('section');
+  features.style.padding = '80px 20px';
+  features.style.background = '#f8f9ff';
+  features.innerHTML = `
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h2 style="font-size: 2.25rem; font-weight: 700; color: #1e293b; text-align: center; margin-bottom: 48px;">Why Choose Green Valley Clinic?</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+        <div style="padding: 32px; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.07);">
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Expert Team</h3>
+          <p style="color: #64748b; line-height: 1.6; margin: 0;">Our experienced doctors and healthcare professionals provide personalized care.</p>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <label style="font-size: 0.875rem; font-weight: 500; color: #334155;">Preferred Date</label>
-          <input type="date" style="padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; outline: none;">
+        
+        <div style="padding: 32px; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.07);">
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Modern Facilities</h3>
+          <p style="color: #64748b; line-height: 1.6; margin: 0;">State-of-the-art equipment and comfortable facilities for your care.</p>
         </div>
-        <button style="padding: 14px; background: #4f46e5; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 10px;">Confirm Request</button>
+        
+        <div style="padding: 32px; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.07);">
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Patient-Centered</h3>
+          <p style="color: #64748b; line-height: 1.6; margin: 0;">Your health and comfort are our top priorities in every interaction.</p>
+        </div>
+        
+        <div style="padding: 32px; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.07);">
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Affordable Care</h3>
+          <p style="color: #64748b; line-height: 1.6; margin: 0;">Transparent pricing and flexible payment options for everyone.</p>
+        </div>
+        
+        <div style="padding: 32px; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.07);">
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Easy Booking</h3>
+          <p style="color: #64748b; line-height: 1.6; margin: 0;">Schedule appointments online or call us anytime for immediate assistance.</p>
+        </div>
+        
+        <div style="padding: 32px; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.07);">
+          <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">24/7 Emergency</h3>
+          <p style="color: #64748b; line-height: 1.6; margin: 0;">Round-the-clock emergency services for urgent medical needs.</p>
+        </div>
       </div>
-    `
-  });
-  appointmentModal.mount(root);
-  console.log('✓ Modal mounted');
+    </div>
+  `;
+  root.appendChild(features);
+  console.log('✓ Features section mounted');
 
-  // Bind CTA button to open modal
-  const ctaBtn = document.getElementById('cta-btn');
-  if (ctaBtn) {
-    ctaBtn.addEventListener('click', () => appointmentModal.show());
-    console.log('✓ CTA button listener attached');
-  }
+  // 4. Services Section
+  const services = document.createElement('section');
+  services.style.padding = '80px 20px';
+  services.style.background = 'white';
+  services.innerHTML = `
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h2 style="font-size: 2.25rem; font-weight: 700; color: #1e293b; text-align: center; margin-bottom: 48px;">Our Services</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+        <div style="padding: 24px; border: 2px solid #e2e8f0; border-radius: 8px; text-align: center;">
+          <h4 style="font-size: 1.125rem; font-weight: 700; color: #1e293b; margin: 0 0 12px 0;">General Consultation</h4>
+          <p style="color: #64748b; margin: 0;">Checkups and general medical advice</p>
+        </div>
+        
+        <div style="padding: 24px; border: 2px solid #e2e8f0; border-radius: 8px; text-align: center;">
+          <h4 style="font-size: 1.125rem; font-weight: 700; color: #1e293b; margin: 0 0 12px 0;">Dental Care</h4>
+          <p style="color: #64748b; margin: 0;">Preventive and restorative dental services</p>
+        </div>
+        
+        <div style="padding: 24px; border: 2px solid #e2e8f0; border-radius: 8px; text-align: center;">
+          <h4 style="font-size: 1.125rem; font-weight: 700; color: #1e293b; margin: 0 0 12px 0;">Pediatrics</h4>
+          <p style="color: #64748b; margin: 0;">Children's healthcare and vaccinations</p>
+        </div>
+        
+        <div style="padding: 24px; border: 2px solid #e2e8f0; border-radius: 8px; text-align: center;">
+          <h4 style="font-size: 1.125rem; font-weight: 700; color: #1e293b; margin: 0 0 12px 0;">Eye Care</h4>
+          <p style="color: #64748b; margin: 0;">Vision exams and eye treatments</p>
+        </div>
+        
+        <div style="padding: 24px; border: 2px solid #e2e8f0; border-radius: 8px; text-align: center;">
+          <h4 style="font-size: 1.125rem; font-weight: 700; color: #1e293b; margin: 0 0 12px 0;">Laboratory Tests</h4>
+          <p style="color: #64748b; margin: 0;">Blood work and diagnostic testing</p>
+        </div>
+        
+        <div style="padding: 24px; border: 2px solid #e2e8f0; border-radius: 8px; text-align: center;">
+          <h4 style="font-size: 1.125rem; font-weight: 700; color: #1e293b; margin: 0 0 12px 0;">Pharmacy</h4>
+          <p style="color: #64748b; margin: 0;">Quality medications and health products</p>
+        </div>
+      </div>
+    </div>
+  `;
+  root.appendChild(services);
+  console.log('✓ Services section mounted');
 
-  // 6. Initialize and Mount Footer
+  // 5. CTA Section
+  const cta = document.createElement('section');
+  cta.style.padding = '80px 20px';
+  cta.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+  cta.style.color = 'white';
+  cta.style.textAlign = 'center';
+  cta.innerHTML = `
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h2 style="font-size: 2.25rem; font-weight: 700; margin: 0 0 24px 0;">Ready to Get Started?</h2>
+      <p style="font-size: 1.125rem; line-height: 1.6; margin: 0 0 32px 0; opacity: 0.95;">Choose below to access the patient portal or staff management system.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="./public/index.html" style="padding: 16px 32px; font-size: 1.125rem; font-weight: 600; background: white; color: #667eea; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: all 0.2s;">
+          Access Patient Portal
+        </a>
+        <a href="./clinic/index.html" style="padding: 16px 32px; font-size: 1.125rem; font-weight: 600; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; text-decoration: none; transition: all 0.2s;">
+          Staff Login
+        </a>
+      </div>
+    </div>
+  `;
+  root.appendChild(cta);
+  console.log('✓ CTA section mounted');
+
+  // 6. Mount Footer
   const footer = new Footer({
     links: [
       { label: 'Privacy Policy', href: '#' },
@@ -125,7 +181,7 @@ try {
   footer.mount(root);
   console.log('✓ Footer mounted');
 
-  console.log('✅ Application successfully initialized!');
+  console.log('✅ Main portal successfully initialized!');
 
 } catch (error) {
   console.error('❌ Application error:', error);
