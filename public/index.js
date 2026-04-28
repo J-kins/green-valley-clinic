@@ -1,4 +1,7 @@
 import MobileLayout from '../packages/components/src/MobileLayout.js';
+import Landing from './views/Landing.js';
+import PatientLogin from './views/PatientLogin.js';
+import PatientSignup from './views/PatientSignup.js';
 import BookAppointment from './views/BookAppointment.js';
 import Pharmacy from './views/Pharmacy.js';
 import MyAppointments from './views/MyAppointments.js';
@@ -22,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Initialize Views
     const views = {
+        landing: new Landing(),
+        patientLogin: new PatientLogin(),
+        patientSignup: new PatientSignup(),
         booking: new BookAppointment(),
         pharmacy: new Pharmacy(),
         appointments: new MyAppointments(),
@@ -45,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // 3. Mount Initial View
-    views.booking.mount(viewMount);
+    // 3. Mount Initial View (Landing page)
+    views.landing.mount(viewMount);
 
     // 4. Handle View Switching via BottomNav
     document.addEventListener('click', (e) => {
@@ -62,5 +68,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(`Switched to mobile view: ${viewId}`);
             }
         }
+    });
+
+    // 5. Handle Custom Navigation Events
+    window.addEventListener('navigate-patient-login', () => {
+        viewMount.innerHTML = '';
+        views.patientLogin.mount(viewMount);
+    });
+
+    window.addEventListener('navigate-patient-signup', () => {
+        viewMount.innerHTML = '';
+        views.patientSignup.mount(viewMount);
+    });
+
+    window.addEventListener('navigate-landing', () => {
+        viewMount.innerHTML = '';
+        views.landing.mount(viewMount);
+    });
+
+    window.addEventListener('navigate-booking', () => {
+        viewMount.innerHTML = '';
+        views.booking.mount(viewMount);
     });
 });

@@ -3,90 +3,141 @@ import StatCard from '../../packages/components/src/StatCard.js';
 
 /**
  * Dashboard view for Green Valley Clinic.
+ * Clean, focused design respecting medical staff workflow.
  * @module Dashboard
  */
 export class Dashboard extends Component {
   render() {
     return `
       <div class="dashboard-view-container">
-        <header class="view-header">
-          <h2 class="title">Dashboard</h2>
-          <p class="small">Daily clinic overview and quick actions</p>
-        </header>
-
-        <section class="stats-grid">
-          <div id="stat-appointments" class="stat-item"></div>
-          <div id="stat-patients" class="stat-item"></div>
-          <div id="stat-doctors" class="stat-item"></div>
-          <div id="stat-pending" class="stat-item"></div>
+        <!-- Hero Banner: Shift Status -->
+        <section class="dashboard-hero">
+          <div class="hero-content">
+            <h2 class="hero-title">Morning Shift</h2>
+            <p class="hero-subtitle">Started at 08:00 • 8 appointments completed • 4 remaining</p>
+          </div>
+          <div class="hero-status">
+            <div class="status-badge">72% Complete</div>
+          </div>
         </section>
 
-        <section class="dashboard-main-grid">
-          <div class="main-content-panel">
-            <div class="card appointments-card">
-              <h3 class="h3">Today's appointments</h3>
-              <div class="dashboard-table-wrapper">
-                <div class="dashboard-table-row header">
-                  <span class="label">Time</span>
-                  <span class="label">Patient</span>
-                  <span class="label">Doctor</span>
-                  <span class="label">Department</span>
-                  <span class="label">Status</span>
+        <!-- Key Metrics Grid -->
+        <section class="dashboard-metrics">
+          <div id="stat-appointments" class="stat-item"></div>
+          <div id="stat-checked-in" class="stat-item"></div>
+          <div id="stat-pending" class="stat-item"></div>
+          <div id="stat-alerts" class="stat-item"></div>
+        </section>
+
+        <!-- Main Content: 2-Column Layout -->
+        <section class="dashboard-content">
+          <!-- Left: Patient List -->
+          <div class="dashboard-panel left-panel">
+            <div class="panel-header">
+              <h3 class="h3">Today's Patients</h3>
+              <div class="panel-controls">
+                <input type="search" placeholder="Search patient..." class="search-input" id="patient-search">
+                <select class="filter-select" id="status-filter">
+                  <option value="">All Status</option>
+                  <option value="checked-in">Checked In</option>
+                  <option value="pending">Pending</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="patients-list">
+              <div class="patient-item">
+                <div class="patient-info">
+                  <div class="patient-name">Alice Nakato</div>
+                  <p class="patient-details">08:30 • General • Dr. Kato</p>
                 </div>
-                <div class="dashboard-table-row">
-                  <span class="small">08:30</span>
-                  <span class="small">Alice N.</span>
-                  <span class="small">Dr. Kato</span>
-                  <span class="small">General</span>
-                  <span class="chip status-success">Confirmed</span>
+                <div class="patient-status">
+                  <span class="status-badge status-mint">Checked In</span>
                 </div>
-                <div class="dashboard-table-row">
-                  <span class="small">09:00</span>
-                  <span class="small">Brian O.</span>
-                  <span class="small">Dr. Mugisha</span>
-                  <span class="small">Dental</span>
-                  <span class="chip status-mint">Checked in</span>
+              </div>
+
+              <div class="patient-item">
+                <div class="patient-info">
+                  <div class="patient-name">Brian Okoro</div>
+                  <p class="patient-details">09:00 • Dental • Dr. Mugisha</p>
                 </div>
-                <div class="dashboard-table-row">
-                  <span class="small">10:00</span>
-                  <span class="small">Carol T.</span>
-                  <span class="small">Dr. Nalwoga</span>
-                  <span class="small">Pediatrics</span>
-                  <span class="chip status-warning">Pending</span>
+                <div class="patient-status">
+                  <span class="status-badge status-peach">In Progress</span>
+                </div>
+              </div>
+
+              <div class="patient-item">
+                <div class="patient-info">
+                  <div class="patient-name">Carol Tumusinde</div>
+                  <p class="patient-details">10:00 • Pediatrics • Dr. Nalwoga</p>
+                </div>
+                <div class="patient-status">
+                  <span class="status-badge status-butter">Pending</span>
+                </div>
+              </div>
+
+              <div class="patient-item">
+                <div class="patient-info">
+                  <div class="patient-name">David Wasswa</div>
+                  <p class="patient-details">10:30 • Lab Work • Dr. Kato</p>
+                </div>
+                <div class="patient-status">
+                  <span class="status-badge status-lavender">Scheduled</span>
                 </div>
               </div>
             </div>
           </div>
-          
-          <aside class="sidebar-content-panel">
-             <div class="card quick-actions-card grad-peach">
-                <span class="label">Quick actions</span>
-                <ul class="quick-links">
-                  <li>Book new appointment</li>
-                  <li>Register a patient</li>
-                  <li>Search patient records</li>
-                  <li>Generate management report</li>
-                </ul>
-             </div>
-             <div class="card notes-card grad-lavender">
-                <span class="label">Notes</span>
-                <ul class="notes-list">
-                  <li>Morning clinic is 76% booked.</li>
-                  <li>One doctor becomes free after 11:00.</li>
-                  <li>Two appointments need confirmation.</li>
-                </ul>
-             </div>
-          </aside>
+
+          <!-- Right: Quick Actions & Alerts -->
+          <div class="dashboard-panel right-panel">
+            <div class="quick-actions-card card grad-mint-light">
+              <h4 class="label">Quick Actions</h4>
+              <div class="action-buttons">
+                <button class="action-btn">Check In Patient</button>
+                <button class="action-btn">Register New Patient</button>
+                <button class="action-btn">View Records</button>
+                <button class="action-btn">Add Note</button>
+              </div>
+            </div>
+
+            <div class="alerts-card card mt-16">
+              <h4 class="label">Alerts & Notes</h4>
+              <div class="alerts-list">
+                <div class="alert-item alert-warning">
+                  <span class="alert-icon">⚠</span>
+                  <div class="alert-content">
+                    <p class="alert-title">Pending Confirmation</p>
+                    <p class="alert-text">2 appointments need confirmation</p>
+                  </div>
+                </div>
+                <div class="alert-item alert-info">
+                  <span class="alert-icon">ℹ</span>
+                  <div class="alert-content">
+                    <p class="alert-title">Dr. Kato Available</p>
+                    <p class="alert-text">After 11:00 AM today</p>
+                  </div>
+                </div>
+                <div class="alert-item alert-success">
+                  <span class="alert-icon">✓</span>
+                  <div class="alert-content">
+                    <p class="alert-title">Lab Results Ready</p>
+                    <p class="alert-text">For patient Brian Okoro</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     `;
   }
 
   onMount() {
-    new StatCard({ value: '27', label: "Today's appointments", type: 'primary', icon: 'calendar' }).mount(this.element.querySelector('#stat-appointments'));
-    new StatCard({ value: '182', label: "Registered patients", type: 'peach', icon: 'user' }).mount(this.element.querySelector('#stat-patients'));
-    new StatCard({ value: '8', label: "Doctors on duty", type: 'lavender', icon: 'doctors' }).mount(this.element.querySelector('#stat-doctors'));
-    new StatCard({ value: '11', label: "Pending check-ins", type: 'yellow', icon: 'check' }).mount(this.element.querySelector('#stat-pending'));
+    new StatCard({ value: '12', label: "Appointments", type: 'primary', icon: 'calendar' }).mount(this.element.querySelector('#stat-appointments'));
+    new StatCard({ value: '8', label: "Checked In", type: 'peach', icon: 'user' }).mount(this.element.querySelector('#stat-checked-in'));
+    new StatCard({ value: '3', label: "Pending", type: 'yellow', icon: 'clock' }).mount(this.element.querySelector('#stat-pending'));
+    new StatCard({ value: '1', label: "Alerts", type: 'danger', icon: 'alert' }).mount(this.element.querySelector('#stat-alerts'));
   }
 }
 

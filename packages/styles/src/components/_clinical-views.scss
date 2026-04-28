@@ -1,0 +1,850 @@
+@use '../base/variables' as *;
+
+// ============================================
+// Patient Details View
+// ============================================
+
+.patient-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: fadeIn 0.4s ease-out;
+
+  .view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+      color: $gv-text;
+      margin: 0;
+    }
+
+    .btn-icon-back {
+      background: none;
+      border: none;
+      font-size: 14px;
+      color: $gv-mint;
+      cursor: pointer;
+      font-weight: 600;
+      transition: color 0.2s;
+
+      &:hover {
+        color: darken($gv-mint, 10%);
+      }
+    }
+  }
+
+  .patient-card-section {
+    .patient-card {
+      background: $gv-white;
+      border: 1px solid #DCE7E4;
+      border-radius: $border-radius-card;
+      padding: 24px;
+      box-shadow: $gv-soft-shadow;
+
+      .patient-header {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        margin-bottom: 24px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #F0F3F2;
+
+        .patient-avatar {
+          width: 70px;
+          height: 70px;
+          background: linear-gradient(135deg, $gv-soft-mint, $gv-mint);
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          font-weight: 700;
+          color: $gv-white;
+          flex-shrink: 0;
+        }
+
+        .patient-info {
+          flex: 1;
+
+          .patient-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: $gv-text;
+            margin: 0 0 4px;
+          }
+
+          .patient-id,
+          .patient-meta {
+            font-size: 12px;
+            color: $gv-gray-dim;
+            margin: 2px 0;
+          }
+        }
+
+        .patient-status {
+          margin-left: auto;
+
+          .status-badge {
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            background: $gv-soft-mint;
+            color: #2D6D67;
+          }
+        }
+      }
+
+      .patient-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+        margin-bottom: 20px;
+
+        .info-item {
+          .label {
+            font-size: 11px;
+            font-weight: 700;
+            color: $gv-gray-dim;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+          }
+
+          .value {
+            font-size: 14px;
+            font-weight: 600;
+            color: $gv-text;
+            margin: 0;
+          }
+        }
+      }
+
+      .patient-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+
+        button {
+          flex: 1;
+          min-width: 140px;
+        }
+      }
+    }
+  }
+
+  .view-tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid #DCE7E4;
+    padding-bottom: 0;
+    margin-bottom: 24px;
+    overflow-x: auto;
+
+    .tab-btn {
+      padding: 12px 20px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-size: 13px;
+      font-weight: 600;
+      color: $gv-gray-dim;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+
+      &:hover {
+        color: $gv-text;
+      }
+
+      &.active {
+        color: $gv-mint;
+        border-bottom-color: $gv-mint;
+      }
+    }
+  }
+
+  .tab-content {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    .card {
+      background: $gv-white;
+      border: 1px solid #DCE7E4;
+      border-radius: $border-radius-card;
+      padding: 24px;
+      box-shadow: $gv-soft-shadow;
+
+      .section-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: $gv-text;
+        margin: 0 0 20px;
+      }
+    }
+  }
+
+  .vitals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+
+    .vital-item {
+      background: #F8FCFB;
+      border: 1px solid #DCE7E4;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+
+      .vital-label {
+        font-size: 11px;
+        color: $gv-gray-dim;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 0 0 8px;
+      }
+
+      .vital-value {
+        font-size: 18px;
+        font-weight: 700;
+        color: $gv-text;
+        margin: 0 0 4px;
+      }
+
+      .vital-status {
+        font-size: 11px;
+        color: #2D6D67;
+        margin: 0;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .history-item {
+      display: flex;
+      gap: 20px;
+      padding: 16px;
+      background: #F8FCFB;
+      border-radius: 12px;
+      border: 1px solid #DCE7E4;
+
+      .history-date {
+        font-size: 12px;
+        font-weight: 600;
+        color: $gv-mint;
+        white-space: nowrap;
+        min-width: 80px;
+      }
+
+      .history-content {
+        flex: 1;
+
+        .history-title {
+          font-size: 14px;
+          font-weight: 600;
+          color: $gv-text;
+          margin: 0 0 4px;
+        }
+
+        .history-note {
+          font-size: 12px;
+          color: $gv-gray-dim;
+          margin: 0;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+  .medications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .medication-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      background: #F8FCFB;
+      border: 1px solid #DCE7E4;
+      border-radius: 12px;
+
+      .medication-info {
+        flex: 1;
+
+        .medication-name {
+          font-size: 14px;
+          font-weight: 600;
+          color: $gv-text;
+          margin: 0 0 4px;
+        }
+
+        .medication-dose {
+          font-size: 12px;
+          color: $gv-gray-dim;
+          margin: 0;
+        }
+      }
+
+      .medication-status {
+        font-size: 12px;
+        font-weight: 600;
+        color: #2D6D67;
+      }
+    }
+  }
+
+  .notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .note-item {
+      padding: 16px;
+      background: #F8FCFB;
+      border: 1px solid #DCE7E4;
+      border-radius: 12px;
+
+      .note-date {
+        font-size: 11px;
+        color: $gv-gray-dim;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .note-text {
+        font-size: 13px;
+        color: $gv-text;
+        line-height: 1.6;
+        margin: 0;
+      }
+    }
+  }
+
+  .mt-16 {
+    margin-top: 16px;
+  }
+}
+
+// ============================================
+// Clinical Notes View
+// ============================================
+
+.clinical-notes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: fadeIn 0.4s ease-out;
+
+  .view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+      color: $gv-text;
+      margin: 0;
+    }
+  }
+
+  .filter-section {
+    .filter-card {
+      background: $gv-white;
+      border: 1px solid #DCE7E4;
+      border-radius: $border-radius-card;
+      padding: 16px;
+      box-shadow: $gv-soft-shadow;
+      display: flex;
+      gap: 12px;
+
+      .search-input,
+      .filter-select {
+        flex: 1;
+        min-width: 150px;
+        padding: 10px 12px;
+        border: 1px solid #DCE7E4;
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 13px;
+        transition: border-color 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: $gv-mint;
+          box-shadow: 0 0 0 3px rgba($gv-mint, 0.1);
+        }
+
+        &::placeholder {
+          color: $gv-gray-dim;
+        }
+      }
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  .notes-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .note-card {
+    background: $gv-white;
+    border: 1px solid #DCE7E4;
+    border-radius: $border-radius-card;
+    padding: 20px;
+    box-shadow: $gv-soft-shadow;
+
+    .note-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #F0F3F2;
+
+      .note-meta {
+        flex: 1;
+
+        .note-patient {
+          font-size: 15px;
+          font-weight: 700;
+          color: $gv-text;
+          margin: 0 0 4px;
+        }
+
+        .note-time {
+          font-size: 12px;
+          color: $gv-gray-dim;
+          margin: 0;
+        }
+      }
+
+      .note-actions {
+        display: flex;
+        gap: 8px;
+
+        .btn-icon {
+          background: none;
+          border: 1px solid #DCE7E4;
+          border-radius: 8px;
+          width: 32px;
+          height: 32px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: $gv-gray-dim;
+          transition: all 0.2s;
+
+          &:hover {
+            background: #F8FCFB;
+            border-color: $gv-mint;
+            color: $gv-mint;
+          }
+        }
+      }
+    }
+
+    .note-content {
+      font-size: 14px;
+      color: $gv-text;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .note-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      .tag {
+        background: $gv-soft-mint;
+        color: #2D6D67;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// ============================================
+// Lab & Imaging View
+// ============================================
+
+.lab-imaging-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: fadeIn 0.4s ease-out;
+
+  .view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+      color: $gv-text;
+      margin: 0;
+    }
+  }
+
+  .view-tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid #DCE7E4;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+
+    .tab-btn {
+      padding: 12px 20px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-size: 13px;
+      font-weight: 600;
+      color: $gv-gray-dim;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        color: $gv-text;
+      }
+
+      &.active {
+        color: $gv-mint;
+        border-bottom-color: $gv-mint;
+      }
+    }
+  }
+
+  .tab-content {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .filter-card {
+    background: $gv-white;
+    border: 1px solid #DCE7E4;
+    border-radius: $border-radius-card;
+    padding: 16px;
+    box-shadow: $gv-soft-shadow;
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+
+    .search-input,
+    .filter-select {
+      flex: 1;
+      min-width: 150px;
+      padding: 10px 12px;
+      border: 1px solid #DCE7E4;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 13px;
+
+      &:focus {
+        outline: none;
+        border-color: $gv-mint;
+        box-shadow: 0 0 0 3px rgba($gv-mint, 0.1);
+      }
+    }
+  }
+
+  .orders-list,
+  .results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .order-card,
+  .result-card {
+    background: $gv-white;
+    border: 1px solid #DCE7E4;
+    border-radius: $border-radius-card;
+    padding: 20px;
+    box-shadow: $gv-soft-shadow;
+
+    .order-header,
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #F0F3F2;
+
+      .order-info,
+      .result-info {
+        flex: 1;
+
+        .order-patient,
+        .result-patient {
+          font-size: 15px;
+          font-weight: 700;
+          color: $gv-text;
+          margin: 0 0 4px;
+        }
+
+        .order-details,
+        .result-date {
+          font-size: 12px;
+          color: $gv-gray-dim;
+          margin: 0;
+        }
+      }
+
+      .status-badge,
+      .result-status {
+        padding: 6px 12px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .result-status {
+        &.normal {
+          background: rgba($gv-success, 0.4);
+          color: #2D6D67;
+        }
+
+        &.attention {
+          background: rgba($gv-butter, 0.4);
+          color: #8B7500;
+        }
+      }
+    }
+
+    .order-content,
+    .result-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .order-item {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 12px;
+      }
+
+      .test-item {
+        .test-name {
+          font-size: 13px;
+          font-weight: 600;
+          color: $gv-text;
+          margin: 0 0 6px;
+        }
+
+        .test-value {
+          font-size: 12px;
+          color: $gv-gray-dim;
+          margin: 2px 0;
+        }
+      }
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 700;
+      color: $gv-gray-dim;
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-size: 13px;
+      color: $gv-text;
+      margin: 0;
+    }
+  }
+
+  .mt-12 {
+    margin-top: 12px;
+  }
+}
+
+// ============================================
+// Modal Styles
+// ============================================
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $z-modal-backdrop;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.hidden {
+    display: none;
+  }
+
+  .modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+
+  .modal-content {
+    position: relative;
+    z-index: $z-modal;
+    background: $gv-white;
+    border-radius: $border-radius-card;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+    &.modal-large {
+      max-width: 600px;
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid #DCE7E4;
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: $gv-text;
+      margin: 0;
+    }
+
+    .btn-icon-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: $gv-gray-dim;
+      cursor: pointer;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $gv-text;
+      }
+    }
+  }
+
+  .modal-body {
+    padding: 24px;
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+
+      .label {
+        font-size: 13px;
+        font-weight: 700;
+        color: $gv-text;
+        margin-bottom: 8px;
+      }
+
+      .input-field,
+      .input-field {
+        padding: 12px 14px;
+        border: 1px solid #DCE7E4;
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 13px;
+        transition: border-color 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: $gv-mint;
+          box-shadow: 0 0 0 3px rgba($gv-mint, 0.1);
+        }
+
+        &::placeholder {
+          color: $gv-gray-dim;
+        }
+      }
+
+      .textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+
+      .radio-group {
+        display: flex;
+        gap: 24px;
+
+        input[type="radio"] {
+          margin-right: 6px;
+          cursor: pointer;
+        }
+
+        label {
+          font-size: 13px;
+          color: $gv-text;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .mt-16 {
+      margin-top: 16px;
+    }
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 12px;
+    padding: 24px;
+    border-top: 1px solid #DCE7E4;
+
+    button {
+      flex: 1;
+      padding: 12px;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
