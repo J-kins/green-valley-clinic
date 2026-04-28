@@ -207,6 +207,225 @@
   }
 }
 
+.landing-view.landing-premium {
+  gap: 20px;
+
+  .landing-hero {
+    background:
+      radial-gradient(circle at top left, rgba($gv-white, 0.18), transparent 34%),
+      linear-gradient(135deg, $gv-mint 0%, $gv-soft-mint 100%);
+    padding: 28px 24px;
+    text-align: left;
+
+    .landing-hero-content {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-logo-large {
+      margin: 0;
+      width: 76px;
+      height: 76px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: rgba($gv-white, 0.78);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .title {
+      font-size: clamp(30px, 6vw, 40px);
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    .body {
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba($gv-white, 0.92);
+      margin: 0;
+    }
+
+    .landing-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      .btn-secondary-hifi {
+        background: rgba($gv-white, 0.14);
+        color: $gv-white;
+        border-color: rgba($gv-white, 0.18);
+      }
+    }
+
+    .hero-trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+
+      .trust-chip {
+        padding: 10px 12px;
+        border-radius: 16px;
+        border: 1px solid rgba($gv-white, 0.12);
+        background: rgba($gv-white, 0.12);
+        color: $gv-white;
+        display: grid;
+        gap: 2px;
+
+        strong {
+          font-size: 16px;
+          font-weight: 800;
+        }
+
+        span {
+          font-size: 11px;
+          opacity: 0.82;
+        }
+      }
+    }
+  }
+
+  .landing-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .feature-tile,
+  .pathway-card,
+  .record-metric,
+  .records-timeline .timeline-item {
+    background: $gv-white;
+    border: 1px solid $gv-border;
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: $gv-soft-shadow;
+  }
+
+  .feature-tile {
+    display: grid;
+    gap: 10px;
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: $grad-primary;
+    }
+
+    .h3 {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .small {
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+
+  .landing-pathways {
+    display: grid;
+    gap: 12px;
+  }
+
+  .pathway-card {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+
+    .pathway-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $grad-primary;
+      flex-shrink: 0;
+    }
+
+    .pathway-copy {
+      display: grid;
+      gap: 4px;
+    }
+
+    .h3 {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .small {
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+
+  .landing-cta-section {
+    padding-top: 8px;
+
+    .tiny {
+      color: $gv-gray-dim;
+      line-height: 1.5;
+    }
+  }
+}
+
+.records-view {
+  display: grid;
+  gap: 16px;
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .records-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .record-metric {
+    text-align: center;
+
+    .record-value {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 800;
+      color: $gv-text;
+    }
+
+    .small {
+      margin: 4px 0 0;
+    }
+  }
+
+  .records-timeline {
+    display: grid;
+    gap: 10px;
+
+    .timeline-item {
+      display: grid;
+      gap: 4px;
+
+      .bold,
+      .small {
+        margin: 0;
+      }
+    }
+  }
+}
+
 // Auth Pages (Login & Signup)
 .patient-login-view,
 .patient-signup-view {

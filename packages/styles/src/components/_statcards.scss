@@ -70,15 +70,48 @@
   }
 
   &.stat-primary { 
-    background: $grad-primary; 
+    background: $grad-primary;
+
+    .stat-info {
+      .stat-value,
+      .stat-label {
+        color: $gv-white;
+      }
+    }
+
+    .stat-icon-wrapper {
+      background: rgba($gv-white, 0.16);
+      border-color: rgba($gv-white, 0.18);
+    }
   }
   &.stat-peach { 
-    background: $grad-peach; 
+    background: $grad-peach;
+
+    .stat-info {
+      .stat-value,
+      .stat-label {
+        color: $gv-text;
+      }
+    }
   }
   &.stat-lavender { 
-    background: $grad-lavender; 
+    background: $grad-lavender;
+
+    .stat-info {
+      .stat-value,
+      .stat-label {
+        color: $gv-text;
+      }
+    }
   }
   &.stat-yellow { 
-    background: $grad-warm; 
+    background: $grad-warm;
+
+    .stat-info {
+      .stat-value,
+      .stat-label {
+        color: $gv-text;
+      }
+    }
   }
 }

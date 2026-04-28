@@ -33,6 +33,61 @@ document.addEventListener('DOMContentLoaded', () => {
         booking: new BookAppointment(),
         pharmacy: new Pharmacy(),
         appointments: new MyAppointments(),
+        records: {
+            mount: (container) => {
+                container.innerHTML = `
+                    <div class="mobile-view records-view">
+                        <header class="mobile-header">
+                            <h2 class="h2">Medical Records</h2>
+                            <p class="small">Your latest results, notes, and summaries in one place</p>
+                        </header>
+
+                        <section class="card">
+                            <div class="section-header">
+                                <h3 class="h3">Current Snapshot</h3>
+                                <span class="tiny">Updated today</span>
+                            </div>
+                            <div class="records-grid mt-16">
+                                <div class="record-metric">
+                                    <p class="record-value">12</p>
+                                    <p class="small">Lab results</p>
+                                </div>
+                                <div class="record-metric">
+                                    <p class="record-value">4</p>
+                                    <p class="small">Clinical notes</p>
+                                </div>
+                                <div class="record-metric">
+                                    <p class="record-value">3</p>
+                                    <p class="small">Prescriptions</p>
+                                </div>
+                                <div class="record-metric">
+                                    <p class="record-value">2</p>
+                                    <p class="small">Care plans</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="card mt-16">
+                            <h3 class="h3">Recent entries</h3>
+                            <div class="records-timeline mt-16">
+                                <div class="timeline-item">
+                                    <p class="bold">Blood panel uploaded</p>
+                                    <p class="small">Today at 09:12</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <p class="bold">Doctor note added</p>
+                                    <p class="small">Yesterday at 16:30</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <p class="bold">Medication refill approved</p>
+                                    <p class="small">2 days ago</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                `;
+            }
+        },
         profile: { 
             mount: (container) => { 
                 container.innerHTML = `
@@ -91,6 +146,16 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('navigate-booking', () => {
         viewMount.innerHTML = '';
         views.booking.mount(viewMount);
+    });
+
+    window.addEventListener('navigate-pharmacy', () => {
+        viewMount.innerHTML = '';
+        views.pharmacy.mount(viewMount);
+    });
+
+    window.addEventListener('navigate-records', () => {
+        viewMount.innerHTML = '';
+        views.records.mount(viewMount);
     });
 
     window.addEventListener('navigate-dashboard', () => {

@@ -9,7 +9,7 @@
   background: $grad-primary;
   border: 1px solid $gv-mint;
   border-radius: 16px;
-  color: $gv-text;
+  color: $gv-white;
   font-weight: 800;
   font-size: 15px;
   cursor: pointer;
@@ -19,6 +19,7 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  text-shadow: 0 1px 1px rgba(15, 35, 64, 0.18);
   
   &:hover {
     transform: translateY(-2px);
@@ -33,8 +34,8 @@
 // Secondary HiFi Button (with optional gradient modifiers)
 .btn-secondary-hifi {
   height: 48px;
-  background: $gv-background;
-  border: 1px solid $gv-border;
+  background: rgba($gv-white, 0.88);
+  border: 1px solid rgba($gv-border, 0.95);
   border-radius: 12px;
   padding: 0 20px;
   font-size: 13px;
@@ -59,31 +60,33 @@
   // Gradient modifiers
   &.grad-primary {
     background: $grad-primary;
-    color: $gv-text;
+    color: $gv-white;
     border-color: $gv-mint;
+    text-shadow: 0 1px 1px rgba(15, 35, 64, 0.18);
   }
   
   &.grad-peach {
     background: $grad-peach;
-    color: $gv-peach;
+    color: $gv-text;
     border-color: $gv-peach;
   }
   
   &.grad-lavender {
     background: $grad-lavender;
-    color: $gv-lavender;
+    color: $gv-text;
     border-color: $gv-lavender;
   }
   
   &.grad-mint {
     background: $grad-primary;
-    color: $gv-text;
+    color: $gv-white;
     border-color: $gv-mint;
+    text-shadow: 0 1px 1px rgba(15, 35, 64, 0.18);
   }
   
   &.grad-yellow {
     background: $grad-warm;
-    color: $gv-butter;
+    color: $gv-text;
     border-color: $gv-butter;
   }
 }
