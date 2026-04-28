@@ -1,3 +1,4 @@
+import { renderIcon } from '../../packages/components/src/index.js';
 import { Component } from '../../packages/core/src/index.js';
 
 
@@ -8,6 +9,7 @@ import { Component } from '../../packages/core/src/index.js';
  */
 export class LabAndImaging extends Component {
   render() {
+    const closeIcon = renderIcon('close', { size: 20 });
     return `
       <div class="lab-imaging-container">
         <header class="view-header">
@@ -146,7 +148,7 @@ export class LabAndImaging extends Component {
           <div class="modal-content modal-large">
             <div class="modal-header">
               <h3 class="modal-title">Create Lab/Imaging Order</h3>
-              <button class="btn-icon-close" id="close-modal">✕</button>
+              <button class="btn-icon-close" id="close-modal">${closeIcon}</button>
             </div>
             <div class="modal-body">
               <div class="field-group">

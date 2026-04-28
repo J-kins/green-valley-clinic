@@ -1,3 +1,4 @@
+import { renderIcon } from '../../packages/components/src/index.js';
 import { Component } from '../../packages/core/src/index.js';
 
 
@@ -29,11 +30,11 @@ export class MyAppointments extends Component {
               </div>
               <div class="appointment-details mt-12">
                 <div class="detail-row">
-                  <span class="icon-calendar">📅</span>
+                  <span class="icon-calendar">${renderIcon('calendar', { size: 18 })}</span>
                   <span class="small">${app.date}</span>
                 </div>
                 <div class="detail-row">
-                  <span class="icon-clock">🕐</span>
+                  <span class="icon-clock">${renderIcon('clock', { size: 18 })}</span>
                   <span class="small">${app.time}</span>
                 </div>
               </div>

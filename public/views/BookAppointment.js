@@ -1,3 +1,4 @@
+import { renderIcon } from '../../packages/components/src/index.js';
 import { Component } from '../../packages/core/src/index.js';
 
 
@@ -30,7 +31,7 @@ export class BookAppointment extends Component {
               <div class="field-group">
                 <label class="label">Schedule</label>
                 <div class="select-field date-field">
-                   <span class="icon-calendar">📅</span>
+                   <span class="icon-calendar">${renderIcon('calendar', { size: 18 })}</span>
                    <span class="small">21 Jun 2026</span>
                 </div>
               </div>

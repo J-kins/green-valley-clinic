@@ -1,3 +1,4 @@
+import { renderIcon } from '../../packages/components/src/index.js';
 import { Component } from '../../packages/core/src/index.js';
 
 /**

@@ -1,3 +1,4 @@
+import { renderIcon } from '../../packages/components/src/index.js';
 import { Component } from '../../packages/core/src/index.js';
 
 
@@ -8,6 +9,7 @@ import { Component } from '../../packages/core/src/index.js';
  */
 export class PatientDashboard extends Component {
   render() {
+    const clockIcon = renderIcon('clock', { size: 16 });
     return `
       <div class="mobile-view patient-dashboard-view">
         <!-- Hero Banner: Next Appointment -->
@@ -16,8 +18,8 @@ export class PatientDashboard extends Component {
             <h3 class="hero-title">Next Appointment</h3>
             <p class="hero-subtitle">General Consultation with Dr. Kato</p>
             <div class="hero-details">
-              <span class="hero-detail">📅 21 June 2026</span>
-              <span class="hero-detail">🕐 08:30 AM</span>
+              <span class="hero-detail">${renderIcon('calendar', { size: 28 })} 21 June 2026</span>
+              <span class="hero-detail">${clockIcon} 08:30 AM</span>
             </div>
             <button class="btn-secondary-hifi btn-small mt-12">View & Reschedule</button>
           </div>
@@ -80,21 +82,21 @@ export class PatientDashboard extends Component {
           </div>
           <div class="activity-list">
             <div class="activity-item card">
-              <div class="activity-badge">📋</div>
+              <div class="activity-badge">${renderIcon('clipboard', { size: 28 })}</div>
               <div class="activity-content">
                 <p class="activity-title">Lab Results Available</p>
                 <p class="activity-time">3 days ago</p>
               </div>
             </div>
             <div class="activity-item card">
-              <div class="activity-badge">💬</div>
+              <div class="activity-badge">${renderIcon('message', { size: 28 })}</div>
               <div class="activity-content">
                 <p class="activity-title">Message from Dr. Kato</p>
                 <p class="activity-time">5 days ago</p>
               </div>
             </div>
             <div class="activity-item card">
-              <div class="activity-badge">✅</div>
+              <div class="activity-badge">${renderIcon('check', { size: 28 })}</div>
               <div class="activity-content">
                 <p class="activity-title">Appointment Completed</p>
                 <p class="activity-time">1 week ago</p>
@@ -107,19 +109,19 @@ export class PatientDashboard extends Component {
         <section class="quick-actions-section">
           <div class="actions-grid">
             <button class="action-card card" id="book-appointment">
-              <span class="action-icon">📅</span>
+              <span class="action-icon">${renderIcon('calendar', { size: 28 })}</span>
               <p class="action-label">Book Appointment</p>
             </button>
             <button class="action-card card" id="view-records">
-              <span class="action-icon">📄</span>
+              <span class="action-icon">${renderIcon('document', { size: 28 })}</span>
               <p class="action-label">Medical Records</p>
             </button>
             <button class="action-card card" id="view-prescriptions">
-              <span class="action-icon">💊</span>
+              <span class="action-icon">${renderIcon('pill', { size: 28 })}</span>
               <p class="action-label">Prescriptions</p>
             </button>
             <button class="action-card card" id="messages">
-              <span class="action-icon">💬</span>
+              <span class="action-icon">${renderIcon('message', { size: 28 })}</span>
               <p class="action-label">Messages</p>
             </button>
           </div>

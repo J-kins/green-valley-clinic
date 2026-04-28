@@ -1,5 +1,5 @@
 import { Component } from '../../packages/core/src/index.js';
-
+import { renderIcon } from '../../packages/components/src/index.js';
 
 /**
  * ClinicalNotes view for clinic staff.
@@ -8,6 +8,10 @@ import { Component } from '../../packages/core/src/index.js';
  */
 export class ClinicalNotes extends Component {
   render() {
+    const editIcon = renderIcon('edit', { size: 16 });
+    const moreIcon = renderIcon('more', { size: 16 });
+    const closeIcon = renderIcon('close', { size: 20 });
+    
     return `
       <div class="clinical-notes-container">
         <header class="view-header">
@@ -43,8 +47,8 @@ export class ClinicalNotes extends Component {
                 <p class="note-time">Today • 10:30 AM • Dr. Kato</p>
               </div>
               <div class="note-actions">
-                <button class="btn-icon">✎</button>
-                <button class="btn-icon">⋯</button>
+                <button class="btn-icon">${editIcon}</button>
+                <button class="btn-icon">${moreIcon}</button>
               </div>
             </div>
             <div class="note-content">
@@ -63,8 +67,8 @@ export class ClinicalNotes extends Component {
                 <p class="note-time">Yesterday • 02:15 PM • Dr. Mugisha</p>
               </div>
               <div class="note-actions">
-                <button class="btn-icon">✎</button>
-                <button class="btn-icon">⋯</button>
+                <button class="btn-icon">${editIcon}</button>
+                <button class="btn-icon">${moreIcon}</button>
               </div>
             </div>
             <div class="note-content">
@@ -83,8 +87,8 @@ export class ClinicalNotes extends Component {
                 <p class="note-time">3 days ago • 11:00 AM • Dr. Nalwoga</p>
               </div>
               <div class="note-actions">
-                <button class="btn-icon">✎</button>
-                <button class="btn-icon">⋯</button>
+                <button class="btn-icon">${editIcon}</button>
+                <button class="btn-icon">${moreIcon}</button>
               </div>
             </div>
             <div class="note-content">
@@ -104,7 +108,7 @@ export class ClinicalNotes extends Component {
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title">Add Clinical Note</h3>
-              <button class="btn-icon-close" id="close-modal">✕</button>
+              <button class="btn-icon-close" id="close-modal">${closeIcon}</button>
             </div>
             <div class="modal-body">
               <div class="field-group">
