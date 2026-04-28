@@ -1,27 +1,28 @@
 // --- Green Valley High-Fidelity Design Tokens ---
 
-// Brand Colors
-$gv-mint: #82D1C6;
-$gv-soft-mint: #DBF0EC;
-$gv-peach: #F3D5CA;
-$gv-soft-peach: #FCEFE9;
-$gv-lavender: #DCD3F7;
-$gv-soft-lavender: #F6F3FD;
-$gv-butter: #F1DF9F;
-$gv-soft-butter: #FFF8E5;
-$gv-success: #CDE6D1;
-$gv-danger: #F1C8C6;
-$gv-text: #25363B;
-$gv-gray-dim: #6B7C82;
-$gv-background: #F7FAFA;
+// Brand Colors (replaced with new palette from provided image)
+// Palette (top -> bottom): deep navy, dark brown, taupe, warm taupe, pale peach
+$gv-mint: #0F2340; // deep navy (primary text/ink)
+$gv-soft-mint: #4A3E38; // dark brown (secondary/primary UI)
+$gv-peach: #B79C90; // taupe (muted/neutral)
+$gv-soft-peach: #CDB4A8; // warm taupe (surfaces)
+$gv-lavender: #E7C9BA; // pale peach (accent/highlight)
+$gv-soft-lavender: #F7EEE9; // very light accent
+$gv-butter: #D3B8A9; // supporting neutral
+$gv-soft-butter: #EFE6E2; // light neutral
+$gv-success: #CDE6D1; // keep semantic greens (unchanged)
+$gv-danger: #F1C8C6; // keep semantic red (unchanged)
+$gv-text: #0F2340; // use deep navy for primary text
+$gv-gray-dim: #6E5D56; // dim muted color
+$gv-background: #F7EFEA; // warm off-white from palette
 $gv-white: #FFFFFF;
-$gv-sidebar-bg: #EEF6F5;
+$gv-sidebar-bg: #EFE6E2; // subtle warm surface
 
-// Gradients
+// Gradients (updated to use new palette)
 $grad-primary: linear-gradient(135deg, $gv-soft-mint 0%, $gv-mint 100%);
 $grad-peach: linear-gradient(135deg, $gv-soft-peach 0%, $gv-peach 100%);
 $grad-lavender: linear-gradient(135deg, $gv-soft-lavender 0%, $gv-lavender 100%);
-$grad-yellow: linear-gradient(135deg, $gv-soft-butter 0%, $gv-butter 100%);
+$grad-warm: linear-gradient(135deg, $gv-soft-butter 0%, $gv-butter 100%);
 
 // Typography (Inter)
 $font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -61,3 +62,6 @@ $z-modal: 1050;
 $bp-mobile: 768px;
 $bp-tablet: 1024px;
 $bp-desktop-lg: 1440px;
+
+// Border / stroke
+$gv-border: #DCE7E4;

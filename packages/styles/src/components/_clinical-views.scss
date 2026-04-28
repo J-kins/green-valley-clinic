@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../base/variables' as *;
 
 // ============================================
@@ -41,7 +42,7 @@
       }
 
       &:hover {
-        color: darken($gv-mint, 10%);
+        color: color.adjust($gv-mint, $lightness: -10%);
       }
     }
   }
@@ -103,7 +104,7 @@
             font-size: 12px;
             font-weight: 600;
             background: $gv-soft-mint;
-            color: #2D6D67;
+            color: $gv-text;
           }
         }
       }

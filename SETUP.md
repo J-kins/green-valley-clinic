@@ -154,17 +154,17 @@ All styles are written in SCSS and compiled to `dist/main.css`:
 Green Valley uses a cohesive color scheme defined in `packages/styles/src/base/_variables.scss`:
 
 ```scss
-$gv-mint:         #82D1C6  // Primary mint green
-$gv-soft-mint:    #C1EBE5  // Light mint background
-$gv-peach:        #F4B6A0  // Warm peach accent
-$gv-soft-peach:   #FCE4D8  // Light peach background
-$gv-lavender:     #D8CCFF  // Soft lavender
-$gv-soft-lavender: #E8E0FF // Light lavender background
-$gv-butter:       #FFF9D9  // Soft butter yellow
-$gv-soft-butter:  #FFFCE8  // Light butter background
+$gv-mint:         #0F2340  // Primary deep navy
+$gv-soft-mint:    #4A3E38  // Warm dark accent
+$gv-peach:        #B79C90  // Warm peach accent
+$gv-soft-peach:   #CDB4A8  // Light peach background
+$gv-lavender:     #E7C9BA  // Muted warm lavender
+$gv-soft-lavender: #F7EEE9 // Very light warm lavender
+$gv-butter:       #D3B8A9  // Soft butter/taupe
+$gv-soft-butter:  #EFE6E2  // Light butter background
 $gv-white:        #FFFFFF  // Pure white
-$gv-text:         #25363B  // Dark text
-$gv-gray-dim:     #6B7C82  // Secondary text
+$gv-text:         #0F2340  // Primary text (deep navy)
+$gv-gray-dim:     #6E5D56  // Secondary text (muted)
 ```
 
 ### Stylesheet Organization

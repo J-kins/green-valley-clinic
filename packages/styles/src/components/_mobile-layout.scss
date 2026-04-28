@@ -44,12 +44,12 @@
     .time { 
       font-size: 14px; 
       font-weight: 700; 
-      color: #18282C; 
+      color: $gv-text; 
     }
     .notch { 
       width: 120px; 
       height: 18px; 
-      background: #18282C; 
+      background: $gv-text; 
       border-radius: 0 0 12px 12px; 
       margin-top: -8px; 
     }
@@ -87,7 +87,7 @@
   height: 80px;
   background: rgba($gv-white, 0.9);
   backdrop-filter: blur(20px);
-  border-top: 1px solid #DCE7E4;
+  border-top: 1px solid $gv-border;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -98,7 +98,7 @@
   @media (min-width: $bp-mobile) {
     max-width: 500px;
     margin: 0 auto 30px;
-    border: 1px solid #DCE7E4;
+    border: 1px solid $gv-border;
     border-radius: 24px;
     bottom: 24px;
     box-shadow: $gv-soft-shadow;
@@ -117,7 +117,7 @@
     &.active {
       color: #2D6D67; 
       .nav-icon-container {
-        background-color: #DBF0EC;
+        background-color: $gv-soft-mint;
       }
       .nav-label {
         font-weight: 700;

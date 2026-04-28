@@ -1,35 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
 <style>
-    .title { font-family: Inter, Arial, sans-serif; font-size: 30px; font-weight: 800; fill: #25363B; }
-    .h2 { font-family: Inter, Arial, sans-serif; font-size: 22px; font-weight: 800; fill: #25363B; }
-    .h3 { font-family: Inter, Arial, sans-serif; font-size: 18px; font-weight: 700; fill: #25363B; }
-    .label { font-family: Inter, Arial, sans-serif; font-size: 13px; font-weight: 700; fill: #25363B; }
-    .body { font-family: Inter, Arial, sans-serif; font-size: 14px; font-weight: 500; fill: #25363B; }
-    .small { font-family: Inter, Arial, sans-serif; font-size: 12px; font-weight: 500; fill: #6B7C82; }
-    .tiny { font-family: Inter, Arial, sans-serif; font-size: 11px; font-weight: 500; fill: #6B7C82; }
-    .chip { font-family: Inter, Arial, sans-serif; font-size: 12px; font-weight: 700; fill: #25363B; }
-    .button { font-family: Inter, Arial, sans-serif; font-size: 14px; font-weight: 700; fill: #2D6D67; }
-    .buttonLight { font-family: Inter, Arial, sans-serif; font-size: 14px; font-weight: 700; fill: #25363B; }
+    .title { font-family: Inter, Arial, sans-serif; font-size: 30px; font-weight: 800; fill: #0F2340; }
+    .h2 { font-family: Inter, Arial, sans-serif; font-size: 22px; font-weight: 800; fill: #0F2340; }
+    .h3 { font-family: Inter, Arial, sans-serif; font-size: 18px; font-weight: 700; fill: #0F2340; }
+    .label { font-family: Inter, Arial, sans-serif; font-size: 13px; font-weight: 700; fill: #0F2340; }
+    .body { font-family: Inter, Arial, sans-serif; font-size: 14px; font-weight: 500; fill: #0F2340; }
+    .small { font-family: Inter, Arial, sans-serif; font-size: 12px; font-weight: 500; fill: #6E5D56; }
+    .tiny { font-family: Inter, Arial, sans-serif; font-size: 11px; font-weight: 500; fill: #6E5D56; }
+    .chip { font-family: Inter, Arial, sans-serif; font-size: 12px; font-weight: 700; fill: #0F2340; }
+    .button { font-family: Inter, Arial, sans-serif; font-size: 14px; font-weight: 700; fill: #0F2340; }
+    .buttonLight { font-family: Inter, Arial, sans-serif; font-size: 14px; font-weight: 700; fill: #0F2340; }
     .whiteBtn { font-family: Inter, Arial, sans-serif; font-size: 14px; font-weight: 700; fill: white; }
-    .num { font-family: Inter, Arial, sans-serif; font-size: 28px; font-weight: 800; fill: #25363B; }
+    .num { font-family: Inter, Arial, sans-serif; font-size: 28px; font-weight: 800; fill: #0F2340; }
     .center { dominant-baseline: middle; text-anchor: middle; }
 </style>
 <defs>
     <linearGradient id="gradPrimary" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#DBF0EC"/>
-      <stop offset="100%" stop-color="#82D1C6"/>
+      <stop offset="0%" stop-color="#4A3E38"/>
+      <stop offset="100%" stop-color="#0F2340"/>
     </linearGradient>
     <linearGradient id="gradPeach" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FCEFE9"/>
-      <stop offset="100%" stop-color="#F3D5CA"/>
+      <stop offset="0%" stop-color="#CDB4A8"/>
+      <stop offset="100%" stop-color="#B79C90"/>
     </linearGradient>
     <linearGradient id="gradLav" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#F6F3FD"/>
-      <stop offset="100%" stop-color="#DCD3F7"/>
+      <stop offset="0%" stop-color="#F7EEE9"/>
+      <stop offset="100%" stop-color="#E7C9BA"/>
     </linearGradient>
     <linearGradient id="gradYellow" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#FFF8E5"/>
-      <stop offset="100%" stop-color="#F1DF9F"/>
+      <stop offset="100%" stop-color="#D3B8A9"/>
     </linearGradient>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
       <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#B9CCC7" flood-opacity="0.22"/>
@@ -38,4 +38,4 @@
       <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#B9CCC7" flood-opacity="0.16"/>
     </filter>
 </defs>
-<title>Staff Login</title><rect x="0" y="0" width="1440" height="1024" fill="#F7FAFA" rx="0" ry="0"/><rect x="0" y="0" width="470" height="1024" fill="url(#gradPrimary)" rx="0" ry="0"/><circle cx="120" cy="168" r="88" fill="white" opacity="0.55"/><circle cx="400" cy="918" r="132" fill="url(#gradLav)"/><text x="84" y="132" class="title" text-anchor="start">Green Valley Clinic</text><text x="84" y="160" class="small" text-anchor="start">Staff access for appointments, records and reports</text><rect x="78" y="232" width="320" height="388" fill="white" stroke="#DCE7E4" stroke-width="1" rx="28" ry="28" filter="url(#shadow)"/><text x="110" y="286" class="h2" text-anchor="start">Staff Login</text><text x="110" y="314" class="small" text-anchor="start">Use your work account to continue</text><text x="110" y="364" class="label" text-anchor="start">Username or employee ID</text><rect x="110" y="374" width="256" height="56" fill="white" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="128" y="407.0" class="small" text-anchor="start">Enter username</text><text x="110" y="452" class="label" text-anchor="start">Password</text><rect x="110" y="462" width="256" height="56" fill="white" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="128" y="495.0" class="small" text-anchor="start">Enter password</text><rect x="110" y="560" width="256" height="44" fill="#2D6D67" stroke="#2D6D67" stroke-width="1" rx="16" ry="16" filter="url(#soft)"/><text x="238.0" y="588" class="whiteBtn" text-anchor="middle">Sign in</text><rect x="110" y="616" width="124" height="44" fill="white" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="172.0" y="644" class="buttonLight" text-anchor="middle">Reset</text><rect x="242" y="616" width="124" height="44" fill="url(#gradPeach)" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="304.0" y="644" class="buttonLight" text-anchor="middle">Help desk</text><rect x="110" y="680" width="256" height="76" fill="url(#gradLav)" stroke="#DCE7E4" stroke-width="1" rx="22" ry="22" filter="url(#soft)"/><text x="130" y="712" class="label" text-anchor="start">Secure access</text><text x="130" y="738" class="small" text-anchor="start">Use your assigned login only. Access is tracked by role.</text><rect x="810" y="240" width="452" height="360" fill="white" stroke="#DCE7E4" stroke-width="1" rx="30" ry="30" filter="url(#shadow)"/><text x="846" y="294" class="h2" text-anchor="start">Reset Password</text><text x="846" y="322" class="small" text-anchor="start">A reset link will be sent to your work email</text><text x="846" y="380" class="label" text-anchor="start">Work email address</text><rect x="846" y="390" width="382" height="56" fill="white" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="864" y="423.0" class="small" text-anchor="start">name@greenvalley.clinic</text><rect x="846" y="482" width="182" height="44" fill="url(#gradPeach)" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="937.0" y="510" class="buttonLight" text-anchor="middle">Send reset link</text><rect x="846" y="548" width="382" height="84" fill="url(#gradPeach)" stroke="#DCE7E4" stroke-width="1" rx="22" ry="22" filter="url(#soft)"/><text x="866" y="580" class="label" text-anchor="start">Before you send</text><text x="866" y="606" class="small" text-anchor="start">• Check that the email is typed correctly.</text><text x="866" y="630" class="small" text-anchor="start">• Staff and IT can help if you no longer use that email.</text></svg>
+<title>Staff Login</title><rect x="0" y="0" width="1440" height="1024" fill="#F7EFEA" rx="0" ry="0"/><rect x="0" y="0" width="470" height="1024" fill="url(#gradPrimary)" rx="0" ry="0"/><circle cx="120" cy="168" r="88" fill="white" opacity="0.55"/><circle cx="400" cy="918" r="132" fill="url(#gradLav)"/><text x="84" y="132" class="title" text-anchor="start">Green Valley Clinic</text><text x="84" y="160" class="small" text-anchor="start">Staff access for appointments, records and reports</text><rect x="78" y="232" width="320" height="388" fill="white" stroke="#DCE7E4" stroke-width="1" rx="28" ry="28" filter="url(#shadow)"/><text x="110" y="286" class="h2" text-anchor="start">Staff Login</text><text x="110" y="314" class="small" text-anchor="start">Use your work account to continue</text><text x="110" y="364" class="label" text-anchor="start">Username or employee ID</text><rect x="110" y="374" width="256" height="56" fill="white" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="128" y="407.0" class="small" text-anchor="start">Enter username</text><text x="110" y="452" class="label" text-anchor="start">Password</text><rect x="110" y="462" width="256" height="56" fill="white" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="128" y="495.0" class="small" text-anchor="start">Enter password</text><rect x="110" y="560" width="256" height="44" fill="#0F2340" stroke="#0F2340" stroke-width="1" rx="16" ry="16" filter="url(#soft)"/><text x="238.0" y="588" class="whiteBtn" text-anchor="middle">Sign in</text><rect x="110" y="616" width="124" height="44" fill="white" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="172.0" y="644" class="buttonLight" text-anchor="middle">Reset</text><rect x="242" y="616" width="124" height="44" fill="url(#gradPeach)" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="304.0" y="644" class="buttonLight" text-anchor="middle">Help desk</text><rect x="110" y="680" width="256" height="76" fill="url(#gradLav)" stroke="#DCE7E4" stroke-width="1" rx="22" ry="22" filter="url(#soft)"/><text x="130" y="712" class="label" text-anchor="start">Secure access</text><text x="130" y="738" class="small" text-anchor="start">Use your assigned login only. Access is tracked by role.</text><rect x="810" y="240" width="452" height="360" fill="white" stroke="#DCE7E4" stroke-width="1" rx="30" ry="30" filter="url(#shadow)"/><text x="846" y="294" class="h2" text-anchor="start">Reset Password</text><text x="846" y="322" class="small" text-anchor="start">A reset link will be sent to your work email</text><text x="846" y="380" class="label" text-anchor="start">Work email address</text><rect x="846" y="390" width="382" height="56" fill="white" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="864" y="423.0" class="small" text-anchor="start">name@greenvalley.clinic</text><rect x="846" y="482" width="182" height="44" fill="url(#gradPeach)" stroke="#DCE7E4" stroke-width="1" rx="16" ry="16"/><text x="937.0" y="510" class="buttonLight" text-anchor="middle">Send reset link</text><rect x="846" y="548" width="382" height="84" fill="url(#gradPeach)" stroke="#DCE7E4" stroke-width="1" rx="22" ry="22" filter="url(#soft)"/><text x="866" y="580" class="label" text-anchor="start">Before you send</text><text x="866" y="606" class="small" text-anchor="start">• Check that the email is typed correctly.</text><text x="866" y="630" class="small" text-anchor="start">• Staff and IT can help if you no longer use that email.</text></svg>
