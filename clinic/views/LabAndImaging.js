@@ -1,4 +1,5 @@
 import { Component } from '../../packages/core/src/index.js';
+import { renderIcon } from '../../packages/components/src/index.js';
 
 /**
  * LabAndImaging view for clinic staff.
@@ -145,7 +146,7 @@ export class LabAndImaging extends Component {
           <div class="modal-content modal-large">
             <div class="modal-header">
               <h3 class="modal-title">Create Lab/Imaging Order</h3>
-              <button class="btn-icon-close" id="close-modal">×</button>
+              <button class="btn-icon-close" id="close-modal">${renderIcon('close', { size: 20 })}</button>
             </div>
             <div class="modal-body">
               <div class="field-group">

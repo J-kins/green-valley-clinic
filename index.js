@@ -1,7 +1,7 @@
 import { documentHead } from './packages/core/src/index.js';
 import { Header, Footer } from './packages/components/src/index.js';
 
-console.log('🚀 Main portal loading...');
+console.log('Main portal loading...');
 
 try {
   // Configure Page Head
@@ -13,7 +13,7 @@ try {
   });
 
   documentHead.applyToDocument();
-  console.log('✓ Document head configured');
+  console.log('Document head configured');
 
   const root = document.getElementById('root');
   if (!root) {
@@ -31,7 +31,7 @@ try {
     ]
   });
   header.mount(root);
-  console.log('✓ Header mounted');
+  console.log('Header mounted');
 
   // 2. Hero Section
   const hero = document.createElement('section');
@@ -56,7 +56,7 @@ try {
     </div>
   `;
   root.appendChild(hero);
-  console.log('✓ Hero section mounted');
+  console.log('Hero section mounted');
 
   // 3. Features Section
   const features = document.createElement('section');
@@ -100,7 +100,7 @@ try {
     </div>
   `;
   root.appendChild(features);
-  console.log('✓ Features section mounted');
+  console.log('Features section mounted');
 
   // 4. Services Section
   const services = document.createElement('section');
@@ -144,7 +144,7 @@ try {
     </div>
   `;
   root.appendChild(services);
-  console.log('✓ Services section mounted');
+  console.log('Services section mounted');
 
   // 5. CTA Section
   const cta = document.createElement('section');
@@ -167,7 +167,7 @@ try {
     </div>
   `;
   root.appendChild(cta);
-  console.log('✓ CTA section mounted');
+  console.log('CTA section mounted');
 
   // 6. Mount Footer
   const footer = new Footer({
@@ -179,12 +179,12 @@ try {
     ]
   });
   footer.mount(root);
-  console.log('✓ Footer mounted');
+  console.log('Footer mounted');
 
-  console.log('✅ Main portal successfully initialized!');
+  console.log('Main portal successfully initialized!');
 
 } catch (error) {
-  console.error('❌ Application error:', error);
+  console.error('Application error:', error);
   const root = document.getElementById('root');
   if (root) {
     root.innerHTML = `

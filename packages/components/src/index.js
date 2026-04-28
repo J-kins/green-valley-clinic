@@ -18,3 +18,4 @@ export { default as Alerts } from './Alerts.js';
 export { default as Pagination } from './Pagination.js';
 export { default as OffCanvas } from './OffCanvas.js';
 export { default as Icons } from './Icons.js';
+export { renderIcon } from './Icons.js';

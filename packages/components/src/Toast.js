@@ -1,4 +1,5 @@
 import { Component } from '../../core/src/index.js';
+import { renderIcon } from './Icons.js';
 
 /**
  * Toast notification component
@@ -26,7 +27,7 @@ export class Toast extends Component {
     return `
       <div class="toast toast-${type}" role="alert">
         <p>${message}</p>
-        <button class="toast-close" aria-label="Close">×</button>
+        <button class="toast-close" aria-label="Close">${renderIcon('close', { size: 16 })}</button>
       </div>
     `;
   }

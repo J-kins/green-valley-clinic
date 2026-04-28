@@ -26,11 +26,19 @@
     .btn-icon-back {
       background: none;
       border: none;
-      font-size: 14px;
       color: $gv-mint;
       cursor: pointer;
       font-weight: 600;
       transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      svg {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
 
       &:hover {
         color: darken($gv-mint, 10%);
@@ -457,6 +465,12 @@
           color: $gv-gray-dim;
           transition: all 0.2s;
 
+          svg {
+            width: 16px;
+            height: 16px;
+            display: block;
+          }
+
           &:hover {
             background: #F8FCFB;
             border-color: $gv-mint;
@@ -753,7 +767,6 @@
     .btn-icon-close {
       background: none;
       border: none;
-      font-size: 24px;
       color: $gv-gray-dim;
       cursor: pointer;
       padding: 0;
@@ -763,6 +776,12 @@
       align-items: center;
       justify-content: center;
       transition: color 0.2s;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        display: block;
+      }
 
       &:hover {
         color: $gv-text;

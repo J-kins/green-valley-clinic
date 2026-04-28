@@ -1,4 +1,5 @@
 import { Component } from '../../packages/core/src/index.js';
+import { renderIcon } from '../../packages/components/src/index.js';
 
 /**
  * Pharmacy view for the mobile patient portal.
@@ -21,7 +22,7 @@ export class Pharmacy extends Component {
         </header>
        <section class="pharmacy-search mt-16">
           <div class="mobile-search-wrapper">
-            <span class="icon-search"></span>
+            <span class="icon-search">${renderIcon('search', { size: 18 })}</span>
             <input type="text" placeholder="Search medicines..." class="mobile-input">
           </div>
         </section>

@@ -1,5 +1,6 @@
 import { Component } from '../../packages/core/src/index.js';
 import StatCard from '../../packages/components/src/StatCard.js';
+import { renderIcon } from '../../packages/components/src/index.js';
 
 /**
  * Dashboard view for Green Valley Clinic.
@@ -105,21 +106,21 @@ export class Dashboard extends Component {
               <h4 class="label">Alerts & Notes</h4>
               <div class="alerts-list">
                 <div class="alert-item alert-warning">
-                  <span class="alert-icon">⚠</span>
+                  <span class="alert-icon">${renderIcon('warning', { size: 20 })}</span>
                   <div class="alert-content">
                     <p class="alert-title">Pending Confirmation</p>
                     <p class="alert-text">2 appointments need confirmation</p>
                   </div>
                 </div>
                 <div class="alert-item alert-info">
-                  <span class="alert-icon">ℹ</span>
+                  <span class="alert-icon">${renderIcon('info', { size: 20 })}</span>
                   <div class="alert-content">
                     <p class="alert-title">Dr. Kato Available</p>
                     <p class="alert-text">After 11:00 AM today</p>
                   </div>
                 </div>
                 <div class="alert-item alert-success">
-                  <span class="alert-icon">✓</span>
+                  <span class="alert-icon">${renderIcon('check', { size: 20 })}</span>
                   <div class="alert-content">
                     <p class="alert-title">Lab Results Ready</p>
                     <p class="alert-text">For patient Brian Okoro</p>

@@ -242,10 +242,10 @@ npm run dev
 #### Issue: Module not found errors
 **Solution**: Ensure all imports use correct relative paths and include `.js` extension
 ```javascript
-// ✓ Correct
+// Correct
 import Dashboard from './views/Dashboard.js';
 
-// ✗ Incorrect
+// Incorrect
 import Dashboard from './views/Dashboard';
 ```
 

@@ -58,24 +58,27 @@
     .stat-icon {
       width: 16px;
       height: 16px;
-      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 
   &.stat-primary { 
     background: $grad-primary; 
-    .stat-icon { background-color: #82D1C6; }
   }
   &.stat-peach { 
     background: $grad-peach; 
-    .stat-icon { background-color: #F3D5CA; }
   }
   &.stat-lavender { 
     background: $grad-lavender; 
-    .stat-icon { background-color: #DCD3F7; }
   }
   &.stat-yellow { 
     background: $grad-yellow; 
-    .stat-icon { background-color: #F1DF9F; }
   }
 }

@@ -110,11 +110,11 @@ npm install
 
 ## Next Steps
 
-1. ✅ Run `npm run dev`
-2. ✅ Open http://localhost:3000/clinic/
-3. ✅ Check the staff dashboard
-4. ✅ Navigate to http://localhost:3000/public/
-5. ✅ Check the patient landing page
-6. ✅ Start developing!
+1. Run `npm run dev`
+2. Open http://localhost:3000/clinic/
+3. Check the staff dashboard
+4. Navigate to http://localhost:3000/public/
+5. Check the patient landing page
+6. Start developing!
 
 **Questions?** Check SETUP.md for detailed troubleshooting and architecture details.

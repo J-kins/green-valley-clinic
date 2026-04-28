@@ -1,4 +1,5 @@
 import { Component } from '../../core/src/index.js';
+import { renderIcon } from './Icons.js';
 
 /**
  * StatCard component showing numbers and labels.
@@ -20,7 +21,7 @@ export class StatCard extends Component {
           <span class="stat-label">${label}</span>
         </div>
         <div class="stat-icon-wrapper">
-          <div class="stat-icon icon-${icon}"></div>
+          <div class="stat-icon icon-${icon}">${renderIcon(icon, { size: 16 })}</div>
         </div>
       </div>
     `;

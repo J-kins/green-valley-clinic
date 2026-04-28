@@ -1,4 +1,5 @@
 import { Component } from '../../packages/core/src/index.js';
+import { renderIcon } from '../../packages/components/src/index.js';
 
 /**
  * PatientDetails view for clinic staff.
@@ -11,7 +12,7 @@ export class PatientDetails extends Component {
       <div class="patient-details-container">
         <header class="view-header">
           <h2 class="title">Patient Details</h2>
-          <button class="btn-icon-back" id="back-btn">← Back</button>
+          <button class="btn-icon-back" id="back-btn">${renderIcon('back', { size: 18 })} Back</button>
         </header>
 
         <!-- Patient Card -->

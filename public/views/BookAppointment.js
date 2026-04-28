@@ -1,4 +1,5 @@
 import { Component } from '../../packages/core/src/index.js';
+import { renderIcon } from '../../packages/components/src/index.js';
 
 /**
  * BookAppointment view for the mobile patient portal.
@@ -29,7 +30,7 @@ export class BookAppointment extends Component {
               <div class="field-group">
                 <label class="label">Schedule</label>
                 <div class="select-field date-field">
-                   <span class="icon-calendar"></span>
+                   <span class="icon-calendar">${renderIcon('calendar', { size: 18 })}</span>
                    <span class="small">21 Jun 2026</span>
                 </div>
               </div>

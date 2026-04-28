@@ -1,4 +1,5 @@
 import { Component } from '../../core/src/index.js';
+import { renderIcon } from './Icons.js';
 
 /**
  * Alerts component
@@ -10,7 +11,7 @@ export class Alerts extends Component {
     return `
       <div class="alert alert-${type}" role="alert">
         <p>${message}</p>
-        ${dismissible ? `<button class="alert-close" aria-label="Close">×</button>` : ''}
+        ${dismissible ? `<button class="alert-close" aria-label="Close">${renderIcon('close', { size: 16 })}</button>` : ''}
       </div>
     `;
   }

@@ -24,11 +24,11 @@ export class About extends Component {
           <div class="card mt-16">
             <h3 class="h3">Why Choose Us?</h3>
             <ul class="mt-12">
-              <li class="body mt-8">✓ Experienced medical professionals</li>
-              <li class="body mt-8">✓ Modern facilities and equipment</li>
-              <li class="body mt-8">✓ Patient-centered care approach</li>
-              <li class="body mt-8">✓ Affordable treatment plans</li>
-              <li class="body mt-8">✓ 24/7 emergency services</li>
+              <li class="body mt-8">Experienced medical professionals</li>
+              <li class="body mt-8">Modern facilities and equipment</li>
+              <li class="body mt-8">Patient-centered care approach</li>
+              <li class="body mt-8">Affordable treatment plans</li>
+              <li class="body mt-8">24/7 emergency services</li>
             </ul>
           </div>
 

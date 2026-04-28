@@ -1,4 +1,5 @@
 import { Component } from '../../packages/core/src/index.js';
+import { renderIcon } from '../../packages/components/src/index.js';
 
 /**
  * ClinicalNotes view for clinic staff.
@@ -42,8 +43,8 @@ export class ClinicalNotes extends Component {
                 <p class="note-time">Today • 10:30 AM • Dr. Kato</p>
               </div>
               <div class="note-actions">
-                <button class="btn-icon">✎</button>
-                <button class="btn-icon">...</button>
+                <button class="btn-icon">${renderIcon('edit', { size: 16 })}</button>
+                <button class="btn-icon">${renderIcon('more', { size: 16 })}</button>
               </div>
             </div>
             <div class="note-content">
@@ -62,8 +63,8 @@ export class ClinicalNotes extends Component {
                 <p class="note-time">Yesterday • 02:15 PM • Dr. Mugisha</p>
               </div>
               <div class="note-actions">
-                <button class="btn-icon">✎</button>
-                <button class="btn-icon">...</button>
+                <button class="btn-icon">${renderIcon('edit', { size: 16 })}</button>
+                <button class="btn-icon">${renderIcon('more', { size: 16 })}</button>
               </div>
             </div>
             <div class="note-content">
@@ -82,8 +83,8 @@ export class ClinicalNotes extends Component {
                 <p class="note-time">3 days ago • 11:00 AM • Dr. Nalwoga</p>
               </div>
               <div class="note-actions">
-                <button class="btn-icon">✎</button>
-                <button class="btn-icon">...</button>
+                <button class="btn-icon">${renderIcon('edit', { size: 16 })}</button>
+                <button class="btn-icon">${renderIcon('more', { size: 16 })}</button>
               </div>
             </div>
             <div class="note-content">
@@ -103,7 +104,7 @@ export class ClinicalNotes extends Component {
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title">Add Clinical Note</h3>
-              <button class="btn-icon-close" id="close-modal">×</button>
+              <button class="btn-icon-close" id="close-modal">${renderIcon('close', { size: 20 })}</button>
             </div>
             <div class="modal-body">
               <div class="field-group">
