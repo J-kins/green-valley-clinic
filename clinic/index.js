@@ -5,6 +5,13 @@ import StaffLogin from './views/StaffLogin.js';
 import PasswordReset from './views/PasswordReset.js';
 import StaffManagement from './views/StaffManagement.js';
 import HelpDesk from './views/HelpDesk.js';
+import PatientDetails from './views/PatientDetails.js';
+import ClinicalNotes from './views/ClinicalNotes.js';
+import LabAndImaging from './views/LabAndImaging.js';
+import Inventory from './views/Inventory.js';
+import ProcurementOrders from './views/ProcurementOrders.js';
+import Finance from './views/Finance.js';
+import Administration from './views/Administration.js';
 
 /**
  * Clinic App Entry Point
@@ -61,12 +68,24 @@ window.addEventListener('navigate-view', (e) => {
     if (!viewMount) return;
 
     viewMount.innerHTML = '';
-    if (viewId === 'dashboard') {
-        new Dashboard().mount(viewMount);
-    } else if (viewId === 'staff') {
-        new StaffManagement().mount(viewMount);
-    } else if (viewId === 'helpdesk') {
-        new HelpDesk().mount(viewMount);
+    
+    // Route to appropriate view
+    const views = {
+        'dashboard': Dashboard,
+        'staff': StaffManagement,
+        'helpdesk': HelpDesk,
+        'patients': PatientDetails,
+        'clinical-notes': ClinicalNotes,
+        'lab-imaging': LabAndImaging,
+        'inventory': Inventory,
+        'procurement': ProcurementOrders,
+        'finance': Finance,
+        'admin': Administration
+    };
+
+    const ViewClass = views[viewId];
+    if (ViewClass) {
+        new ViewClass().mount(viewMount);
     } else {
         viewMount.innerHTML = `
             <div class="card mt-32">

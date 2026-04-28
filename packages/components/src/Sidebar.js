@@ -8,12 +8,15 @@ export class Sidebar extends Component {
   render() {
     const navItems = [
       { id: 'dashboard', label: 'Dashboard', icon: 'dashboard', active: true },
-      { id: 'appointments', label: 'Appointments', icon: 'calendar' },
-      { id: 'patients', label: 'Patient Records', icon: 'records' },
-      { id: 'doctors', label: 'Doctors', icon: 'doctors' },
-      { id: 'staff', label: 'Staff Management', icon: 'staff', onboarding: true },
-      { id: 'schedule', label: 'Schedule', icon: 'schedule' },
-      { id: 'reports', label: 'Reports', icon: 'reports' }
+      { id: 'patients', label: 'Patient Details', icon: 'records' },
+      { id: 'clinical-notes', label: 'Clinical Notes', icon: 'notes' },
+      { id: 'lab-imaging', label: 'Lab & Imaging', icon: 'lab' },
+      { id: 'inventory', label: 'Inventory', icon: 'inventory' },
+      { id: 'procurement', label: 'Procurement Orders', icon: 'procurement' },
+      { id: 'finance', label: 'Finance', icon: 'finance' },
+      { id: 'admin', label: 'Administration', icon: 'admin' },
+      { id: 'staff', label: 'Staff Management', icon: 'staff' },
+      { id: 'helpdesk', label: 'Help Desk', icon: 'help' }
     ];
 
     return `
