@@ -2,6 +2,7 @@ import MobileLayout from '../packages/components/src/MobileLayout.js';
 import Landing from './views/Landing.js';
 import PatientLogin from './views/PatientLogin.js';
 import PatientSignup from './views/PatientSignup.js';
+import PatientDashboard from './views/PatientDashboard.js';
 import BookAppointment from './views/BookAppointment.js';
 import Pharmacy from './views/Pharmacy.js';
 import MyAppointments from './views/MyAppointments.js';
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         landing: new Landing(),
         patientLogin: new PatientLogin(),
         patientSignup: new PatientSignup(),
+        dashboard: new PatientDashboard(),
         booking: new BookAppointment(),
         pharmacy: new Pharmacy(),
         appointments: new MyAppointments(),
@@ -89,5 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('navigate-booking', () => {
         viewMount.innerHTML = '';
         views.booking.mount(viewMount);
+    });
+
+    window.addEventListener('navigate-dashboard', () => {
+        viewMount.innerHTML = '';
+        views.dashboard.mount(viewMount);
     });
 });
