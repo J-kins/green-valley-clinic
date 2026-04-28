@@ -1,5 +1,5 @@
 import { Component } from '../../packages/core/src/index.js';
-import { renderIcon } from '../../packages/components/src/index.js';
+
 
 /**
  * Procurement orders view for procurement teams.
@@ -133,7 +133,7 @@ export class ProcurementOrders extends Component {
           <div class="modal-content modal-large">
             <div class="modal-header">
               <h3 class="modal-title">Create Purchase Order</h3>
-              <button class="btn-icon-close" id="close-modal">${renderIcon('close', { size: 20 })}</button>
+              <button class="btn-icon-close" id="close-modal">✕</button>
             </div>
             <div class="modal-body">
               <div class="field-group">

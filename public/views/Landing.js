@@ -1,5 +1,5 @@
 import { Component } from '../../packages/core/src/index.js';
-import { renderIcon } from '../../packages/components/src/index.js';
+
 
 /**
  * Landing view for the public patient portal.
@@ -20,19 +20,19 @@ export class Landing extends Component {
 
         <section class="landing-features">
           <div class="feature-item">
-            <div class="feature-icon">${renderIcon('clipboard', { size: 40 })}</div>
+            <div class="feature-icon">📋</div>
             <h3 class="h3">Easy Booking</h3>
             <p class="small">Schedule appointments in seconds</p>
           </div>
 
           <div class="feature-item">
-            <div class="feature-icon">${renderIcon('chart', { size: 40 })}</div>
+            <div class="feature-icon">📊</div>
             <h3 class="h3">Health Records</h3>
             <p class="small">View all your medical history safely</p>
           </div>
 
           <div class="feature-item">
-            <div class="feature-icon">${renderIcon('pill', { size: 40 })}</div>
+            <div class="feature-icon">💊</div>
             <h3 class="h3">Prescriptions</h3>
             <p class="small">Manage and refill medications easily</p>
           </div>
