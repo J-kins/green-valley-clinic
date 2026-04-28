@@ -1,3 +1,4 @@
+import { renderIcon } from '../../packages/components/src/index.js';
 import { Component } from '../../packages/core/src/index.js';
 
 /**
@@ -6,10 +7,12 @@ import { Component } from '../../packages/core/src/index.js';
  */
 export class PatientLogin extends Component {
   render() {
+    const backIcon = renderIcon('back', { size: 18 });
+    
     return `
       <div class="mobile-view patient-login-view">
         <header class="auth-header">
-          <div class="auth-header-back">← Landing</div>
+          <div class="auth-header-back">${backIcon} Landing</div>
           <h2 class="h2">Patient Login</h2>
           <p class="small">Access your health records and appointments</p>
         </header>

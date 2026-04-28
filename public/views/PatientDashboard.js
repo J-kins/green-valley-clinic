@@ -1,5 +1,6 @@
-import { Component } from '../../packages/core/src/index.js';
 import { renderIcon } from '../../packages/components/src/index.js';
+import { Component } from '../../packages/core/src/index.js';
+
 
 /**
  * PatientDashboard view for the public patient portal.
@@ -8,6 +9,7 @@ import { renderIcon } from '../../packages/components/src/index.js';
  */
 export class PatientDashboard extends Component {
   render() {
+    const clockIcon = renderIcon('clock', { size: 16 });
     return `
       <div class="mobile-view patient-dashboard-view">
         <!-- Hero Banner: Next Appointment -->
@@ -16,8 +18,8 @@ export class PatientDashboard extends Component {
             <h3 class="hero-title">Next Appointment</h3>
             <p class="hero-subtitle">General Consultation with Dr. Kato</p>
             <div class="hero-details">
-              <span class="hero-detail">${renderIcon('calendar', { size: 16 })} 21 June 2026</span>
-              <span class="hero-detail">${renderIcon('clock', { size: 16 })} 08:30 AM</span>
+              <span class="hero-detail">${renderIcon('calendar', { size: 28 })} 21 June 2026</span>
+              <span class="hero-detail">${clockIcon} 08:30 AM</span>
             </div>
             <button class="btn-secondary-hifi btn-small mt-12">View & Reschedule</button>
           </div>

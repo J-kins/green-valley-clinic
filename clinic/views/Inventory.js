@@ -1,5 +1,6 @@
-import { Component } from '../../packages/core/src/index.js';
 import { renderIcon } from '../../packages/components/src/index.js';
+import { Component } from '../../packages/core/src/index.js';
+
 
 /**
  * Inventory management view for finance/admin teams.
@@ -8,6 +9,7 @@ import { renderIcon } from '../../packages/components/src/index.js';
  */
 export class Inventory extends Component {
   render() {
+    const closeIcon = renderIcon('close', { size: 20 });
     return `
       <div class="inventory-container">
         <header class="view-header">
@@ -103,7 +105,7 @@ export class Inventory extends Component {
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title">Add Inventory Item</h3>
-              <button class="btn-icon-close" id="close-modal">${renderIcon('close', { size: 20 })}</button>
+              <button class="btn-icon-close" id="close-modal">${closeIcon}</button>
             </div>
             <div class="modal-body">
               <div class="field-group">

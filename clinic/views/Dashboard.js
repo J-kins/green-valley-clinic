@@ -9,6 +9,10 @@ import { renderIcon } from '../../packages/components/src/index.js';
  */
 export class Dashboard extends Component {
   render() {
+    const warningIcon = renderIcon('warning', { size: 20 });
+    const infoIcon = renderIcon('info', { size: 20 });
+    const checkIcon = renderIcon('check', { size: 20 });
+    
     return `
       <div class="dashboard-view-container">
         <!-- Hero Banner: Shift Status -->
@@ -106,21 +110,21 @@ export class Dashboard extends Component {
               <h4 class="label">Alerts & Notes</h4>
               <div class="alerts-list">
                 <div class="alert-item alert-warning">
-                  <span class="alert-icon">${renderIcon('warning', { size: 20 })}</span>
+                  <span class="alert-icon">${warningIcon}</span>
                   <div class="alert-content">
                     <p class="alert-title">Pending Confirmation</p>
                     <p class="alert-text">2 appointments need confirmation</p>
                   </div>
                 </div>
                 <div class="alert-item alert-info">
-                  <span class="alert-icon">${renderIcon('info', { size: 20 })}</span>
+                  <span class="alert-icon">${infoIcon}</span>
                   <div class="alert-content">
                     <p class="alert-title">Dr. Kato Available</p>
                     <p class="alert-text">After 11:00 AM today</p>
                   </div>
                 </div>
                 <div class="alert-item alert-success">
-                  <span class="alert-icon">${renderIcon('check', { size: 20 })}</span>
+                  <span class="alert-icon">${checkIcon}</span>
                   <div class="alert-content">
                     <p class="alert-title">Lab Results Ready</p>
                     <p class="alert-text">For patient Brian Okoro</p>

@@ -1,5 +1,6 @@
-import { Component } from '../../packages/core/src/index.js';
 import { renderIcon } from '../../packages/components/src/index.js';
+import { Component } from '../../packages/core/src/index.js';
+
 
 /**
  * BookAppointment view for the mobile patient portal.

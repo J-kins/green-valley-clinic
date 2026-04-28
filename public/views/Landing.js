@@ -8,6 +8,10 @@ import { renderIcon } from '../../packages/components/src/index.js';
  */
 export class Landing extends Component {
   render() {
+    const clipboardIcon = renderIcon('clipboard', { size: 40 });
+    const chartIcon = renderIcon('chart', { size: 40 });
+    const pillIcon = renderIcon('pill', { size: 40 });
+    
     return `
       <div class="mobile-view landing-view">
         <header class="landing-hero">
@@ -20,19 +24,19 @@ export class Landing extends Component {
 
         <section class="landing-features">
           <div class="feature-item">
-            <div class="feature-icon">${renderIcon('clipboard', { size: 40 })}</div>
+            <div class="feature-icon">${clipboardIcon}</div>
             <h3 class="h3">Easy Booking</h3>
             <p class="small">Schedule appointments in seconds</p>
           </div>
 
           <div class="feature-item">
-            <div class="feature-icon">${renderIcon('chart', { size: 40 })}</div>
+            <div class="feature-icon">${chartIcon}</div>
             <h3 class="h3">Health Records</h3>
             <p class="small">View all your medical history safely</p>
           </div>
 
           <div class="feature-item">
-            <div class="feature-icon">${renderIcon('pill', { size: 40 })}</div>
+            <div class="feature-icon">${pillIcon}</div>
             <h3 class="h3">Prescriptions</h3>
             <p class="small">Manage and refill medications easily</p>
           </div>

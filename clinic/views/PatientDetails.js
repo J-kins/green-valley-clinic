@@ -8,11 +8,13 @@ import { renderIcon } from '../../packages/components/src/index.js';
  */
 export class PatientDetails extends Component {
   render() {
+    const backIcon = renderIcon('back', { size: 18 });
+    
     return `
       <div class="patient-details-container">
         <header class="view-header">
           <h2 class="title">Patient Details</h2>
-          <button class="btn-icon-back" id="back-btn">${renderIcon('back', { size: 18 })} Back</button>
+          <button class="btn-icon-back" id="back-btn">${backIcon} Back</button>
         </header>
 
         <!-- Patient Card -->
