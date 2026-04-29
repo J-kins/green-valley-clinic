@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Green Valley Clinic</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #F0F4F8;
+      color: #00171F;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header {
+      background: white;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #003459;
+      font-weight: 700;
+      font-size: 18px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      color: #475569;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: #003459;
+    }
+
+    .user-section {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary {
+      background: #F8FAFC;
+      color: #003459;
+      border: 1px solid #E2E8F0;
+    }
+
+    .btn-secondary:hover {
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0A4A7A 0%, #003459 100%);
+      color: white;
+      padding: 40px 0;
+      margin: 20px 0;
+      border-radius: 12px;
+    }
+
+    .hero-content {
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: #ADEBFF;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(10, 74, 122, 0.07);
+    }
+
+    .card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #00171F;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #F0F4F8;
+    }
+
+    .stat-row:last-child {
+      border-bottom: none;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #00171F;
+    }
+
+    .btn-action {
+      background: none;
+      border: none;
+      color: #003459;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .btn-action:hover {
+      color: #0A4A7A;
+    }
+
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="#home" class="logo">
+          <div class="logo-icon">GVC</div>
+          <span>Green Valley Clinic</span>
+        </a>
+
+        <nav class="nav-menu">
+          <a href="#clinic/admin/dashboard" class="nav-link">Dashboard</a>
+          <a href="#clinic/admin/staff" class="nav-link">Staff Management</a>
+          <a href="#clinic/admin/reports" class="nav-link">Reports</a>
+          <a href="#clinic/admin/settings" class="nav-link">Settings</a>
+        </nav>
+
+        <div class="user-section">
+          <span style="font-weight: 600; font-size: 14px;">Admin</span>
+          <button class="btn btn-secondary" onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Admin Dashboard</h1>
+        <p>Manage clinic operations, staff, and system settings</p>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <div class="card">
+        <h3>System Overview</h3>
+        <div class="stat-row">
+          <span class="stat-label">Total Staff</span>
+          <span class="stat-value">12</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Active Patients</span>
+          <span class="stat-value">245</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Today's Appointments</span>
+          <span class="stat-value">18</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">System Uptime</span>
+          <span class="stat-value">99.9%</span>
+        </div>
+        <button class="btn-action" style="margin-top: 16px;">View Full Report</button>
+      </div>
+
+      <div class="card">
+        <h3>Staff Management</h3>
+        <div class="stat-row">
+          <span class="stat-label">Doctors</span>
+          <span class="stat-value">5</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Nurses</span>
+          <span class="stat-value">4</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Admin Staff</span>
+          <span class="stat-value">2</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Front Desk</span>
+          <span class="stat-value">1</span>
+        </div>
+        <button class="btn-action" style="margin-top: 16px;">Manage Staff</button>
+      </div>
+
+      <div class="card">
+        <h3>Recent Activity</h3>
+        <div style="font-size: 13px; color: #64748B; line-height: 1.8;">
+          <p>✓ Dr. Wilson logged in - 10:30 AM</p>
+          <p>✓ New patient registered - 9:45 AM</p>
+          <p>✓ Report generated - 8:15 AM</p>
+          <p>✓ System backup completed - 11:00 PM (yesterday)</p>
+        </div>
+        <button class="btn-action" style="margin-top: 16px;">View All Activity</button>
+      </div>
+
+      <div class="card">
+        <h3>Quick Actions</h3>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <button class="btn" style="background: #EFF6FF; color: #003459; border: 1px solid #BFDBFE;">Add New Staff</button>
+          <button class="btn" style="background: #EFF6FF; color: #003459; border: 1px solid #BFDBFE;">View Reports</button>
+          <button class="btn" style="background: #EFF6FF; color: #003459; border: 1px solid #BFDBFE;">System Settings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function logout() {
+      console.log('[v0] Admin logging out');
+      localStorage.removeItem('gvc_auth_token');
+      localStorage.removeItem('gvc_staff_role');
+      window.location.hash = '#staff/login';
+    }
+  </script>
+</body>
+</html>

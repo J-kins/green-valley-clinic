@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Onboarding - Green Valley Clinic</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0A4A7A 0%, #003459 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: #00171F;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .signup-card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 52, 89, 0.3);
+    }
+
+    .logo-section {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 24px;
+      margin: 0 auto 16px;
+    }
+
+    .signup-card h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #00171F;
+    }
+
+    .signup-card p {
+      font-size: 14px;
+      color: #64748B;
+      margin-bottom: 32px;
+    }
+
+    .progress-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .progress-dot {
+      flex: 1;
+      height: 4px;
+      background: #E2E8F0;
+      border-radius: 2px;
+    }
+
+    .progress-dot.active {
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+    }
+
+    .form-section {
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #00171F;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #00171F;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      font-size: 13px;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #003459;
+      box-shadow: 0 0 0 3px rgba(0, 52, 89, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .role-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .role-option:hover {
+      border-color: #003459;
+      background: #F8FAFC;
+    }
+
+    .role-option input {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .role-label {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .checkbox-group input {
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .checkbox-group a {
+      color: #003459;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .checkbox-group a:hover {
+      text-decoration: underline;
+    }
+
+    .btn-signup {
+      width: 100%;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 16px;
+    }
+
+    .btn-signup:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 52, 89, 0.2);
+    }
+
+    .btn-signup:active {
+      transform: scale(0.98);
+    }
+
+    .login-link {
+      text-align: center;
+      font-size: 14px;
+      color: #64748B;
+    }
+
+    .login-link a {
+      color: #003459;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+
+    .login-link a:hover {
+      color: #0A4A7A;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 40px;
+      transition: all 0.2s;
+    }
+
+    .back-button:hover {
+      gap: 12px;
+    }
+
+    @media (max-width: 480px) {
+      .signup-card {
+        padding: 30px 20px;
+      }
+
+      .signup-card h1 {
+        font-size: 24px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .role-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="#home" class="back-button">← Back to Home</a>
+    
+    <div class="signup-card">
+      <div class="logo-section">
+        <div class="logo-icon">GVC</div>
+        <h1>Staff Registration</h1>
+        <p>Onboard new team members to the clinic system</p>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-dot active"></div>
+        <div class="progress-dot active"></div>
+        <div class="progress-dot"></div>
+      </div>
+
+      <form id="staffSignupForm" onsubmit="handleStaffSignup(event)">
+        <!-- PERSONAL INFO -->
+        <div class="form-section">
+          <div class="section-title">Personal Information</div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" placeholder="Doe" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="john.doe@gvc.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+          </div>
+        </div>
+
+        <!-- ROLE & DEPARTMENT -->
+        <div class="form-section">
+          <div class="section-title">Role & Department</div>
+          
+          <div class="form-group">
+            <label>Staff Role</label>
+            <div class="role-grid">
+              <label class="role-option">
+                <input type="radio" name="role" value="doctor" required>
+                <span class="role-label">Doctor</span>
+              </label>
+              <label class="role-option">
+                <input type="radio" name="role" value="admin" required>
+                <span class="role-label">Admin</span>
+              </label>
+              <label class="role-option">
+                <input type="radio" name="role" value="front_desk" required>
+                <span class="role-label">Front Desk</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" id="departmentGroup" style="display: none;">
+            <label for="department">Department</label>
+            <select id="department">
+              <option value="">Select department</option>
+              <option value="Cardiology">Cardiology</option>
+              <option value="Pediatrics">Pediatrics</option>
+              <option value="General Medicine">General Medicine</option>
+              <option value="Psychiatry">Psychiatry</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="specializationGroup" style="display: none;">
+            <label for="specialization">Specialization</label>
+            <input type="text" id="specialization" placeholder="e.g., Pediatrician, Cardiologist">
+          </div>
+        </div>
+
+        <!-- CREDENTIALS -->
+        <div class="form-section">
+          <div class="section-title">Credentials</div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" placeholder="john_doe_123" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="At least 8 characters" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Re-enter your password" required>
+          </div>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" name="terms" required>
+          <label for="terms" style="margin: 0;">I confirm all information is accurate and I have authorization to access the clinic system. I agree to the <a href="#privacy">Privacy Policy</a></label>
+        </div>
+
+        <button type="submit" class="btn-signup">Create Staff Account</button>
+      </form>
+
+      <div class="login-link">
+        Already have an account? <a href="#staff/login">Sign in here</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Show/hide department and specialization based on role
+    document.querySelectorAll('input[name="role"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const isDoctorRole = this.value === 'doctor';
+        document.getElementById('departmentGroup').style.display = isDoctorRole ? 'block' : 'none';
+        document.getElementById('specializationGroup').style.display = isDoctorRole ? 'block' : 'none';
+      });
+    });
+
+    function handleStaffSignup(event) {
+      event.preventDefault();
+      console.log('[v0] Staff signup form submitted');
+      
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const email = document.getElementById('email').value;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const role = document.querySelector('input[name="role"]:checked').value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+      }
+
+      if (password.length < 8) {
+        alert('Password must be at least 8 characters');
+        return;
+      }
+
+      // Mock registration - save to localStorage
+      const staffData = {
+        id: 's' + Date.now(),
+        firstName,
+        lastName,
+        email,
+        username,
+        role,
+        department: role === 'doctor' ? document.getElementById('department').value : '',
+        specialization: role === 'doctor' ? document.getElementById('specialization').value : '',
+        createdAt: new Date().toISOString()
+      };
+
+      // Store staff records
+      let staffRecords = JSON.parse(localStorage.getItem('gvc_staff_records') || '[]');
+      staffRecords.push(staffData);
+      localStorage.setItem('gvc_staff_records', JSON.stringify(staffRecords));
+
+      console.log('[v0] Staff registered:', staffData);
+      alert('Staff account created successfully! You can now login.');
+      window.location.hash = '#staff/login';
+    }
+  </script>
+</body>
+</html>

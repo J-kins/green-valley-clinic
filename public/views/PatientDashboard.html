@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard - Green Valley Clinic</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #F0F4F8;
+      color: #00171F;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header {
+      background: white;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #003459;
+      font-weight: 700;
+      font-size: 18px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      color: #475569;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: #003459;
+    }
+
+    .user-section {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary {
+      background: #F8FAFC;
+      color: #003459;
+      border: 1px solid #E2E8F0;
+    }
+
+    .btn-secondary:hover {
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 52, 89, 0.2);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0A4A7A 0%, #003459 100%);
+      color: white;
+      padding: 40px 0;
+      margin: 20px 0;
+      border-radius: 12px;
+    }
+
+    .hero-content {
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: #ADEBFF;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(10, 74, 122, 0.07);
+    }
+
+    .card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #00171F;
+    }
+
+    .quick-stat {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #F0F4F8;
+    }
+
+    .quick-stat:last-child {
+      border-bottom: none;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #64748B;
+    }
+
+    .stat-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #00171F;
+    }
+
+    .appointment-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .appointment-card h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #00171F;
+      margin-bottom: 4px;
+    }
+
+    .appointment-card p {
+      font-size: 11px;
+      color: #64748B;
+      margin-bottom: 8px;
+    }
+
+    .appointment-status {
+      display: inline-block;
+      background: #DCFCE7;
+      color: #16A34A;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .action-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .action-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="#home" class="logo">
+          <div class="logo-icon">GVC</div>
+          <span>Green Valley Clinic</span>
+        </a>
+
+        <nav class="nav-menu">
+          <a href="#patient/dashboard" class="nav-link">Dashboard</a>
+          <a href="#patient/appointments" class="nav-link">Appointments</a>
+          <a href="#patient/records" class="nav-link">Records</a>
+          <a href="#patient/prescriptions" class="nav-link">Prescriptions</a>
+        </nav>
+
+        <div class="user-section">
+          <span style="font-weight: 600; font-size: 14px;">Profile</span>
+          <button class="btn btn-secondary" onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Welcome Back, John</h1>
+        <p>Your health information, appointments, and prescriptions all in one place</p>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <!-- QUICK STATS -->
+      <div class="card">
+        <h3>My Health</h3>
+        <div class="quick-stat">
+          <span class="stat-label">Blood Pressure</span>
+          <span class="stat-value">120/80</span>
+        </div>
+        <div class="quick-stat">
+          <span class="stat-label">Last Checkup</span>
+          <span class="stat-value">Mar 10, 2024</span>
+        </div>
+        <div class="quick-stat">
+          <span class="stat-label">Active Medications</span>
+          <span class="stat-value">2</span>
+        </div>
+        <div class="quick-stat">
+          <span class="stat-label">Allergies</span>
+          <span class="stat-value">None Listed</span>
+        </div>
+      </div>
+
+      <!-- UPCOMING APPOINTMENTS -->
+      <div class="card">
+        <h3>Upcoming Appointments</h3>
+        <div class="appointment-card">
+          <h4>Cardiology Checkup</h4>
+          <p>March 20, 2024 - 2:00 PM</p>
+          <p>with Dr. Robert Wilson</p>
+          <span class="appointment-status">Scheduled</span>
+        </div>
+        <div class="appointment-card">
+          <h4>Follow-up Visit</h4>
+          <p>April 3, 2024 - 10:30 AM</p>
+          <p>with Dr. Priya Patel</p>
+          <span class="appointment-status">Scheduled</span>
+        </div>
+        <button class="btn btn-primary" style="width: 100%; margin-top: 12px;">Schedule New Appointment</button>
+      </div>
+
+      <!-- QUICK ACTIONS -->
+      <div class="card">
+        <h3>Quick Actions</h3>
+        <div class="action-buttons">
+          <button class="btn btn-primary">Book Appointment</button>
+          <button class="btn btn-primary">View Records</button>
+          <button class="btn btn-primary">My Prescriptions</button>
+          <button class="btn btn-primary">Message Doctor</button>
+        </div>
+        <div style="margin-top: 16px; font-size: 12px; color: #94A3B8; text-align: center;">
+          Need help? <a href="#contact" style="color: #003459; text-decoration: none; font-weight: 600;">Contact Support</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function logout() {
+      console.log('[v0] Patient logging out');
+      localStorage.removeItem('gvc_auth_token');
+      localStorage.removeItem('gvc_user_type');
+      window.location.hash = '#home';
+    }
+  </script>
+</body>
+</html>

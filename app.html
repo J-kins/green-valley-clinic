@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Valley Clinic - Integrated Portal</title>
+  <link rel="stylesheet" href="./dist/main.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #F0F4F8;
+    }
+
+    #app {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #F0F4F8;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(0, 52, 89, 0.1);
+      border-top-color: #003459;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="loading">
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import SPARouter from './gvc-backend/services/SPARouter.js';
+    import AuthService from './gvc-backend/services/AuthService.js';
+
+    console.log('[v0] Initializing Green Valley Clinic Portal...');
+
+    // Register all public routes
+    SPARouter.registerPublicRoute('#home', '/public/views/Home.html');
+    SPARouter.registerPublicRoute('#login', '/public/views/PatientLogin.html');
+    SPARouter.registerPublicRoute('#signup', '/public/views/PatientSignup.html');
+    SPARouter.registerPublicRoute('#services', '/public/views/Services.html');
+    SPARouter.registerPublicRoute('#articles', '/public/views/Articles.html');
+    SPARouter.registerPublicRoute('#about', '/public/views/Home.html');
+    SPARouter.registerPublicRoute('#contact', '/public/views/Home.html');
+
+    // Register patient protected routes
+    SPARouter.registerProtectedRoute('#patient/dashboard', '/public/views/PatientDashboard.html', 'patient');
+    SPARouter.registerProtectedRoute('#patient/appointments', '/public/views/PatientAppointments.html', 'patient');
+    SPARouter.registerProtectedRoute('#patient/records', '/public/views/PatientRecords.html', 'patient');
+    SPARouter.registerProtectedRoute('#patient/prescriptions', '/public/views/PatientPrescriptions.html', 'patient');
+
+    // Register clinic staff routes
+    SPARouter.registerPublicRoute('#staff/login', '/clinic/views/StaffLogin.html');
+    SPARouter.registerPublicRoute('#staff/signup', '/clinic/views/StaffSignup.html');
+
+    // Register role-based clinic dashboards
+    SPARouter.registerProtectedRoute('#clinic/doctor/dashboard', '/clinic/views/DoctorDashboard.html', 'doctor');
+    SPARouter.registerProtectedRoute('#clinic/admin/dashboard', '/clinic/views/AdminDashboard.html', 'admin');
+    SPARouter.registerProtectedRoute('#clinic/front_desk/dashboard', '/clinic/views/FrontDeskDashboard.html', 'front_desk');
+
+    // Redirect to appropriate dashboard based on role after login
+    window.redirectToDashboard = function() {
+      const user = SPARouter.getCurrentUser();
+      if (!user) {
+        SPARouter.navigate('home');
+        return;
+      }
+
+      const roleRoutes = {
+        'patient': '#patient/dashboard',
+        'doctor': '#clinic/doctor/dashboard',
+        'admin': '#clinic/admin/dashboard',
+        'front_desk': '#clinic/front_desk/dashboard'
+      };
+
+      const route = roleRoutes[user.role] || '#home';
+      SPARouter.navigate(route);
+    };
+
+    // Global logout function
+    window.logout = function() {
+      SPARouter.logout();
+    };
+
+    // Initialize router
+    SPARouter.handleNavigation();
+
+    console.log('[v0] Portal initialized and ready');
+  </script>
+</body>
+</html>

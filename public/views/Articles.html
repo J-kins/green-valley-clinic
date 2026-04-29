@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Articles - Green Valley Clinic</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #F0F4F8;
+      color: #00171F;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+    .header {
+      background: white;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #003459;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      color: #475569;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: #003459;
+    }
+
+    .nav-link.active {
+      color: #003459;
+      font-weight: 700;
+    }
+
+    .back-link {
+      color: #003459;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: #0A4A7A;
+    }
+
+    /* SEARCH & FILTER */
+    .search-section {
+      background: white;
+      padding: 30px 0;
+      border-bottom: 1px solid #E2E8F0;
+      margin-bottom: 40px;
+    }
+
+    .search-container {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 200px;
+      padding: 12px 16px;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #003459;
+      box-shadow: 0 0 0 3px rgba(0, 52, 89, 0.1);
+    }
+
+    .filter-select {
+      padding: 12px 16px;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: #003459;
+      box-shadow: 0 0 0 3px rgba(0, 52, 89, 0.1);
+    }
+
+    /* RESULTS */
+    .results-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .results-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .article-card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 52, 89, 0.12);
+      border-color: #BFDBFE;
+    }
+
+    .article-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #0A4A7A 0%, #003459 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+    }
+
+    .article-content {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: #EFF6FF;
+      color: #0A4A7A;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 8px;
+      width: fit-content;
+    }
+
+    .article-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #00171F;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .article-excerpt {
+      font-size: 13px;
+      color: #64748B;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      flex: 1;
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #94A3B8;
+      padding-top: 12px;
+      border-top: 1px solid #F0F4F8;
+    }
+
+    .article-read {
+      color: #003459;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .article-read:hover {
+      color: #0A4A7A;
+    }
+
+    /* SEARCH RESULTS */
+    .search-results {
+      display: none;
+      margin-bottom: 40px;
+    }
+
+    .search-results.active {
+      display: block;
+    }
+
+    .search-results h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #00171F;
+    }
+
+    .search-results-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px 20px;
+      color: #64748B;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: white;
+      border-top: 1px solid #E2E8F0;
+      padding: 40px 0;
+    }
+
+    .footer-content {
+      text-align: center;
+      font-size: 12px;
+      color: #64748B;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0A4A7A 0%, #003459 100%);
+      color: white;
+      padding: 60px 0;
+      margin-bottom: 40px;
+    }
+
+    .hero-content {
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: #ADEBFF;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
+          <a href="#home" class="back-link">← Home</a>
+          <a href="#home" class="logo">
+            <div class="logo-icon">GVC</div>
+            <span>Green Valley Clinic</span>
+          </a>
+        </div>
+
+        <nav class="nav">
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#articles" class="nav-link active">Health Tips</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <a href="#login" style="color: #003459; text-decoration: none; font-weight: 600; font-size: 14px;">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Health Articles & Tips</h1>
+        <p>Learn about health, wellness, and medical topics from our experts</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH & FILTER -->
+  <main class="container">
+    <div class="search-section">
+      <div class="search-container">
+        <input 
+          type="text" 
+          class="search-input" 
+          id="searchInput" 
+          placeholder="Search articles..."
+          onkeyup="filterArticles()"
+        >
+        <select class="filter-select" id="categoryFilter" onchange="filterArticles()">
+          <option value="">All Categories</option>
+          <option value="nutrition">Nutrition</option>
+          <option value="fitness">Fitness</option>
+          <option value="mental-health">Mental Health</option>
+          <option value="prevention">Prevention</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- SEARCH RESULTS -->
+    <div class="search-results" id="searchResults">
+      <h2>Search Results</h2>
+      <div class="search-results-list" id="searchResultsList"></div>
+    </div>
+
+    <!-- ALL ARTICLES -->
+    <div id="allArticles">
+      <div class="results-container" id="articlesContainer">
+        <!-- Will be populated by JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2024 Green Valley Clinic. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const articles = [
+      {
+        id: 1,
+        title: 'Understanding Blood Pressure: What You Need to Know',
+        category: 'prevention',
+        emoji: '💓',
+        excerpt: 'High blood pressure is often called the silent killer. Learn what numbers mean and how to manage your blood pressure naturally.',
+        date: 'March 10, 2024',
+        readTime: '5 min read'
+      },
+      {
+        id: 2,
+        title: 'The Benefits of Regular Exercise for Heart Health',
+        category: 'fitness',
+        emoji: '🏃',
+        excerpt: 'Discover how regular physical activity can strengthen your heart and reduce the risk of cardiovascular disease.',
+        date: 'March 8, 2024',
+        readTime: '6 min read'
+      },
+      {
+        id: 3,
+        title: 'Balanced Nutrition: Building a Healthy Plate',
+        category: 'nutrition',
+        emoji: '🥗',
+        excerpt: 'Learn the fundamentals of nutrition and how to create balanced meals that support your health goals.',
+        date: 'March 5, 2024',
+        readTime: '7 min read'
+      },
+      {
+        id: 4,
+        title: 'Stress Management Techniques for Busy Professionals',
+        category: 'mental-health',
+        emoji: '🧘',
+        excerpt: 'Explore practical strategies to manage stress and maintain mental wellness in your daily life.',
+        date: 'March 1, 2024',
+        readTime: '8 min read'
+      },
+      {
+        id: 5,
+        title: 'Sleep Hygiene: Tips for Better Sleep Quality',
+        category: 'prevention',
+        emoji: '😴',
+        excerpt: 'Good sleep is essential for health. Learn evidence-based tips to improve your sleep quality tonight.',
+        date: 'February 28, 2024',
+        readTime: '6 min read'
+      },
+      {
+        id: 6,
+        title: 'Diabetes Prevention: Lifestyle Changes That Matter',
+        category: 'prevention',
+        emoji: '⚕️',
+        excerpt: 'Reduce your risk of diabetes through diet, exercise, and lifestyle modifications.',
+        date: 'February 25, 2024',
+        readTime: '7 min read'
+      }
+    ];
+
+    function renderArticles(itemsToRender = articles) {
+      const container = document.getElementById('articlesContainer') || document.getElementById('searchResultsList');
+      if (!container) return;
+
+      if (itemsToRender.length === 0) {
+        container.innerHTML = '<div class="no-results">No articles found. Try a different search.</div>';
+        return;
+      }
+
+      container.innerHTML = itemsToRender.map(article => `
+        <div class="article-card" onclick="viewArticle(${article.id})">
+          <div class="article-image">${article.emoji}</div>
+          <div class="article-content">
+            <span class="article-category">${article.category}</span>
+            <h3 class="article-title">${article.title}</h3>
+            <p class="article-excerpt">${article.excerpt}</p>
+            <div class="article-meta">
+              <span>${article.date}</span>
+              <span>${article.readTime}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterArticles() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const category = document.getElementById('categoryFilter').value;
+
+      const filtered = articles.filter(article => {
+        const matchesSearch = article.title.toLowerCase().includes(searchTerm) || 
+                            article.excerpt.toLowerCase().includes(searchTerm);
+        const matchesCategory = !category || article.category === category;
+        return matchesSearch && matchesCategory;
+      });
+
+      const searchResults = document.getElementById('searchResults');
+      const allArticles = document.getElementById('allArticles');
+
+      if (searchTerm || category) {
+        searchResults.classList.add('active');
+        allArticles.style.display = 'none';
+        document.getElementById('searchResultsList').parentElement.innerHTML = `
+          <h2>Search Results (${filtered.length})</h2>
+          <div class="search-results-list" id="searchResultsList"></div>
+        `;
+        renderArticles(filtered);
+      } else {
+        searchResults.classList.remove('active');
+        allArticles.style.display = 'block';
+        renderArticles(articles);
+      }
+    }
+
+    function viewArticle(articleId) {
+      const article = articles.find(a => a.id === articleId);
+      console.log('[v0] Viewing article:', article);
+      alert(`Article: ${article.title}\n\nFull content would load here.`);
+    }
+
+    // Render articles on load
+    document.addEventListener('DOMContentLoaded', () => renderArticles(articles));
+  </script>
+</body>
+</html>
