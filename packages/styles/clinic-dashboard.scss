@@ -1,0 +1,644 @@
+/**
+ * Clinic Dashboard Styles
+ * Styles for staff dashboards (Doctor, Admin, FrontDesk)
+ * Uses existing GVC color scheme and responsive design patterns
+ */
+
+@use './src/base/variables' as *;
+
+// ===== CLINIC LOGIN VIEW =====
+.staff-login-view {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7f6 0%, #e8f1f0 100%);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+}
+
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(45, 109, 103, 0.1);
+}
+
+.login-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.login-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2d6d67;
+  margin: 0 0 8px 0;
+}
+
+.login-header p {
+  color: #6b7c82;
+  margin: 0;
+  font-size: 14px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-form label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #25363b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.login-form select,
+.login-form input {
+  padding: 12px 16px;
+  border: 1px solid #dce7e4;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.login-form select:focus,
+.login-form input:focus {
+  outline: none;
+  border-color: #82d1c6;
+  box-shadow: 0 0 0 3px rgba(130, 209, 198, 0.1);
+}
+
+.error-message {
+  padding: 12px 16px;
+  background: #ffe5e5;
+  border-left: 3px solid #d32f2f;
+  color: #d32f2f;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.login-footer {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.login-footer a {
+  color: #82d1c6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.login-footer a:hover {
+  color: #2d6d67;
+}
+
+.login-info {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(45, 109, 103, 0.1);
+}
+
+.login-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d6d67;
+  margin: 0 0 16px 0;
+}
+
+.login-info p {
+  color: #6b7c82;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+  font-size: 14px;
+}
+
+.login-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-info li {
+  padding-left: 24px;
+  position: relative;
+  color: #6b7c82;
+  font-size: 14px;
+}
+
+.login-info li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #82d1c6;
+  font-weight: 700;
+}
+
+// ===== CLINIC DASHBOARD VIEW =====
+.clinic-dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7f6;
+}
+
+.clinic-sidebar {
+  width: 280px;
+  background: white;
+  border-right: 1px solid #dce7e4;
+  padding: 24px 0;
+  overflow-y: auto;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+.clinic-sidebar-header {
+  padding: 0 24px 24px;
+  border-bottom: 1px solid #dce7e4;
+  margin-bottom: 24px;
+}
+
+.clinic-sidebar-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d6d67;
+  margin: 0;
+}
+
+.clinic-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 12px;
+}
+
+.nav-item {
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: #6b7c82;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.nav-item:hover {
+  background: #f5f7f6;
+  color: #2d6d67;
+}
+
+.nav-item.active {
+  background: #e8f5f3;
+  color: #2d6d67;
+  border-left: 3px solid #82d1c6;
+  padding-left: 13px;
+}
+
+.clinic-main-content {
+  margin-left: 280px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.clinic-header {
+  background: white;
+  padding: 20px 32px;
+  border-bottom: 1px solid #dce7e4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.clinic-header-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2d6d67;
+  margin: 0;
+}
+
+.clinic-header-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.clinic-content {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+}
+
+// ===== STAT CARDS =====
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(185, 204, 199, 0.08);
+  border-left: 4px solid #82d1c6;
+  transition: box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 12px rgba(185, 204, 199, 0.12);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #6b7c82;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: #2d6d67;
+  margin: 0;
+}
+
+// ===== PATIENT LIST =====
+.patient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(185, 204, 199, 0.08);
+}
+
+.patient-item {
+  display: grid;
+  grid-template-columns: 50px 1fr auto;
+  gap: 16px;
+  padding: 16px;
+  background: #f5f7f6;
+  border-radius: 8px;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.patient-item:hover {
+  background: #e8f5f3;
+  border-color: #82d1c6;
+}
+
+.patient-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #82d1c6 0%, #dbf0ec 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2d6d67;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.patient-info {
+  min-width: 0;
+}
+
+.patient-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2d6d67;
+  margin: 0 0 4px 0;
+}
+
+.patient-id {
+  font-size: 12px;
+  color: #6b7c82;
+  margin: 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-badge.checked-in {
+  background: #e8f5f3;
+  color: #2d6d67;
+}
+
+.status-badge.pending {
+  background: #fff4e6;
+  color: #f57c00;
+}
+
+.status-badge.completed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+// ===== MODALS =====
+.clinic-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.clinic-modal-content {
+  background: white;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(45, 109, 103, 0.3);
+}
+
+.clinic-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #dce7e4;
+}
+
+.clinic-modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #2d6d67;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7c82;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  color: #2d6d67;
+}
+
+.clinic-modal-body {
+  padding: 24px;
+}
+
+.clinic-modal-footer {
+  padding: 24px;
+  border-top: 1px solid #dce7e4;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+// ===== SEARCH RESULTS =====
+.clinic-search-results {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  background: white;
+  box-shadow: -2px 0 8px rgba(185, 204, 199, 0.2);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.search-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #dce7e4;
+  position: sticky;
+  top: 0;
+  background: white;
+}
+
+.search-results-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #2d6d67;
+}
+
+.close-search {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7c82;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.search-results-body {
+  padding: 20px 24px;
+  flex: 1;
+}
+
+.search-result-item {
+  padding: 12px;
+  background: #f5f7f6;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.search-result-item:hover {
+  background: #e8f5f3;
+  border-left: 3px solid #82d1c6;
+}
+
+.result-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2d6d67;
+  margin: 0 0 4px 0;
+}
+
+.result-description {
+  font-size: 12px;
+  color: #6b7c82;
+  margin: 0;
+}
+
+// ===== RESPONSIVE DESIGN =====
+@media (max-width: 1024px) {
+  .login-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .login-info {
+    display: none;
+  }
+
+  .clinic-sidebar {
+    width: 200px;
+  }
+
+  .clinic-main-content {
+    margin-left: 200px;
+  }
+
+  .clinic-content {
+    padding: 20px;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .clinic-search-results {
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .staff-login-view {
+    padding: 16px;
+  }
+
+  .login-card {
+    padding: 24px;
+  }
+
+  .login-header h1 {
+    font-size: 22px;
+  }
+
+  .clinic-sidebar {
+    position: fixed;
+    left: -200px;
+    width: 200px;
+    height: 100vh;
+    z-index: 99;
+    transition: left 0.3s;
+  }
+
+  .clinic-sidebar.open {
+    left: 0;
+  }
+
+  .clinic-main-content {
+    margin-left: 0;
+  }
+
+  .clinic-header {
+    padding: 16px;
+  }
+
+  .clinic-content {
+    padding: 16px;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .clinic-search-results {
+    width: 100%;
+  }
+
+  .patient-item {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .patient-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form select,
+  .login-form input {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+
+  .clinic-modal-content {
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .clinic-modal-header {
+    padding: 16px;
+  }
+
+  .clinic-modal-body {
+    padding: 16px;
+  }
+
+  .clinic-modal-footer {
+    padding: 16px;
+    flex-direction: column;
+  }
+
+  .clinic-modal-footer button {
+    width: 100%;
+  }
+}

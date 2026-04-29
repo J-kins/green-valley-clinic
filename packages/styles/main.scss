@@ -4,6 +4,11 @@
 @use 'src/base/variables' as *;
 @use 'src/components/index' as components;
 
+// Import page-specific and feature styles
+@import 'auth';
+@import 'public-pages';
+@import 'clinic-dashboard';
+
 // Global styles - Green Valley Hi-Fi Design
 body {
   margin: 0;
