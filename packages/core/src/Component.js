@@ -98,6 +98,13 @@ export class Component {
   }
 
   /**
+   * Destroy the component - alias for unmount
+   */
+  destroy() {
+    this.unmount();
+  }
+
+  /**
    * Render the component's HTML structure
    * @abstract
    * @returns {string|HTMLElement}

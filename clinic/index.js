@@ -74,89 +74,157 @@ window.searchAppointments = async (query) => {
 };
 
 /**
- * Clinic App Entry Point
- * Manages Auth and App shells and basic routing.
- * Includes backend database initialization and API access.
+ * Clinic Staff Portal Router
+ * Handles role-based access control and view routing for clinic staff
+ * Authentication required for all views
  */
-const root = document.getElementById('clinic-root');
 
-// Initialize backend database
-console.log('[v0] Initializing GVC Backend for Clinic...');
-console.log('[v0] Available database tables:', Object.keys(db._tables || {}));
+import { sessionManager } from '../gvc-backend/services/SessionManager.js';
 
-/**
- * Helper to mount a layout and a specific view within it.
- * @param {typeof import('../packages/core/src/Component.js').Component} LayoutClass
- * @param {typeof import('../packages/core/src/Component.js').Component} ViewClass
- */
-function mountShell(LayoutClass, ViewClass) {
-    if (!root) return;
-    
-    // Clear root and mount layout
-    root.innerHTML = '';
-    const layout = new LayoutClass();
-    layout.mount(root);
+class ClinicRouter {
+  constructor() {
+    this.root = document.getElementById('clinic-root');
+    this.currentView = null;
+    this.currentRoute = 'staff-login';
 
-    // Mount specific view into the shell
-    // AppLayout uses #view-mount, AuthLayout uses #auth-view-mount
-    const viewMount = document.getElementById('view-mount') || document.getElementById('auth-view-mount');
-    if (viewMount) {
-        const view = new ViewClass();
-        view.mount(viewMount);
-    } else {
-        console.error('Mount point not found in current layout!');
-    }
-}
+    // Public routes - no auth required
+    this.publicRoutes = ['staff-login', 'password-reset'];
 
-// 1. Initial State: Start with Login Screen
-document.addEventListener('DOMContentLoaded', () => {
-    mountShell(AuthLayout, StaffLogin);
-});
-
-// 2. Event Listeners for "Routing"
-window.addEventListener('login-success', () => {
-    mountShell(AppLayout, Dashboard);
-});
-
-window.addEventListener('navigate-reset', () => {
-    mountShell(AuthLayout, PasswordReset);
-});
-
-window.addEventListener('navigate-login', () => {
-    mountShell(AuthLayout, StaffLogin);
-});
-
-// 3. Inner-App Navigation
-window.addEventListener('navigate-view', (e) => {
-    const { viewId } = e.detail;
-    const viewMount = document.getElementById('view-mount');
-    if (!viewMount) return;
-
-    viewMount.innerHTML = '';
-    
-    // Route to appropriate view
-    const views = {
-        'dashboard': Dashboard,
-        'staff': StaffManagement,
-        'helpdesk': HelpDesk,
-        'patients': PatientDetails,
-        'clinical-notes': ClinicalNotes,
-        'lab-imaging': LabAndImaging,
-        'inventory': Inventory,
-        'procurement': ProcurementOrders,
-        'finance': Finance,
-        'admin': Administration
+    // Role-based protected routes
+    this.routesByRole = {
+      'doctor': ['dashboard', 'patients', 'clinical-notes', 'lab-imaging', 'appointments'],
+      'admin': ['dashboard', 'staff', 'admin', 'finance'],
+      'front-desk': ['dashboard', 'patients', 'appointments'],
+      'staff': ['dashboard', 'helpdesk']
     };
 
-    const ViewClass = views[viewId];
-    if (ViewClass) {
-        new ViewClass().mount(viewMount);
+    // All available view classes
+    this.views = {
+      'staff-login': StaffLogin,
+      'password-reset': PasswordReset,
+      'dashboard': Dashboard,
+      'patients': PatientDetails,
+      'clinical-notes': ClinicalNotes,
+      'lab-imaging': LabAndImaging,
+      'staff': StaffManagement,
+      'helpdesk': HelpDesk,
+      'inventory': Inventory,
+      'procurement': ProcurementOrders,
+      'finance': Finance,
+      'admin': Administration
+    };
+
+    console.log('[v0] Initializing Clinic Router');
+    console.log('[v0] GVC Backend initialized with tables:', Object.keys(db._tables || {}));
+    
+    this.setupEventListeners();
+    this.handleInitialRoute();
+  }
+
+  setupEventListeners() {
+    // Listen for navigate events from views
+    window.addEventListener('navigate', (e) => {
+      const { route, params } = e.detail;
+      this.navigateTo(route, params);
+    });
+
+    // Session events
+    window.addEventListener('session-created', () => {
+      console.log('[v0] Staff session created');
+      this.updateUserState();
+    });
+
+    window.addEventListener('session-destroyed', () => {
+      console.log('[v0] Staff logged out');
+      this.navigateTo('staff-login');
+    });
+
+    // Hash-based navigation
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.slice(1);
+      if (hash && this.views[hash]) {
+        this.navigateTo(hash);
+      }
+    });
+  }
+
+  handleInitialRoute() {
+    const hash = window.location.hash.slice(1);
+    const session = sessionManager.getCurrentSession();
+
+    if (session && session.type === 'staff') {
+      // If logged in, go to dashboard
+      this.navigateTo('dashboard');
     } else {
-        viewMount.innerHTML = `
-            <div class="card mt-32">
-                <h2 class="h2">Coming Soon</h2>
-                <p class="body dim">The ${viewId} view is currently being developed.</p>
-            </div>
-        `;
+      // If not logged in, go to login
+      this.navigateTo('staff-login');
     }
+  }
+
+  canAccessRoute(route) {
+    const session = sessionManager.getCurrentSession();
+
+    // Public routes
+    if (this.publicRoutes.includes(route)) return true;
+
+    // Protected routes - check authentication and role
+    if (!session || session.type !== 'staff') {
+      return false;
+    }
+
+    const userRole = session.user?.role;
+    const allowedRoutes = this.routesByRole[userRole] || [];
+
+    return allowedRoutes.includes(route);
+  }
+
+  navigateTo(route, params = {}) {
+    console.log('[v0] Clinic router navigating to:', route);
+
+    if (!this.canAccessRoute(route)) {
+      const redirectRoute = sessionManager.isAuthenticated() ? 'dashboard' : 'staff-login';
+      console.log('[v0] Access denied, redirecting to:', redirectRoute);
+      this.navigateTo(redirectRoute);
+      return;
+    }
+
+    if (!this.views[route]) {
+      console.log('[v0] Route not found:', route);
+      this.navigateTo('staff-login');
+      return;
+    }
+
+    this.currentRoute = route;
+    window.location.hash = route;
+
+    // Unmount current view
+    if (this.currentView) {
+      this.currentView.destroy();
+    }
+
+    // Mount new view
+    const ViewClass = this.views[route];
+    this.currentView = new ViewClass(params);
+    this.currentView.mount(this.root);
+
+    console.log('[v0] Clinic view mounted:', route);
+  }
+
+  updateUserState() {
+    const session = sessionManager.getCurrentSession();
+    if (session) {
+      console.log('[v0] Staff state updated:', {
+        name: session.user.name,
+        role: session.user.role
+      });
+    }
+  }
+}
+
+// Initialize clinic portal when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('[v0] Initializing clinic staff portal');
+  window.clinicRouter = new ClinicRouter();
 });
+
+export default ClinicRouter;

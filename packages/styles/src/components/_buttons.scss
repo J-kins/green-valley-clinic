@@ -95,3 +95,40 @@ button, .button {
   border: none;
   transition: all 0.2s;
 }
+
+// Button size modifiers
+.btn-small {
+  height: 40px !important;
+  padding: 0 12px !important;
+  font-size: 12px !important;
+}
+
+.btn-large {
+  height: 56px !important;
+  padding: 0 32px !important;
+  font-size: 16px !important;
+}
+
+// Button block modifier
+.btn-block {
+  width: 100%;
+}
+
+// Button icon variant
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  height: auto;
+  width: auto;
+  background: transparent;
+  border: none;
+  color: $gv-text;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: #82D1C6;
+  }
+}

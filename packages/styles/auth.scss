@@ -1,0 +1,308 @@
+/**
+ * Authentication Styles
+ * Shared styles for login/signup forms across all portals
+ */
+
+@use './src/base/variables' as *;
+
+// ===== PATIENT LOGIN/SIGNUP =====
+.patient-login-view,
+.patient-signup-view {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7f6 0%, #e8f1f0 100%);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-container,
+.signup-container {
+  width: 100%;
+  max-width: 450px;
+}
+
+.login-card,
+.signup-card {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(45, 109, 103, 0.1);
+}
+
+.login-header,
+.signup-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.login-header h1,
+.signup-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2d6d67;
+  margin: 0 0 8px 0;
+}
+
+.login-header p,
+.signup-header p {
+  color: #6b7c82;
+  margin: 0;
+  font-size: 14px;
+}
+
+.login-form,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #25363b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 16px;
+  border: 1px solid #dce7e4;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s;
+  background: white;
+  color: #25363b;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #b9ccbc;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #82d1c6;
+  box-shadow: 0 0 0 3px rgba(130, 209, 198, 0.1);
+}
+
+.form-group.checkbox {
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.form-group.checkbox input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.form-group.checkbox label {
+  margin: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #6b7c82;
+}
+
+.remember-me input {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.forgot-link,
+.signup-link,
+.login-link,
+.back-link {
+  color: #82d1c6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.forgot-link:hover,
+.signup-link:hover,
+.login-link:hover,
+.back-link:hover {
+  color: #2d6d67;
+}
+
+.login-footer,
+.signup-footer {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.login-footer p,
+.signup-footer p {
+  margin: 0;
+}
+
+.error-message {
+  padding: 12px 16px;
+  background: #ffe5e5;
+  border-left: 3px solid #d32f2f;
+  color: #d32f2f;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+// ===== BUTTON STYLES =====
+.btn-primary-gradient {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #2d6d67 0%, #1a4644 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(45, 109, 103, 0.2);
+}
+
+.btn-primary-gradient:active {
+  transform: translateY(0);
+}
+
+.btn-secondary-hifi {
+  padding: 14px 24px;
+  background: white;
+  color: #2d6d67;
+  border: 1px solid #dce7e4;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary-hifi:hover {
+  background: #f5f7f6;
+  border-color: #82d1c6;
+  color: #82d1c6;
+}
+
+// ===== RESPONSIVE AUTH =====
+@media (max-width: 768px) {
+  .login-card,
+  .signup-card {
+    padding: 24px;
+  }
+
+  .login-header h1,
+  .signup-header h1 {
+    font-size: 22px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px 12px;
+    font-size: 16px; // Prevent zoom on iOS
+  }
+
+  .btn-primary-gradient,
+  .btn-secondary-hifi {
+    padding: 12px 20px;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .form-options {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .login-footer p,
+  .signup-footer p {
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container,
+  .signup-container {
+    max-width: 100%;
+  }
+
+  .login-card,
+  .signup-card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .login-header h1,
+  .signup-header h1 {
+    font-size: 20px;
+  }
+
+  .login-header p,
+  .signup-header p {
+    font-size: 13px;
+  }
+
+  .form-group {
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .login-form,
+  .signup-form {
+    gap: 16px;
+  }
+}
