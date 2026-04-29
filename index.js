@@ -20,18 +20,23 @@ try {
     throw new Error('Root element (#root) not found in DOM');
   }
 
-  // 1. Mount Header
+  // 1. Mount Header with navigation
   const header = new Header({
     logo: 'Green Valley Clinic',
     navItems: [
-      { label: 'Home', href: '#' },
+      { label: 'Home', href: '#home' },
       { label: 'Services', href: '#services' },
       { label: 'About', href: '#about' },
+      { label: 'Health Articles', href: '#articles' },
       { label: 'Contact', href: '#contact' }
     ]
   });
   header.mount(root);
   console.log('Header mounted');
+
+  // Handle routing
+  const currentPage = window.location.hash.slice(1) || 'home';
+  console.log(`[v0] Routing to page: ${currentPage}`);
 
   // 2. Hero Section
   const hero = document.createElement('section');

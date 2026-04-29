@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Green Valley Clinic</title>
+    <meta name="description" content="Discover our comprehensive healthcare services including general medicine, pediatrics, dental care, and more.">
+    <link rel="stylesheet" href="../dist/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="services-root"></div>
+    <script type="module">
+        import { Header, Footer } from '../packages/components/src/index.js';
+
+        const root = document.getElementById('services-root');
+
+        // Header
+        const header = new Header({
+            logo: 'Green Valley Clinic',
+            navItems: [
+                { label: 'Home', href: '../index.html' },
+                { label: 'Services', href: '#' },
+                { label: 'About', href: '../pages/about.html' },
+                { label: 'Health Articles', href: '../pages/articles.html' },
+                { label: 'Contact', href: '../pages/contact.html' }
+            ]
+        });
+        header.mount(root);
+
+        // Hero Section
+        const hero = document.createElement('section');
+        hero.style.padding = '80px 20px';
+        hero.style.textAlign = 'center';
+        hero.style.background = 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)';
+        hero.style.color = 'white';
+        hero.innerHTML = `
+            <h1 style="font-size: 2.5rem; font-weight: 800; margin: 0 0 16px 0;">Our Services</h1>
+            <p style="font-size: 1.125rem; max-width: 600px; margin: 0 auto; opacity: 0.95;">Comprehensive healthcare solutions tailored to your needs</p>
+        `;
+        root.appendChild(hero);
+
+        // Services Grid
+        const servicesContainer = document.createElement('section');
+        servicesContainer.style.padding = '80px 20px';
+        servicesContainer.style.background = 'white';
+        servicesContainer.innerHTML = `
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 48px;">
+                    
+                    <div style="padding: 32px; border: 2px solid #e2e8f0; border-radius: 12px; transition: all 0.3s;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">General Consultation</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin: 0;">Comprehensive health checkups, medical advice, and preventive care guidance from our experienced physicians.</p>
+                        <ul style="margin-top: 16px; padding-left: 20px; color: #64748b;">
+                            <li>Full physical examination</li>
+                            <li>Health history evaluation</li>
+                            <li>Preventive care planning</li>
+                        </ul>
+                    </div>
+
+                    <div style="padding: 32px; border: 2px solid #e2e8f0; border-radius: 12px; transition: all 0.3s;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Pediatrics</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin: 0;">Specialized healthcare for infants, children, and adolescents with experienced pediatricians and child-friendly environment.</p>
+                        <ul style="margin-top: 16px; padding-left: 20px; color: #64748b;">
+                            <li>Developmental screening</li>
+                            <li>Vaccination programs</li>
+                            <li>Growth monitoring</li>
+                        </ul>
+                    </div>
+
+                    <div style="padding: 32px; border: 2px solid #e2e8f0; border-radius: 12px; transition: all 0.3s;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Dental Care</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin: 0;">Complete dental services including preventive care, restorative treatments, and cosmetic dentistry.</p>
+                        <ul style="margin-top: 16px; padding-left: 20px; color: #64748b;">
+                            <li>Routine cleanings</li>
+                            <li>Cavity treatment</li>
+                            <li>Root canal therapy</li>
+                        </ul>
+                    </div>
+
+                    <div style="padding: 32px; border: 2px solid #e2e8f0; border-radius: 12px; transition: all 0.3s;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Eye Care</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin: 0;">Complete ophthalmology services from vision exams to advanced eye treatments and eyewear prescription.</p>
+                        <ul style="margin-top: 16px; padding-left: 20px; color: #64748b;">
+                            <li>Vision screening</li>
+                            <li>Cataract surgery</li>
+                            <li>Prescription glasses</li>
+                        </ul>
+                    </div>
+
+                    <div style="padding: 32px; border: 2px solid #e2e8f0; border-radius: 12px; transition: all 0.3s;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Laboratory Tests</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin: 0;">Advanced diagnostic testing facility with quick turnaround times and accurate results.</p>
+                        <ul style="margin-top: 16px; padding-left: 20px; color: #64748b;">
+                            <li>Blood work analysis</li>
+                            <li>Pathology testing</li>
+                            <li>Home collection service</li>
+                        </ul>
+                    </div>
+
+                    <div style="padding: 32px; border: 2px solid #e2e8f0; border-radius: 12px; transition: all 0.3s;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Pharmacy</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin: 0;">Full-service pharmacy with quality medications, supplements, and health products at competitive prices.</p>
+                        <ul style="margin-top: 16px; padding-left: 20px; color: #64748b;">
+                            <li>Prescription fulfillment</li>
+                            <li>Over-the-counter drugs</li>
+                            <li>Medicine delivery service</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        `;
+        root.appendChild(servicesContainer);
+
+        // Booking CTA
+        const cta = document.createElement('section');
+        cta.style.padding = '60px 20px';
+        cta.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        cta.style.color = 'white';
+        cta.style.textAlign = 'center';
+        cta.innerHTML = `
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin: 0 0 16px 0;">Ready to Book an Appointment?</h2>
+                <p style="font-size: 1.125rem; margin: 0 0 24px 0;">Schedule your consultation with our experienced healthcare professionals.</p>
+                <a href="../public/index.html" style="padding: 14px 28px; font-size: 1rem; font-weight: 600; background: white; color: #667eea; border: none; border-radius: 8px; cursor: pointer; text-decoration: none;">
+                    Book Now
+                </a>
+            </div>
+        `;
+        root.appendChild(cta);
+
+        // Footer
+        const footer = new Footer({
+            links: [
+                { label: 'Privacy Policy', href: '#' },
+                { label: 'Terms of Service', href: '#' },
+                { label: 'Careers', href: '#' },
+                { label: 'Contact Us', href: '../pages/contact.html' }
+            ]
+        });
+        footer.mount(root);
+    </script>
+</body>
+</html>
