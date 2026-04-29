@@ -9,13 +9,81 @@ import MyAppointments from './views/MyAppointments.js';
 import About from './views/About.js';
 import ContactUs from './views/ContactUs.js';
 
+// GVC Backend - Mock Database & APIs
+import db from '../gvc-backend/db.js';
+import * as AuthAPI from '../gvc-backend/api/auth.js';
+import * as AppointAPI from '../gvc-backend/api/appointments.js';
+import * as PatientAPI from '../gvc-backend/api/patients.js';
+import * as PublicAPI from '../gvc-backend/api/public.js';
+
+/**
+ * Global Search Handler
+ * Implements patient/appointment search across the platform
+ */
+window.searchPatients = async (query) => {
+    console.log('[v0] Searching patients:', query);
+    if (!query || query.length < 2) return [];
+    try {
+        const result = await PatientAPI.searchPatients(query);
+        if (result.ok) {
+            console.log('[v0] Search results:', result.data);
+            return result.data;
+        }
+        return [];
+    } catch (error) {
+        console.error('[v0] Search error:', error);
+        return [];
+    }
+};
+
+window.searchAppointments = async (query) => {
+    console.log('[v0] Searching appointments:', query);
+    if (!query || query.length < 2) return [];
+    try {
+        const result = await AppointAPI.listAppointments({ search: query });
+        if (result.ok) {
+            console.log('[v0] Appointment search results:', result.data);
+            return result.data;
+        }
+        return [];
+    } catch (error) {
+        console.error('[v0] Appointment search error:', error);
+        return [];
+    }
+};
+
+window.searchHealthArticles = async (query) => {
+    console.log('[v0] Searching articles:', query);
+    if (!query || query.length < 1) return [];
+    try {
+        const result = await PublicAPI.getHealthArticles();
+        if (result.ok) {
+            const filtered = result.data.filter(article => 
+                article.title.toLowerCase().includes(query.toLowerCase()) ||
+                article.body.toLowerCase().includes(query.toLowerCase())
+            );
+            console.log('[v0] Article search results:', filtered);
+            return filtered;
+        }
+        return [];
+    } catch (error) {
+        console.error('[v0] Article search error:', error);
+        return [];
+    }
+};
+
 /**
  * Public Patient Portal Entry Point
  * Bootstraps the mobile-first application shell and handles view switching.
+ * Includes backend database initialization and API access.
  */
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('public-root');
     if (!root) return;
+    
+    // Initialize backend database
+    console.log('[v0] Initializing GVC Backend...');
+    console.log('[v0] Database tables:', Object.keys(db._tables || {}));
 
     // 1. Mount the Mobile Layout (Shell)
     const layout = new MobileLayout();

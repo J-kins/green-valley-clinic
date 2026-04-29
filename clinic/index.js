@@ -13,11 +13,76 @@ import ProcurementOrders from './views/ProcurementOrders.js';
 import Finance from './views/Finance.js';
 import Administration from './views/Administration.js';
 
+// GVC Backend - Mock Database & APIs
+import db from '../gvc-backend/db.js';
+import * as AuthAPI from '../gvc-backend/api/auth.js';
+import * as AppointAPI from '../gvc-backend/api/appointments.js';
+import * as PatientAPI from '../gvc-backend/api/patients.js';
+import * as StaffAPI from '../gvc-backend/api/staff.js';
+import * as DashboardAPI from '../gvc-backend/api/dashboard.js';
+
+/**
+ * Global Search Handler for Clinic Staff
+ * Enables searching patients, staff, and appointments
+ */
+window.searchPatients = async (query) => {
+    console.log('[v0] Clinic searching patients:', query);
+    if (!query || query.length < 2) return [];
+    try {
+        const result = await PatientAPI.searchPatients(query);
+        if (result.ok) {
+            console.log('[v0] Patient search results:', result.data);
+            return result.data;
+        }
+        return [];
+    } catch (error) {
+        console.error('[v0] Patient search error:', error);
+        return [];
+    }
+};
+
+window.searchStaff = async (query) => {
+    console.log('[v0] Searching staff:', query);
+    if (!query || query.length < 2) return [];
+    try {
+        const result = await StaffAPI.listStaff({ search: query });
+        if (result.ok) {
+            console.log('[v0] Staff search results:', result.data);
+            return result.data;
+        }
+        return [];
+    } catch (error) {
+        console.error('[v0] Staff search error:', error);
+        return [];
+    }
+};
+
+window.searchAppointments = async (query) => {
+    console.log('[v0] Searching appointments:', query);
+    if (!query || query.length < 2) return [];
+    try {
+        const result = await AppointAPI.listAppointments({ search: query });
+        if (result.ok) {
+            console.log('[v0] Appointment search results:', result.data);
+            return result.data;
+        }
+        return [];
+    } catch (error) {
+        console.error('[v0] Appointment search error:', error);
+        return [];
+    }
+};
+
 /**
  * Clinic App Entry Point
  * Manages Auth and App shells and basic routing.
+ * Includes backend database initialization and API access.
  */
 const root = document.getElementById('clinic-root');
+
+// Initialize backend database
+console.log('[v0] Initializing GVC Backend for Clinic...');
+console.log('[v0] Available database tables:', Object.keys(db._tables || {}));
 
 /**
  * Helper to mount a layout and a specific view within it.
