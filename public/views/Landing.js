@@ -60,7 +60,7 @@ export class Landing extends Component {
     const loginBtn = this.element.querySelector('#btn-patient-login');
     if (loginBtn) {
       loginBtn.addEventListener('click', () => {
-        window.dispatchEvent(new CustomEvent('navigate-patient-login'));
+        window.dispatchEvent(new CustomEvent('navigate', { detail: { route: 'patient-login' } }));
       });
     }
 
@@ -68,7 +68,7 @@ export class Landing extends Component {
     const signupBtn = this.element.querySelector('#btn-patient-signup');
     if (signupBtn) {
       signupBtn.addEventListener('click', () => {
-        window.dispatchEvent(new CustomEvent('navigate-patient-signup'));
+        window.dispatchEvent(new CustomEvent('navigate', { detail: { route: 'patient-signup' } }));
       });
     }
   }
