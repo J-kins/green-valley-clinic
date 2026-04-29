@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Valley Clinic - Healthcare Portal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #F0F4F8;
+      color: #00171F;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+    .header {
+      background: white;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #003459;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      color: #475569;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: #003459;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 52, 89, 0.2);
+    }
+
+    .btn-secondary {
+      background: #F8FAFC;
+      color: #003459;
+      border: 1px solid #E2E8F0;
+    }
+
+    .btn-secondary:hover {
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0A4A7A 0%, #003459 50%, #00171F 100%);
+      color: white;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(173, 235, 255, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 8vw, 48px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #ADEBFF;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* FEATURES */
+    .features {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 48px;
+      color: #00171F;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .feature-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0, 52, 89, 0.12);
+      border-color: #BFDBFE;
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #00171F;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: #64748B;
+      line-height: 1.6;
+    }
+
+    /* SERVICES PREVIEW */
+    .services {
+      padding: 80px 0;
+      background: #F0F4F8;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .service-item {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 1px solid #E2E8F0;
+    }
+
+    .service-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 52, 89, 0.1);
+      border-color: #ADEBFF;
+    }
+
+    .service-emoji {
+      font-size: 40px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .service-item h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #00171F;
+    }
+
+    .service-item p {
+      font-size: 13px;
+      color: #64748B;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .service-btn {
+      background: #003459;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .service-btn:hover {
+      background: #0A4A7A;
+    }
+
+    /* CTA SECTION */
+    .cta {
+      background: linear-gradient(135deg, #0A4A7A 0%, #003459 100%);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+      border-radius: 16px;
+      margin: 80px 0;
+    }
+
+    .cta h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      font-size: 16px;
+      color: #ADEBFF;
+      margin-bottom: 32px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: white;
+      border-top: 1px solid #E2E8F0;
+      padding: 40px 0;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .footer-section h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #00171F;
+    }
+
+    .footer-link {
+      display: block;
+      font-size: 13px;
+      color: #64748B;
+      text-decoration: none;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: #003459;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid #E2E8F0;
+      font-size: 12px;
+      color: #64748B;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px 0;
+      }
+
+      .features, .services {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 28px;
+        margin-bottom: 32px;
+      }
+
+      .nav {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="#home" class="logo">
+          <div class="logo-icon">GVC</div>
+          <span>Green Valley Clinic</span>
+        </a>
+
+        <nav class="nav">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#articles" class="nav-link">Health Tips</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="auth-buttons">
+          <a href="#login" class="btn btn-secondary">Login</a>
+          <a href="#signup" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Your Health, Simplified</h1>
+        <p>Access your medical records, schedule appointments, and stay connected with your healthcare team—all in one place.</p>
+        <div class="hero-buttons">
+          <a href="#login" class="btn btn-primary">Patient Login</a>
+          <a href="#signup" class="btn btn-secondary" style="color: white; border-color: white;">Create Account</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Why Choose Green Valley Clinic</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🏥</span>
+          <h3>Expert Care</h3>
+          <p>Board-certified doctors with decades of combined experience providing compassionate healthcare.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">📱</span>
+          <h3>Digital Access</h3>
+          <p>Manage your health 24/7 with our secure patient portal and mobile app.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">⚡</span>
+          <h3>Fast Service</h3>
+          <p>Minimal wait times with online scheduling and virtual consultation options.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🔒</span>
+          <h3>Secure & Private</h3>
+          <p>HIPAA-compliant systems protecting your sensitive health information.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-item">
+          <span class="service-emoji">❤️</span>
+          <h4>Cardiology</h4>
+          <p>Heart health and cardiovascular care from specialists.</p>
+          <button class="service-btn" onclick="navigateTo('#services')">Learn More</button>
+        </div>
+        <div class="service-item">
+          <span class="service-emoji">🧒</span>
+          <h4>Pediatrics</h4>
+          <p>Comprehensive care for infants, children, and adolescents.</p>
+          <button class="service-btn" onclick="navigateTo('#services')">Learn More</button>
+        </div>
+        <div class="service-item">
+          <span class="service-emoji">🦷</span>
+          <h4>Dentistry</h4>
+          <p>Preventive and restorative dental treatments.</p>
+          <button class="service-btn" onclick="navigateTo('#services')">Learn More</button>
+        </div>
+        <div class="service-item">
+          <span class="service-emoji">🧠</span>
+          <h4>Psychiatry</h4>
+          <p>Mental health support and psychological counseling.</p>
+          <button class="service-btn" onclick="navigateTo('#services')">Learn More</button>
+        </div>
+        <div class="service-item">
+          <span class="service-emoji">💉</span>
+          <h4>General Medicine</h4>
+          <p>Primary care and preventive health services.</p>
+          <button class="service-btn" onclick="navigateTo('#services')">Learn More</button>
+        </div>
+        <div class="service-item">
+          <span class="service-emoji">🩺</span>
+          <h4>Emergency Care</h4>
+          <p>24/7 emergency services for urgent medical needs.</p>
+          <button class="service-btn" onclick="navigateTo('#services')">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Take Control of Your Health?</h2>
+      <p>Join thousands of patients who trust Green Valley Clinic for their healthcare needs.</p>
+      <a href="#signup" class="btn btn-primary">Get Started Today</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Company</h4>
+          <a href="#about" class="footer-link">About Us</a>
+          <a href="#careers" class="footer-link">Careers</a>
+          <a href="#blog" class="footer-link">Blog</a>
+        </div>
+        <div class="footer-section">
+          <h4>Services</h4>
+          <a href="#services" class="footer-link">Medical Services</a>
+          <a href="#appointments" class="footer-link">Appointments</a>
+          <a href="#prescriptions" class="footer-link">Prescriptions</a>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <a href="#help" class="footer-link">Help Center</a>
+          <a href="#contact" class="footer-link">Contact Us</a>
+          <a href="#faq" class="footer-link">FAQs</a>
+        </div>
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <a href="#privacy" class="footer-link">Privacy Policy</a>
+          <a href="#terms" class="footer-link">Terms of Service</a>
+          <a href="#hipaa" class="footer-link">HIPAA Notice</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Green Valley Clinic. All rights reserved. HIPAA Compliant.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function navigateTo(path) {
+      window.location.hash = path;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Services - Green Valley Clinic</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #F0F4F8;
+      color: #00171F;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+    .header {
+      background: white;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #003459;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      color: #475569;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: #003459;
+    }
+
+    .nav-link.active {
+      color: #003459;
+      font-weight: 700;
+    }
+
+    .back-link {
+      color: #003459;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: #0A4A7A;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0A4A7A 0%, #003459 100%);
+      color: white;
+      padding: 60px 0;
+      margin-bottom: 60px;
+    }
+
+    .hero-content {
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: #ADEBFF;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* SERVICES GRID */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    .service-card {
+      background: white;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0, 52, 89, 0.12);
+      border-color: #BFDBFE;
+    }
+
+    .service-header {
+      background: linear-gradient(135deg, #0A4A7A 0%, #003459 100%);
+      color: white;
+      padding: 32px;
+      text-align: center;
+      font-size: 48px;
+    }
+
+    .service-content {
+      padding: 24px;
+    }
+
+    .service-content h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #00171F;
+    }
+
+    .service-description {
+      font-size: 14px;
+      color: #64748B;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .service-features {
+      font-size: 13px;
+      color: #64748B;
+      margin-bottom: 20px;
+    }
+
+    .service-feature {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .service-feature-check {
+      color: #10B981;
+      font-weight: 700;
+    }
+
+    .service-footer {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 52, 89, 0.2);
+    }
+
+    .btn-secondary {
+      background: #F8FAFC;
+      color: #003459;
+      border: 1px solid #E2E8F0;
+    }
+
+    .btn-secondary:hover {
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 40px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 16px;
+    }
+
+    .modal-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #00171F;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #64748B;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: #00171F;
+    }
+
+    .booking-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #00171F;
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 10px 12px;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #003459;
+      box-shadow: 0 0 0 3px rgba(0, 52, 89, 0.1);
+    }
+
+    .btn-book {
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #003459 0%, #0A4A7A 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 16px;
+    }
+
+    .btn-book:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 52, 89, 0.2);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: white;
+      border-top: 1px solid #E2E8F0;
+      padding: 40px 0;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      text-align: center;
+      font-size: 12px;
+      color: #64748B;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div style="display: flex; align-items: center; gap: 16px; flex: 1;">
+          <a href="#home" class="back-link">← Home</a>
+          <a href="#home" class="logo">
+            <div class="logo-icon">GVC</div>
+            <span>Green Valley Clinic</span>
+          </a>
+        </div>
+
+        <nav class="nav">
+          <a href="#services" class="nav-link active">Services</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#articles" class="nav-link">Health Tips</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <a href="#login" style="color: #003459; text-decoration: none; font-weight: 600; font-size: 14px;">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Our Services</h1>
+        <p>Comprehensive healthcare solutions tailored to your needs. Book an appointment with our specialists.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <main class="container">
+    <div class="services-grid" id="servicesGrid">
+      <!-- Will be populated by JavaScript -->
+    </div>
+  </main>
+
+  <!-- BOOKING MODAL -->
+  <div class="modal" id="bookingModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Book Appointment</h2>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+      <form class="booking-form" onsubmit="handleBooking(event)">
+        <div class="form-group">
+          <label>Service</label>
+          <input type="text" id="serviceInput" readonly>
+        </div>
+        <div class="form-group">
+          <label for="appointmentDate">Preferred Date</label>
+          <input type="date" id="appointmentDate" required>
+        </div>
+        <div class="form-group">
+          <label for="appointmentTime">Preferred Time</label>
+          <input type="time" id="appointmentTime" required>
+        </div>
+        <div class="form-group">
+          <label for="appointmentNotes">Notes (optional)</label>
+          <textarea id="appointmentNotes" style="padding: 10px 12px; border: 1px solid #E2E8F0; border-radius: 8px; font-family: inherit; resize: vertical; min-height: 80px;"></textarea>
+        </div>
+        <button type="submit" class="btn-book">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2024 Green Valley Clinic. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const services = [
+      {
+        id: 1,
+        name: 'Cardiology',
+        emoji: '❤️',
+        description: 'Expert cardiac care and heart health management',
+        features: ['Heart disease diagnosis', 'EKG & Stress tests', 'Arrhythmia treatment', 'Preventive cardiology']
+      },
+      {
+        id: 2,
+        name: 'Pediatrics',
+        emoji: '🧒',
+        description: 'Comprehensive care for infants, children, and adolescents',
+        features: ['Well-child exams', 'Vaccinations', 'Growth monitoring', 'Developmental screening']
+      },
+      {
+        id: 3,
+        name: 'Dentistry',
+        emoji: '🦷',
+        description: 'Preventive and restorative dental treatments',
+        features: ['Cleanings & checkups', 'Fillings & root canals', 'Cosmetic dentistry', 'Orthodontics']
+      },
+      {
+        id: 4,
+        name: 'Psychiatry',
+        emoji: '🧠',
+        description: 'Mental health support and psychological counseling',
+        features: ['Therapy sessions', 'Medication management', 'Crisis support', 'Family counseling']
+      },
+      {
+        id: 5,
+        name: 'General Medicine',
+        emoji: '💉',
+        description: 'Primary care and preventive health services',
+        features: ['Routine checkups', 'Chronic disease management', 'Lab tests', 'Health screening']
+      },
+      {
+        id: 6,
+        name: 'Emergency Care',
+        emoji: '🚑',
+        description: '24/7 emergency services for urgent medical needs',
+        features: ['24/7 availability', 'Trauma care', 'Acute illness treatment', 'Stabilization & transfer']
+      }
+    ];
+
+    function renderServices() {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = services.map(service => `
+        <div class="service-card">
+          <div class="service-header">${service.emoji}</div>
+          <div class="service-content">
+            <h3>${service.name}</h3>
+            <p class="service-description">${service.description}</p>
+            <div class="service-features">
+              ${service.features.map(feature => `
+                <div class="service-feature">
+                  <span class="service-feature-check">✓</span>
+                  <span>${feature}</span>
+                </div>
+              `).join('')}
+            </div>
+            <div class="service-footer">
+              <button class="btn btn-primary" onclick="openBookingModal('${service.name}')">Book Now</button>
+              <button class="btn btn-secondary" onclick="viewDetails('${service.id}')">Learn More</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openBookingModal(serviceName) {
+      console.log('[v0] Opening booking modal for:', serviceName);
+      document.getElementById('serviceInput').value = serviceName;
+      document.getElementById('bookingModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('bookingModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function handleBooking(event) {
+      event.preventDefault();
+      const service = document.getElementById('serviceInput').value;
+      const date = document.getElementById('appointmentDate').value;
+      const time = document.getElementById('appointmentTime').value;
+      
+      console.log('[v0] Booking appointment:', { service, date, time });
+      alert(`Appointment booked for ${service} on ${date} at ${time}`);
+      closeModal();
+    }
+
+    function viewDetails(serviceId) {
+      console.log('[v0] Viewing details for service:', serviceId);
+      alert('Service details coming soon');
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('bookingModal').addEventListener('click', function(event) {
+      if (event.target === this) {
+        closeModal();
+      }
+    });
+
+    // Render services on load
+    document.addEventListener('DOMContentLoaded', renderServices);
+  </script>
+</body>
+</html>

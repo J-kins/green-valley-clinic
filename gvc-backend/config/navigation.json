@@ -1,0 +1,150 @@
+{
+  "public": {
+    "main": [
+      {
+        "label": "Home",
+        "path": "#home",
+        "icon": "🏠"
+      },
+      {
+        "label": "Services",
+        "path": "#services",
+        "icon": "⚕️"
+      },
+      {
+        "label": "Health Articles",
+        "path": "#articles",
+        "icon": "📚"
+      },
+      {
+        "label": "About",
+        "path": "#about",
+        "icon": "ℹ️"
+      },
+      {
+        "label": "Contact",
+        "path": "#contact",
+        "icon": "📞"
+      }
+    ],
+    "auth": [
+      {
+        "label": "Patient Login",
+        "path": "#login",
+        "role": "patient"
+      },
+      {
+        "label": "Patient Sign Up",
+        "path": "#signup",
+        "role": "patient"
+      },
+      {
+        "label": "Staff Login",
+        "path": "#staff/login",
+        "role": "staff"
+      }
+    ]
+  },
+  "patient": {
+    "authenticated": [
+      {
+        "label": "Dashboard",
+        "path": "#patient/dashboard",
+        "icon": "📊"
+      },
+      {
+        "label": "My Appointments",
+        "path": "#patient/appointments",
+        "icon": "📅"
+      },
+      {
+        "label": "Medical Records",
+        "path": "#patient/records",
+        "icon": "📋"
+      },
+      {
+        "label": "Prescriptions",
+        "path": "#patient/prescriptions",
+        "icon": "💊"
+      }
+    ]
+  },
+  "clinic": {
+    "doctor": [
+      {
+        "label": "Dashboard",
+        "path": "#clinic/doctor/dashboard",
+        "icon": "📊"
+      },
+      {
+        "label": "My Patients",
+        "path": "#clinic/doctor/patients",
+        "icon": "👥"
+      },
+      {
+        "label": "Today's Schedule",
+        "path": "#clinic/doctor/schedule",
+        "icon": "📅"
+      },
+      {
+        "label": "Clinical Notes",
+        "path": "#clinic/doctor/notes",
+        "icon": "📝"
+      },
+      {
+        "label": "Appointments",
+        "path": "#clinic/doctor/appointments",
+        "icon": "📋"
+      },
+      {
+        "label": "Prescriptions",
+        "path": "#clinic/doctor/prescriptions",
+        "icon": "💊"
+      }
+    ],
+    "admin": [
+      {
+        "label": "Dashboard",
+        "path": "#clinic/admin/dashboard",
+        "icon": "📊"
+      },
+      {
+        "label": "Staff Management",
+        "path": "#clinic/admin/staff",
+        "icon": "👔"
+      },
+      {
+        "label": "Reports",
+        "path": "#clinic/admin/reports",
+        "icon": "📈"
+      },
+      {
+        "label": "System Settings",
+        "path": "#clinic/admin/settings",
+        "icon": "⚙️"
+      }
+    ],
+    "front_desk": [
+      {
+        "label": "Dashboard",
+        "path": "#clinic/front_desk/dashboard",
+        "icon": "📊"
+      },
+      {
+        "label": "Appointments",
+        "path": "#clinic/front_desk/appointments",
+        "icon": "📅"
+      },
+      {
+        "label": "Patients",
+        "path": "#clinic/front_desk/patients",
+        "icon": "👥"
+      },
+      {
+        "label": "Check-in",
+        "path": "#clinic/front_desk/check-in",
+        "icon": "✅"
+      }
+    ]
+  }
+}
