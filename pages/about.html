@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Green Valley Clinic</title>
+    <meta name="description" content="Learn about Green Valley Clinic's mission, vision, and commitment to providing exceptional healthcare services.">
+    <link rel="stylesheet" href="../dist/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="about-root"></div>
+    <script type="module">
+        import { Header, Footer } from '../packages/components/src/index.js';
+
+        const root = document.getElementById('about-root');
+
+        // Header
+        const header = new Header({
+            logo: 'Green Valley Clinic',
+            navItems: [
+                { label: 'Home', href: '../index.html' },
+                { label: 'Services', href: '../pages/services.html' },
+                { label: 'About', href: '#' },
+                { label: 'Health Articles', href: '../pages/articles.html' },
+                { label: 'Contact', href: '../pages/contact.html' }
+            ]
+        });
+        header.mount(root);
+
+        // Hero Section
+        const hero = document.createElement('section');
+        hero.style.padding = '80px 20px';
+        hero.style.textAlign = 'center';
+        hero.style.background = 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)';
+        hero.style.color = 'white';
+        hero.innerHTML = `
+            <h1 style="font-size: 2.5rem; font-weight: 800; margin: 0 0 16px 0;">About Green Valley Clinic</h1>
+            <p style="font-size: 1.125rem; max-width: 600px; margin: 0 auto; opacity: 0.95;">Serving our community with excellence and compassion since 2010</p>
+        `;
+        root.appendChild(hero);
+
+        // Mission & Vision Section
+        const missionSection = document.createElement('section');
+        missionSection.style.padding = '80px 20px';
+        missionSection.style.background = 'white';
+        missionSection.innerHTML = `
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 64px;">
+                    <div>
+                        <h2 style="font-size: 1.875rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Our Mission</h2>
+                        <p style="color: #64748b; line-height: 1.8; margin: 0; font-size: 1.0625rem;">
+                            To provide compassionate, evidence-based healthcare that prioritizes patient wellbeing and promotes healthier communities. We strive to make quality healthcare accessible to all.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 style="font-size: 1.875rem; font-weight: 700; color: #4f46e5; margin: 0 0 16px 0;">Our Vision</h2>
+                        <p style="color: #64748b; line-height: 1.8; margin: 0; font-size: 1.0625rem;">
+                            To be the leading healthcare provider in the region, recognized for clinical excellence, innovation, and unwavering commitment to patient care. We envision a healthier future for all.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="padding: 32px; background: #f8f9ff; border-radius: 12px;">
+                    <h2 style="font-size: 1.875rem; font-weight: 700; color: #1e293b; margin: 0 0 24px 0;">Why Choose Us?</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+                        <div>
+                            <h4 style="color: #4f46e5; font-weight: 700; margin: 0 0 12px 0;">Expert Team</h4>
+                            <p style="color: #64748b; margin: 0; line-height: 1.6;">Board-certified doctors and healthcare professionals with years of experience.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #4f46e5; font-weight: 700; margin: 0 0 12px 0;">Modern Facilities</h4>
+                            <p style="color: #64748b; margin: 0; line-height: 1.6;">State-of-the-art equipment and infrastructure for accurate diagnosis and treatment.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #4f46e5; font-weight: 700; margin: 0 0 12px 0;">Patient-First Approach</h4>
+                            <p style="color: #64748b; margin: 0; line-height: 1.6;">Your health and satisfaction are our top priorities in every interaction.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #4f46e5; font-weight: 700; margin: 0 0 12px 0;">Affordable Care</h4>
+                            <p style="color: #64748b; margin: 0; line-height: 1.6;">Transparent pricing and flexible payment options for all patients.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #4f46e5; font-weight: 700; margin: 0 0 12px 0;">24/7 Emergency Service</h4>
+                            <p style="color: #64748b; margin: 0; line-height: 1.6;">Round-the-clock emergency care for urgent medical needs.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #4f46e5; font-weight: 700; margin: 0 0 12px 0;">Holistic Care</h4>
+                            <p style="color: #64748b; margin: 0; line-height: 1.6;">Comprehensive care addressing physical, mental, and emotional health.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        root.appendChild(missionSection);
+
+        // Stats Section
+        const statsSection = document.createElement('section');
+        statsSection.style.padding = '60px 20px';
+        statsSection.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        statsSection.style.color = 'white';
+        statsSection.innerHTML = `
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; text-align: center;">
+                    <div>
+                        <h3 style="font-size: 2.5rem; font-weight: 800; margin: 0;">5000+</h3>
+                        <p style="margin: 8px 0 0 0; opacity: 0.9;">Patients Treated</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 2.5rem; font-weight: 800; margin: 0;">50+</h3>
+                        <p style="margin: 8px 0 0 0; opacity: 0.9;">Healthcare Professionals</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 2.5rem; font-weight: 800; margin: 0;">15+</h3>
+                        <p style="margin: 8px 0 0 0; opacity: 0.9;">Years of Service</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 2.5rem; font-weight: 800; margin: 0;">6</h3>
+                        <p style="margin: 8px 0 0 0; opacity: 0.9;">Medical Departments</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        root.appendChild(statsSection);
+
+        // Team Section
+        const teamSection = document.createElement('section');
+        teamSection.style.padding = '80px 20px';
+        teamSection.style.background = 'white';
+        teamSection.innerHTML = `
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h2 style="font-size: 2rem; font-weight: 700; text-align: center; color: #1e293b; margin: 0 0 48px 0;">Meet Our Leadership</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+                    <div style="background: #f8f9ff; padding: 32px; border-radius: 12px; text-align: center;">
+                        <h3 style="color: #4f46e5; font-weight: 700; margin: 0 0 8px 0;">Dr. Robert Wilson</h3>
+                        <p style="color: #64748b; margin: 0 0 12px 0; font-size: 0.95rem;">Chief Medical Officer</p>
+                        <p style="color: #64748b; line-height: 1.6; margin: 0;">Board-certified physician with 20+ years of experience in general medicine.</p>
+                    </div>
+                    <div style="background: #f8f9ff; padding: 32px; border-radius: 12px; text-align: center;">
+                        <h3 style="color: #4f46e5; font-weight: 700; margin: 0 0 8px 0;">Dr. Priya Patel</h3>
+                        <p style="color: #64748b; margin: 0 0 12px 0; font-size: 0.95rem;">Director of Pediatrics</p>
+                        <p style="color: #64748b; line-height: 1.6; margin: 0;">Pediatric specialist dedicated to providing compassionate care for children.</p>
+                    </div>
+                    <div style="background: #f8f9ff; padding: 32px; border-radius: 12px; text-align: center;">
+                        <h3 style="color: #4f46e5; font-weight: 700; margin: 0 0 8px 0;">Sarah Johnson</h3>
+                        <p style="color: #64748b; margin: 0 0 12px 0; font-size: 0.95rem;">Chief Executive Officer</p>
+                        <p style="color: #64748b; line-height: 1.6; margin: 0;">Healthcare administrator focused on operational excellence and patient satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        root.appendChild(teamSection);
+
+        // Footer
+        const footer = new Footer({
+            links: [
+                { label: 'Privacy Policy', href: '#' },
+                { label: 'Terms of Service', href: '#' },
+                { label: 'Careers', href: '#' },
+                { label: 'Contact Us', href: '../pages/contact.html' }
+            ]
+        });
+        footer.mount(root);
+    </script>
+</body>
+</html>

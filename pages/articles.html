@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Articles | Green Valley Clinic</title>
+    <meta name="description" content="Read our health articles and wellness tips from healthcare experts at Green Valley Clinic.">
+    <link rel="stylesheet" href="../dist/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="articles-root"></div>
+    <script type="module">
+        import { Header, Footer } from '../packages/components/src/index.js';
+        import * as PublicAPI from '../gvc-backend/api/public.js';
+
+        const root = document.getElementById('articles-root');
+
+        // Header
+        const header = new Header({
+            logo: 'Green Valley Clinic',
+            navItems: [
+                { label: 'Home', href: '../index.html' },
+                { label: 'Services', href: '../pages/services.html' },
+                { label: 'About', href: '../pages/about.html' },
+                { label: 'Health Articles', href: '#' },
+                { label: 'Contact', href: '../pages/contact.html' }
+            ]
+        });
+        header.mount(root);
+
+        // Hero Section
+        const hero = document.createElement('section');
+        hero.style.padding = '80px 20px';
+        hero.style.textAlign = 'center';
+        hero.style.background = 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)';
+        hero.style.color = 'white';
+        hero.innerHTML = `
+            <h1 style="font-size: 2.5rem; font-weight: 800; margin: 0 0 16px 0;">Health Articles & Resources</h1>
+            <p style="font-size: 1.125rem; max-width: 600px; margin: 0 auto; opacity: 0.95;">Expert advice and wellness tips to help you live a healthier life</p>
+        `;
+        root.appendChild(hero);
+
+        // Articles Container
+        const articlesContainer = document.createElement('section');
+        articlesContainer.style.padding = '80px 20px';
+        articlesContainer.style.background = 'white';
+        articlesContainer.id = 'articlesSection';
+        const articlesInner = document.createElement('div');
+        articlesInner.style.maxWidth = '1200px';
+        articlesInner.style.margin = '0 auto';
+        articlesContainer.appendChild(articlesInner);
+        root.appendChild(articlesContainer);
+
+        // Load articles from mock backend
+        async function loadArticles() {
+            try {
+                const result = await PublicAPI.getHealthArticles();
+                console.log('[v0] Articles loaded:', result);
+
+                if (result.ok && result.data.length > 0) {
+                    const articlesGrid = document.createElement('div');
+                    articlesGrid.style.display = 'grid';
+                    articlesGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(320px, 1fr))';
+                    articlesGrid.style.gap = '32px';
+
+                    result.data.forEach(article => {
+                        const articleCard = document.createElement('div');
+                        articleCard.style.background = '#f8f9ff';
+                        articleCard.style.padding = '32px';
+                        articleCard.style.borderRadius = '12px';
+                        articleCard.style.display = 'flex';
+                        articleCard.style.flexDirection = 'column';
+                        articleCard.style.transition = 'all 0.3s';
+                        articleCard.style.cursor = 'pointer';
+
+                        const category = document.createElement('span');
+                        category.textContent = article.category;
+                        category.style.color = '#4f46e5';
+                        category.style.fontSize = '0.875rem';
+                        category.style.fontWeight = '600';
+                        category.style.marginBottom = '12px';
+
+                        const title = document.createElement('h3');
+                        title.textContent = article.title;
+                        title.style.color = '#1e293b';
+                        title.style.fontSize = '1.25rem';
+                        title.style.fontWeight = '700';
+                        title.style.margin = '0 0 12px 0';
+                        title.style.lineHeight = '1.4';
+
+                        const excerpt = document.createElement('p');
+                        excerpt.textContent = article.body.substring(0, 120) + '...';
+                        excerpt.style.color = '#64748b';
+                        excerpt.style.lineHeight = '1.6';
+                        excerpt.style.margin = '0 0 16px 0';
+                        excerpt.style.flexGrow = '1';
+
+                        const readMore = document.createElement('a');
+                        readMore.textContent = 'Read Full Article →';
+                        readMore.href = '#';
+                        readMore.style.color = '#4f46e5';
+                        readMore.style.fontWeight = '600';
+                        readMore.style.textDecoration = 'none';
+                        readMore.style.cursor = 'pointer';
+                        readMore.style.transition = 'all 0.2s';
+
+                        readMore.addEventListener('mouseover', () => {
+                            readMore.style.color = '#7c3aed';
+                        });
+                        readMore.addEventListener('mouseout', () => {
+                            readMore.style.color = '#4f46e5';
+                        });
+
+                        articleCard.addEventListener('mouseover', () => {
+                            articleCard.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
+                            articleCard.style.transform = 'translateY(-4px)';
+                        });
+                        articleCard.addEventListener('mouseout', () => {
+                            articleCard.style.boxShadow = 'none';
+                            articleCard.style.transform = 'translateY(0)';
+                        });
+
+                        articleCard.appendChild(category);
+                        articleCard.appendChild(title);
+                        articleCard.appendChild(excerpt);
+                        articleCard.appendChild(readMore);
+
+                        articlesGrid.appendChild(articleCard);
+                    });
+
+                    articlesInner.innerHTML = '';
+                    articlesInner.appendChild(articlesGrid);
+                } else {
+                    articlesInner.innerHTML = `
+                        <div style="text-align: center; padding: 40px 20px;">
+                            <p style="color: #64748b; font-size: 1.125rem;">No articles available at the moment.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.log('[v0] Error loading articles:', error.message);
+                articlesInner.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <p style="color: #ef4444;">Failed to load articles. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+
+        loadArticles();
+
+        // Announcements Section
+        const announcementsSection = document.createElement('section');
+        announcementsSection.style.padding = '60px 20px';
+        announcementsSection.style.background = '#f8f9ff';
+        announcementsSection.id = 'announcementsSection';
+        const announcementsInner = document.createElement('div');
+        announcementsInner.style.maxWidth = '1000px';
+        announcementsInner.style.margin = '0 auto';
+        announcementsSection.appendChild(announcementsInner);
+        root.appendChild(announcementsSection);
+
+        // Load announcements
+        async function loadAnnouncements() {
+            try {
+                const result = await PublicAPI.getAnnouncements();
+                console.log('[v0] Announcements loaded:', result);
+
+                if (result.ok && result.data.length > 0) {
+                    const title = document.createElement('h2');
+                    title.textContent = 'Latest Announcements';
+                    title.style.fontSize = '1.875rem';
+                    title.style.fontWeight = '700';
+                    title.style.color = '#1e293b';
+                    title.style.marginBottom = '32px';
+                    announcementsInner.appendChild(title);
+
+                    result.data.forEach(announcement => {
+                        const announcementBox = document.createElement('div');
+                        announcementBox.style.background = 'white';
+                        announcementBox.style.padding = '24px';
+                        announcementBox.style.borderLeft = '4px solid #4f46e5';
+                        announcementBox.style.borderRadius = '8px';
+                        announcementBox.style.marginBottom = '16px';
+
+                        const announcementTitle = document.createElement('h4');
+                        announcementTitle.textContent = announcement.title;
+                        announcementTitle.style.color = '#4f46e5';
+                        announcementTitle.style.fontWeight = '700';
+                        announcementTitle.style.margin = '0 0 8px 0';
+
+                        const announcementBody = document.createElement('p');
+                        announcementBody.textContent = announcement.body;
+                        announcementBody.style.color = '#64748b';
+                        announcementBody.style.margin = '0';
+                        announcementBody.style.lineHeight = '1.6';
+
+                        announcementBox.appendChild(announcementTitle);
+                        announcementBox.appendChild(announcementBody);
+                        announcementsInner.appendChild(announcementBox);
+                    });
+                }
+            } catch (error) {
+                console.log('[v0] Error loading announcements:', error.message);
+            }
+        }
+
+        loadAnnouncements();
+
+        // Footer
+        const footer = new Footer({
+            links: [
+                { label: 'Privacy Policy', href: '#' },
+                { label: 'Terms of Service', href: '#' },
+                { label: 'Careers', href: '#' },
+                { label: 'Contact Us', href: '../pages/contact.html' }
+            ]
+        });
+        footer.mount(root);
+    </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Green Valley Clinic</title>
+    <meta name="description" content="Get in touch with Green Valley Clinic. We're here to help with your healthcare needs and questions.">
+    <link rel="stylesheet" href="../dist/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="contact-root"></div>
+    <script type="module">
+        import { Header, Footer } from '../packages/components/src/index.js';
+        import db from '../gvc-backend/db.js';
+        import * as PublicAPI from '../gvc-backend/api/public.js';
+
+        const root = document.getElementById('contact-root');
+
+        // Header
+        const header = new Header({
+            logo: 'Green Valley Clinic',
+            navItems: [
+                { label: 'Home', href: '../index.html' },
+                { label: 'Services', href: '../pages/services.html' },
+                { label: 'About', href: '../pages/about.html' },
+                { label: 'Health Articles', href: '../pages/articles.html' },
+                { label: 'Contact', href: '#' }
+            ]
+        });
+        header.mount(root);
+
+        // Hero Section
+        const hero = document.createElement('section');
+        hero.style.padding = '80px 20px';
+        hero.style.textAlign = 'center';
+        hero.style.background = 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)';
+        hero.style.color = 'white';
+        hero.innerHTML = `
+            <h1 style="font-size: 2.5rem; font-weight: 800; margin: 0 0 16px 0;">Get In Touch</h1>
+            <p style="font-size: 1.125rem; max-width: 600px; margin: 0 auto; opacity: 0.95;">We'd love to hear from you. Reach out with any questions or concerns.</p>
+        `;
+        root.appendChild(hero);
+
+        // Contact Section
+        const contactContainer = document.createElement('section');
+        contactContainer.style.padding = '80px 20px';
+        contactContainer.style.background = 'white';
+        contactContainer.innerHTML = `
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
+                    
+                    <!-- Contact Form -->
+                    <div>
+                        <h2 style="font-size: 1.875rem; font-weight: 700; color: #1e293b; margin: 0 0 32px 0;">Send us a Message</h2>
+                        <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
+                            <div>
+                                <label style="display: block; color: #1e293b; font-weight: 600; margin-bottom: 8px;">Full Name</label>
+                                <input type="text" id="name" name="name" required style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                            </div>
+                            <div>
+                                <label style="display: block; color: #1e293b; font-weight: 600; margin-bottom: 8px;">Email Address</label>
+                                <input type="email" id="email" name="email" required style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                            </div>
+                            <div>
+                                <label style="display: block; color: #1e293b; font-weight: 600; margin-bottom: 8px;">Message</label>
+                                <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; resize: vertical; font-family: inherit;"></textarea>
+                            </div>
+                            <button type="submit" style="padding: 12px 24px; background: #4f46e5; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s;">
+                                Send Message
+                            </button>
+                            <div id="formMessage" style="display: none; padding: 12px; border-radius: 8px; text-align: center; font-weight: 600;"></div>
+                        </form>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div>
+                        <h2 style="font-size: 1.875rem; font-weight: 700; color: #1e293b; margin: 0 0 32px 0;">Contact Information</h2>
+                        <div style="display: flex; flex-direction: column; gap: 28px;">
+                            <div>
+                                <h4 style="color: #4f46e5; font-weight: 700; margin: 0 0 8px 0;">Address</h4>
+                                <p style="color: #64748b; margin: 0; line-height: 1.6;">123 Healthcare Lane<br>Springfield, ST 12345<br>United States</p>
+                            </div>
+                            <div>
+                                <h4 style="color: #4f46e5; font-weight: 700; margin: 0 0 8px 0;">Phone</h4>
+                                <p style="color: #64748b; margin: 0;">Main: (555) 123-4567<br>Emergency: (555) 999-9999</p>
+                            </div>
+                            <div>
+                                <h4 style="color: #4f46e5; font-weight: 700; margin: 0 0 8px 0;">Email</h4>
+                                <p style="color: #64748b; margin: 0;">info@greenvalleyclinic.com<br>appointments@greenvalleyclinic.com</p>
+                            </div>
+                            <div>
+                                <h4 style="color: #4f46e5; font-weight: 700; margin: 0 0 8px 0;">Office Hours</h4>
+                                <p style="color: #64748b; margin: 0;">Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM<br>Sunday: Closed<br><br><strong style="color: #1e293b;">24/7 Emergency Service Available</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        `;
+        root.appendChild(contactContainer);
+
+        // Handle form submission
+        const form = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            try {
+                const result = await PublicAPI.submitEnquiry({
+                    name,
+                    email,
+                    message
+                });
+
+                if (result.ok) {
+                    formMessage.textContent = 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+                    formMessage.style.background = '#d1fae5';
+                    formMessage.style.color = '#065f46';
+                    formMessage.style.display = 'block';
+                    form.reset();
+                    console.log('[v0] Enquiry submitted successfully');
+                } else {
+                    formMessage.textContent = 'Error submitting message. Please try again.';
+                    formMessage.style.background = '#fee2e2';
+                    formMessage.style.color = '#991b1b';
+                    formMessage.style.display = 'block';
+                    console.log('[v0] Error submitting enquiry:', result.error);
+                }
+            } catch (error) {
+                formMessage.textContent = 'An error occurred. Please try again later.';
+                formMessage.style.background = '#fee2e2';
+                formMessage.style.color = '#991b1b';
+                formMessage.style.display = 'block';
+                console.log('[v0] Form submission error:', error.message);
+            }
+        });
+
+        // Footer
+        const footer = new Footer({
+            links: [
+                { label: 'Privacy Policy', href: '#' },
+                { label: 'Terms of Service', href: '#' },
+                { label: 'Careers', href: '#' },
+                { label: 'Contact Us', href: '#' }
+            ]
+        });
+        footer.mount(root);
+    </script>
+</body>
+</html>
